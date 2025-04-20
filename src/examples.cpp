@@ -245,7 +245,7 @@ void example_polar_plots() {
     }
     PlotGen::Style style4;
     style4.color = sf::Color::Magenta;
-    style4.thickness = 2.0f;
+    style4.thickness = 5.0f;
     style4.legend = "r = 0.5 + cos(" + THETA + ")";
     plt.set_title(fig4, "Limacon of Pascal");
     plt.set_xlabel(fig4, "X axis");

@@ -22,7 +22,7 @@ void example_basic_plots() {
     
     // Sinusoidal curve
     auto& fig1 = plt.subplot(0, 0);
-    std::vector<float> x(100), y_sin(100);
+    std::vector<double> x(100), y_sin(100);
     for (int i = 0; i < 100; ++i) {
         x[i] = i * 0.1f - 5.0f;
         y_sin[i] = std::sin(x[i]);
@@ -39,7 +39,7 @@ void example_basic_plots() {
     
     // Parabolic curve
     auto& fig2 = plt.subplot(0, 1);
-    std::vector<float> y_parabola(100);
+    std::vector<double> y_parabola(100);
     for (int i = 0; i < 100; ++i) {
         y_parabola[i] = x[i] * x[i];
     }
@@ -55,7 +55,7 @@ void example_basic_plots() {
     
     // Exponential and logarithmic curves
     auto& fig3 = plt.subplot(1, 0);
-    std::vector<float> y_exp(100), y_log(100);
+    std::vector<double> y_exp(100), y_log(100);
     for (int i = 0; i < 100; ++i) {
         y_exp[i] = std::exp(x[i] * 0.5f);
         if (x[i] > 0) y_log[i] = std::log(x[i] + 1);
@@ -76,7 +76,7 @@ void example_basic_plots() {
     
     // Different line styles
     auto& fig4 = plt.subplot(1, 1);
-    std::vector<float> y_cos(100), y_tan(100);
+    std::vector<double> y_cos(100), y_tan(100);
     for (int i = 0; i < 100; ++i) {
         y_cos[i] = std::cos(x[i]);
         // Avoid infinite tangent values
@@ -114,8 +114,8 @@ void example_histograms() {
     
     // Normal distribution
     std::default_random_engine generator;
-    std::normal_distribution<float> normal_dist(0.0, 1.0);
-    std::vector<float> normal_data(1000);
+    std::normal_distribution<double> normal_dist(0.0, 1.0);
+    std::vector<double> normal_data(1000);
     for (int i = 0; i < 1000; ++i) {
         normal_data[i] = normal_dist(generator);
     }
@@ -142,8 +142,8 @@ void example_histograms() {
     plt.hist(fig2, normal_data, 30, style2);
     
     // Uniform distribution
-    std::uniform_real_distribution<float> uniform_dist(0.0, 10.0);
-    std::vector<float> uniform_data(1000);
+    std::uniform_real_distribution<double> uniform_dist(0.0, 10.0);
+    std::vector<double> uniform_data(1000);
     for (int i = 0; i < 1000; ++i) {
         uniform_data[i] = uniform_dist(generator);
     }
@@ -159,8 +159,8 @@ void example_histograms() {
     plt.hist(fig3, uniform_data, 20, style3);
     
     // Exponential distribution
-    std::exponential_distribution<float> exp_dist(0.5);
-    std::vector<float> exp_data(1000);
+    std::exponential_distribution<double> exp_dist(0.5);
+    std::vector<double> exp_data(1000);
     for (int i = 0; i < 1000; ++i) {
         exp_data[i] = exp_dist(generator);
     }
@@ -185,7 +185,7 @@ void example_polar_plots() {
     
     // 4-petal rose
     auto& fig1 = plt.subplot(0, 0);
-    std::vector<float> theta1(500), r1(500);
+    std::vector<double> theta1(500), r1(500);
     for (int i = 0; i < 500; ++i) {
         theta1[i] = i * 0.05f;
         r1[i] = std::abs(std::cos(2 * theta1[i]));
@@ -203,7 +203,7 @@ void example_polar_plots() {
     
     // Cardioid
     auto& fig2 = plt.subplot(0, 1);
-    std::vector<float> theta2(300), r2(300);
+    std::vector<double> theta2(300), r2(300);
     for (int i = 0; i < 300; ++i) {
         theta2[i] = i * 0.02f * 3.14159f;
         r2[i] = 1 + std::cos(theta2[i]);
@@ -221,7 +221,7 @@ void example_polar_plots() {
     
     // Archimedean spiral
     auto& fig3 = plt.subplot(1, 0);
-    std::vector<float> theta3(200), r3(200);
+    std::vector<double> theta3(200), r3(200);
     for (int i = 0; i < 200; ++i) {
         theta3[i] = i * 0.1f;
         r3[i] = 0.2f * theta3[i];
@@ -238,7 +238,7 @@ void example_polar_plots() {
     
     // Limacon of Pascal
     auto& fig4 = plt.subplot(1, 1);
-    std::vector<float> theta4(300), r4(300);
+    std::vector<double> theta4(300), r4(300);
     for (int i = 0; i < 300; ++i) {
         theta4[i] = i * 0.02f * 3.14159f;
         r4[i] = 0.5f + std::cos(theta4[i]);
@@ -263,8 +263,8 @@ void example_multiple_plots() {
     
     // Multiple curves on the same plot
     auto& fig1 = plt.subplot(0, 0);
-    std::vector<float> x(100);
-    std::vector<float> y1(100), y2(100), y3(100);
+    std::vector<double> x(100);
+    std::vector<double> y1(100), y2(100), y3(100);
     for (int i = 0; i < 100; ++i) {
         x[i] = i * 0.1f - 5.0f;
         y1[i] = std::sin(x[i]);
@@ -291,9 +291,9 @@ void example_multiple_plots() {
     
     // Equal axes for a perfect circle
     auto& fig2 = plt.subplot(0, 1);
-    std::vector<float> circle_x(100), circle_y(100);
+    std::vector<double> circle_x(100), circle_y(100);
     for (int i = 0; i < 100; ++i) {
-        float angle = 2 * 3.14159f * i / 99;
+        double angle = 2 * 3.14159f * i / 99;
         circle_x[i] = std::cos(angle);
         circle_y[i] = std::sin(angle);
     }
@@ -313,9 +313,9 @@ void example_multiple_plots() {
     
     // Ellipse with unequal axes
     auto& fig3 = plt.subplot(1, 0);
-    std::vector<float> ellipse_x(100), ellipse_y(100);
+    std::vector<double> ellipse_x(100), ellipse_y(100);
     for (int i = 0; i < 100; ++i) {
-        float angle = 2 * 3.14159f * i / 99;
+        double angle = 2 * 3.14159f * i / 99;
         ellipse_x[i] = 2 * std::cos(angle);
         ellipse_y[i] = std::sin(angle);
     }
@@ -335,9 +335,9 @@ void example_multiple_plots() {
     
     // Custom grid colors
     auto& fig4 = plt.subplot(1, 1);
-    std::vector<float> lissajous_x(1000), lissajous_y(1000);
+    std::vector<double> lissajous_x(1000), lissajous_y(1000);
     for (int i = 0; i < 1000; ++i) {
-        float t = i * 0.01f;
+        double t = i * 0.01f;
         lissajous_x[i] = std::sin(3 * t);
         lissajous_y[i] = std::sin(2 * t);
     }
@@ -368,9 +368,9 @@ void example_advanced_histograms() {
     std::default_random_engine generator;
     
     // First distribution: Normal with 2 modes
-    std::vector<float> bimodal_data(1000);
-    std::normal_distribution<float> dist1(-3.0, 1.0);
-    std::normal_distribution<float> dist2(3.0, 1.0);
+    std::vector<double> bimodal_data(1000);
+    std::normal_distribution<double> dist1(-3.0, 1.0);
+    std::normal_distribution<double> dist2(3.0, 1.0);
     for (int i = 0; i < 1000; ++i) {
         if (i < 500) {
             bimodal_data[i] = dist1(generator);
@@ -400,10 +400,10 @@ void example_advanced_histograms() {
     plt.hist(fig2, bimodal_data, 40, style2, 1.0f); // Full bars (100% width)
     
     // Exponential distribution with different colors
-    std::vector<float> exp_data1(500);
-    std::vector<float> exp_data2(500);
-    std::exponential_distribution<float> exp_dist1(0.5);
-    std::exponential_distribution<float> exp_dist2(1.0);
+    std::vector<double> exp_data1(500);
+    std::vector<double> exp_data2(500);
+    std::exponential_distribution<double> exp_dist1(0.5);
+    std::exponential_distribution<double> exp_dist2(1.0);
     for (int i = 0; i < 500; ++i) {
         exp_data1[i] = exp_dist1(generator);
         exp_data2[i] = exp_dist2(generator); 
@@ -423,13 +423,13 @@ void example_advanced_histograms() {
     plt.hist(fig3, exp_data2, 25, style3b, 0.4f); // Thinner to be visible
     
     // Custom distribution - chi-squared distribution
-    std::vector<float> chi2_data(1000);
+    std::vector<double> chi2_data(1000);
     for (int i = 0; i < 1000; ++i) {
         // Simulate Chi-squared with k=3 degrees of freedom
-        float sum = 0;
+        double sum = 0;
         for (int j = 0; j < 3; ++j) {
-            std::normal_distribution<float> normal(0, 1);
-            float x = normal(generator);
+            std::normal_distribution<double> normal(0, 1);
+            double x = normal(generator);
             sum += x * x;
         }
         chi2_data[i] = sum;
@@ -440,7 +440,7 @@ void example_advanced_histograms() {
     
     // Create three styles with different colors
     std::vector<PlotGen::Style> styles;
-    std::vector<float> width_ratios = {0.7f, 0.7f, 0.7f};
+    std::vector<double> width_ratios = {0.7f, 0.7f, 0.7f};
     
     PlotGen::Style style4a;
     style4a.color = sf::Color(30, 144, 255); // Dodger blue
@@ -458,14 +458,14 @@ void example_advanced_histograms() {
     styles.push_back(style4c);
     
     // Divide the data into three parts
-    float min_val = *std::min_element(chi2_data.begin(), chi2_data.end());
-    float max_val = *std::max_element(chi2_data.begin(), chi2_data.end());
-    float range = max_val - min_val;
-    float third = range / 3;
+    double min_val = *std::min_element(chi2_data.begin(), chi2_data.end());
+    double max_val = *std::max_element(chi2_data.begin(), chi2_data.end());
+    double range = max_val - min_val;
+    double third = range / 3;
     
-    std::vector<float> chi2_part1, chi2_part2, chi2_part3;
+    std::vector<double> chi2_part1, chi2_part2, chi2_part3;
     
-    for (float val : chi2_data) {
+    for (double val : chi2_data) {
         if (val < min_val + third) {
             chi2_part1.push_back(val);
         } else if (val < min_val + 2 * third) {
@@ -494,7 +494,7 @@ void example_symbol_plots() {
     
     // Example 1: Different types of symbols
     auto& fig1 = plt.subplot(0, 0);
-    std::vector<float> x(10), y1(10), y2(10), y3(10), y4(10), y5(10);
+    std::vector<double> x(10), y1(10), y2(10), y3(10), y4(10), y5(10);
     
     for (int i = 0; i < 10; ++i) {
         x[i] = i;
@@ -553,7 +553,7 @@ void example_symbol_plots() {
     // Example 2: Different symbol sizes
     auto& fig2 = plt.subplot(0, 1);
     
-    std::vector<float> x2(10), y_sizes(5);
+    std::vector<double> x2(10), y_sizes(5);
     for (int i = 0; i < 10; ++i) {
         x2[i] = i;
     }
@@ -563,10 +563,10 @@ void example_symbol_plots() {
     }
     
     std::vector<PlotGen::Style> size_styles;
-    std::vector<float> sizes = {4.0f, 8.0f, 12.0f, 16.0f, 20.0f};
+    std::vector<double> sizes = {4.0f, 8.0f, 12.0f, 16.0f, 20.0f};
     
     for (int j = 0; j < 5; ++j) {
-        std::vector<float> y_curve(10);
+        std::vector<double> y_curve(10);
         for (int i = 0; i < 10; ++i) {
             y_curve[i] = y_sizes[j];
         }
@@ -590,7 +590,7 @@ void example_symbol_plots() {
     // Example 3: Combination of lines and symbols
     auto& fig3 = plt.subplot(1, 0);
     
-    std::vector<float> x3(100), y_sin(100), y_cos(100);
+    std::vector<double> x3(100), y_sin(100), y_cos(100);
     for (int i = 0; i < 100; ++i) {
         x3[i] = i * 0.1f;
         y_sin[i] = std::sin(x3[i]);
@@ -632,7 +632,7 @@ void example_symbol_plots() {
     plt.grid(fig3, true, false);
     
     // Plot only a few points for the symbols
-    std::vector<float> x_points(10), y_sin_points(10), y_cos_points(10);
+    std::vector<double> x_points(10), y_sin_points(10), y_cos_points(10);
     for (int i = 0; i < 10; ++i) {
         int idx = i * 10;
         x_points[i] = x3[idx];
@@ -649,7 +649,7 @@ void example_symbol_plots() {
     auto& fig4 = plt.subplot(1, 1);
     
     // Data for a quadratic curve
-    std::vector<float> x4(100), y_quad(100);
+    std::vector<double> x4(100), y_quad(100);
     for (int i = 0; i < 100; ++i) {
         x4[i] = i * 0.1f;
         y_quad[i] = 0.05f * x4[i] * x4[i];

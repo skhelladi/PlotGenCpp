@@ -36,6 +36,8 @@ void example_basic_plots() {
     plt.set_axis_limits(fig1, -5, 5, -1.2, 1.2);
     plt.grid(fig1, true, false);
     plt.plot(fig1, x, y_sin, style_sin);
+    // Définir la position de la légende: en haut à gauche
+    plt.set_legend_position(fig1, "top-left");
     
     // Parabolic curve
     auto& fig2 = plt.subplot(0, 1);
@@ -52,6 +54,8 @@ void example_basic_plots() {
     plt.set_axis_limits(fig2, -5, 5, 0, 25);
     plt.grid(fig2, true, true);
     plt.plot(fig2, x, y_parabola, style_parabola);
+    // Définir la position de la légende: en bas à droite
+    plt.set_legend_position(fig2, "bottom-right");
     
     // Exponential and logarithmic curves
     auto& fig3 = plt.subplot(1, 0);
@@ -73,6 +77,8 @@ void example_basic_plots() {
     plt.grid(fig3, true, false);
     plt.plot(fig3, x, y_exp, style_exp);
     plt.plot(fig3, x, y_log, style_log);
+    // Définir la position de la légende: en bas à gauche
+    plt.set_legend_position(fig3, "bottom-left");
     
     // Different line styles
     auto& fig4 = plt.subplot(1, 1);
@@ -103,6 +109,8 @@ void example_basic_plots() {
     plt.grid(fig4, true, false);
     plt.plot(fig4, x, y_cos, style_cos);
     plt.plot(fig4, x, y_tan, style_tan);
+    // Définir la position de la légende: à l'extérieur à droite
+    plt.set_legend_position(fig4, "outside-right");
     
     plt.save("example1_basic_plots.png");
     plt.show();

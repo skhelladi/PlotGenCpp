@@ -38,6 +38,8 @@ public:
         std::string title, xlabel, ylabel;
         double xmin = -10, xmax = 10, ymin = -10, ymax = 10;
         bool show_leg = true;
+        // Positions possibles de la légende: "top-right", "top-left", "bottom-right", "bottom-left", "outside-right"
+        std::string legend_position = "top-right";
         bool show_major_grid = false; // Option to display major grid
         bool show_minor_grid = false; // Option to display minor grid
         sf::Color major_grid_color = sf::Color(200, 200, 200); // Light gray for major grid
@@ -69,6 +71,7 @@ public:
     void grid(Figure& fig, bool major = true, bool minor = false);
     void set_grid_color(Figure& fig, sf::Color major_color, sf::Color minor_color);
     void set_equal_axes(Figure& fig, bool equal = true);
+    void set_legend_position(Figure& fig, const std::string& position);
 
     // 2D curve plotting
     void plot(Figure& fig, const std::vector<double>& x, const std::vector<double>& y, const Style& style = Style());

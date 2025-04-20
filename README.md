@@ -13,6 +13,9 @@ PlotGenC++ is a C++ library designed for generating 2D plots and charts. It is b
 - **Multiple layouts** to display several plots on the same figure
 - **Complete customization** of colors, symbols, grids, and legends
 - **PNG/JPG export** for integration into documents
+- **Configurable legend positioning** including outside the plot area
+- **Visual representation of styles** in legends (lines, symbols, etc.)
+- **Optimized window management** (no unnecessary window display)
 
 ## Examples
 
@@ -98,6 +101,9 @@ int main() {
     plt.set_axis_limits(fig, -5, 5, -1.2, 1.2);
     plt.grid(fig, true, false);
     plt.plot(fig, x, y, style);
+    
+    // Position the legend in the top-left corner
+    plt.set_legend_position(fig, "top-left");
     
     // Display and save
     plt.save("sinusoid.png");

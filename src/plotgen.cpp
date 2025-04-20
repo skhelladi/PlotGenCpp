@@ -22,10 +22,11 @@ PlotGen::Style::Style(
 
 // Constructor
 PlotGen::PlotGen(unsigned int width, unsigned int height, unsigned int rows, unsigned int cols)
-    : window(sf::VideoMode(width, height), "PlotGen", sf::Style::Default), width(width), height(height), rows(rows), cols(cols)
+    : width(width), height(height), rows(rows), cols(cols) // Ne pas initialiser la fenêtre ici
 {
+    // Créer uniquement la texture pour le rendu, mais pas la fenêtre visible
     texture.create(width, height);
-    sprite.setTexture(texture.getTexture());
+    texture.setSmooth(true);
 
     // Search for the font in several possible locations
     if (font.loadFromFile("fonts/arial.ttf"))
@@ -56,16 +57,6 @@ PlotGen::PlotGen(unsigned int width, unsigned int height, unsigned int rows, uns
         fig.curve_types.clear();
         fig.curves.clear();
     }
-
-    // Enable antialiasing to improve graphics quality
-    sf::ContextSettings settings;
-    settings.antialiasingLevel = 8;
-    window.create(sf::VideoMode(width, height), "PlotGen", sf::Style::Default, settings);
-
-    // Configure texture with better quality
-    texture.create(width, height);
-    texture.setSmooth(true);
-    sprite.setTexture(texture.getTexture());
 }
 
 // Add a figure at a position (row, col)
@@ -103,6 +94,19 @@ void PlotGen::set_polar_axis_limits(Figure &fig, double max_radius)
 }
 
 void PlotGen::show_legend(Figure &fig, bool show) { fig.show_leg = show; }
+
+// Nouvelle méthode pour définir la position de la légende
+void PlotGen::set_legend_position(Figure &fig, const std::string &position) { 
+    // Vérifier que la position est valide
+    if (position == "top-right" || position == "top-left" || 
+        position == "bottom-right" || position == "bottom-left" || 
+        position == "outside-right") {
+        fig.legend_position = position;
+    } else {
+        std::cerr << "WARNING: Invalid legend position. Using default 'top-right'." << std::endl;
+        fig.legend_position = "top-right";
+    }
+}
 
 // Methods to enable/disable grids
 void PlotGen::grid(Figure &fig, bool major, bool minor)
@@ -273,8 +277,16 @@ void PlotGen::polar_plot(Figure &fig, const std::vector<double> &theta, const st
 // Display and render
 void PlotGen::show()
 {
-    // Perform initial rendering
+    // Effectuer le rendu
     render();
+    
+    // Créer la fenêtre seulement lorsque show() est explicitement appelé
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;
+    window.create(sf::VideoMode(width, height), "PlotGen", sf::Style::Default, settings);
+    
+    // Configurer le sprite
+    sprite.setTexture(texture.getTexture());
 
     // Main loop
     while (window.isOpen())
@@ -291,7 +303,7 @@ void PlotGen::show()
             }
         }
 
-        // Render and display (no need to do it every iteration if nothing changes)
+        // Render and display
         window.clear(sf::Color::White);
         window.draw(sprite);
         window.display();
@@ -1010,252 +1022,225 @@ void PlotGen::draw_text(const Figure &fig, double w, double h)
     text.setFillColor(sf::Color::Black);
 
     // Titre avec une taille de police réduite
-    text.setCharacterSize(18); // Réduit de 24 à 18
+    text.setCharacterSize(18);
     text.setString(sf::String::fromUtf8(fig.title.begin(), fig.title.end()));
     sf::FloatRect textRect = text.getLocalBounds();
     
-    // Positionner le titre COMPLÈTEMENT EN DEHORS de la zone de dessin
+    // Positionner le titre en dehors de la zone de dessin
     double margin = 50.0f;
-    // Placement au-dessus de la zone de dessin avec un espace suffisant
     text.setPosition(w / 2 - textRect.width / 2, margin / 2 - textRect.height / 2);
     texture.draw(text);
 
-    // X label avec police légèrement plus petite
-    text.setCharacterSize(14); // Réduit de 18 à 14
+    // X label avec police plus petite
+    text.setCharacterSize(14);
     text.setString(sf::String::fromUtf8(fig.xlabel.begin(), fig.xlabel.end()));
     textRect = text.getLocalBounds();
-    text.setPosition(w / 2 - textRect.width / 2, h - 20); // Ajusté de h - 25 à h - 20
+    text.setPosition(w / 2 - textRect.width / 2, h - 20);
     texture.draw(text);
 
-    // Y label avec police légèrement plus petite
-    text.setCharacterSize(14); // Réduit de 18 à 14
+    // Y label avec police plus petite
+    text.setCharacterSize(14);
     text.setString(sf::String::fromUtf8(fig.ylabel.begin(), fig.ylabel.end()));
     textRect = text.getLocalBounds();
     text.setRotation(-90);
     text.setPosition(10, h / 2 + textRect.width / 2);
     texture.draw(text);
-    text.setRotation(0); // Réinitialiser la rotation pour le texte suivant
+    text.setRotation(0);
 
-    // Legend avec police réduite
-    if (fig.show_leg) {
-        double legend_x = w - 180;
-        double legend_y = 50;
-        const double max_legend_width = 130.0f; // Maximum legend width in pixels
+    // Légende
+    if (fig.show_leg && !fig.curves.empty()) {
+        const double max_legend_width = 130.0f; // Largeur maximale du texte de légende
+        double padding_x = 10.0f; // Marge horizontale
+        double padding_y = 8.0f;  // Marge verticale
+        
+        // Collecter toutes les légendes et calculer les dimensions
+        std::vector<std::pair<const Figure::Curve*, std::vector<std::string>>> legend_items;
+        double total_legend_height = 0.0f;
+        double max_content_width = 0.0f;
 
-        // Semi-transparent legend background
-        if (!fig.curves.empty())
-        {
-            int total_legend_height = 0;
-            
-            // Calculer d'abord la hauteur totale nécessaire pour la légende
-            for (const auto &curve : fig.curves)
-            {
-                if (!curve.style.legend.empty())
-                {
-                    std::vector<std::string> legend_lines;
-                    std::string legend_text = curve.style.legend;
-                    text.setCharacterSize(12);
-                    text.setString(sf::String::fromUtf8(legend_text.begin(), legend_text.end()));
-                    sf::FloatRect bounds = text.getLocalBounds();
-
-                    if (bounds.width > max_legend_width)
-                    {
-                        // Découper la légende en mots
-                        std::vector<std::string> words;
-                        std::string current_word;
-                        for (char c : legend_text)
-                        {
-                            if (c == ' ' || c == '\t' || c == '\n')
-                            {
-                                if (!current_word.empty()) {
-                                    words.push_back(current_word);
-                                    current_word.clear();
-                                }
-                                if (c == '\n') words.push_back("\n");
-                            }
-                            else
-                            {
-                                current_word += c;
-                            }
-                        }
-                        if (!current_word.empty()) words.push_back(current_word);
-
-                        // Construire des lignes
-                        std::string current_line;
-                        for (const std::string &word : words)
-                        {
-                            if (word == "\n") {
-                                if (!current_line.empty()) {
-                                    legend_lines.push_back(current_line);
-                                    current_line.clear();
-                                }
-                                continue;
-                            }
-
-                            std::string test_line = current_line;
-                            if (!test_line.empty()) test_line += " ";
-                            test_line += word;
-
-                            text.setString(sf::String::fromUtf8(test_line.begin(), test_line.end()));
-                            bounds = text.getLocalBounds();
-
-                            if (bounds.width <= max_legend_width) {
-                                current_line = test_line;
-                            } else {
-                                if (!current_line.empty()) {
-                                    legend_lines.push_back(current_line);
-                                }
-                                current_line = word;
-                            }
-                        }
-
-                        if (!current_line.empty()) {
-                            legend_lines.push_back(current_line);
-                        }
-                    }
-                    else
-                    {
-                        legend_lines.push_back(legend_text);
-                    }
-                    
-                    // Ajouter l'espace pour la légende et l'exemple de style
-                    // Hauteur supplémentaire pour l'exemple de style graphique
-                    total_legend_height += 24 + legend_lines.size() * 16; // 24px pour l'espace de légende + style
-                }
-            }
-
-            // Dessiner l'arrière-plan de la légende
-            if (total_legend_height > 0)
-            {
-                sf::RectangleShape legendBg;
-                legendBg.setSize(sf::Vector2f(160, 16 + total_legend_height));
-                legendBg.setPosition(legend_x - 10, legend_y - 8);
-                legendBg.setFillColor(sf::Color(255, 255, 255, 220));
-                legendBg.setOutlineColor(sf::Color::Black);
-                legendBg.setOutlineThickness(1.0f);
-                texture.draw(legendBg);
-
-                // Dessiner chaque élément de légende
-                text.setCharacterSize(12);
-                double current_y = legend_y;
+        // Première passe: collecter et préparer les légendes
+        for (const auto &curve : fig.curves) {
+            if (!curve.style.legend.empty()) {
+                std::vector<std::string> legend_lines;
+                std::string legend_text = curve.style.legend;
                 
-                for (const auto &curve : fig.curves)
-                {
-                    if (!curve.style.legend.empty())
-                    {
-                        // Traitement du texte de légende
-                        std::vector<std::string> legend_lines;
-                        std::string legend_text = curve.style.legend;
-                        text.setString(sf::String::fromUtf8(legend_text.begin(), legend_text.end()));
-                        sf::FloatRect bounds = text.getLocalBounds();
+                text.setCharacterSize(12);
+                text.setString(sf::String::fromUtf8(legend_text.begin(), legend_text.end()));
+                sf::FloatRect bounds = text.getLocalBounds();
 
-                        if (bounds.width > max_legend_width)
-                        {
-                            // Code de découpage similaire à celui ci-dessus
-                            // ...existing code...
-                            std::vector<std::string> words;
-                            std::string current_word;
-                            for (char c : legend_text)
-                            {
-                                if (c == ' ' || c == '\t' || c == '\n')
-                                {
-                                    if (!current_word.empty()) {
-                                        words.push_back(current_word);
-                                        current_word.clear();
-                                    }
-                                    if (c == '\n') words.push_back("\n");
-                                }
-                                else
-                                {
-                                    current_word += c;
-                                }
+                // Couper le texte si trop long
+                if (bounds.width > max_legend_width) {
+                    // Découper en mots
+                    std::vector<std::string> words;
+                    std::string current_word;
+                    for (char c : legend_text) {
+                        if (c == ' ' || c == '\t' || c == '\n') {
+                            if (!current_word.empty()) {
+                                words.push_back(current_word);
+                                current_word.clear();
                             }
-                            if (!current_word.empty()) words.push_back(current_word);
+                            if (c == '\n') words.push_back("\n");
+                        } else {
+                            current_word += c;
+                        }
+                    }
+                    if (!current_word.empty()) words.push_back(current_word);
 
-                            std::string current_line;
-                            for (const std::string &word : words)
-                            {
-                                if (word == "\n") {
-                                    if (!current_line.empty()) {
-                                        legend_lines.push_back(current_line);
-                                        current_line.clear();
-                                    }
-                                    continue;
-                                }
-
-                                std::string test_line = current_line;
-                                if (!test_line.empty()) test_line += " ";
-                                test_line += word;
-
-                                text.setString(sf::String::fromUtf8(test_line.begin(), test_line.end()));
-                                bounds = text.getLocalBounds();
-
-                                if (bounds.width <= max_legend_width) {
-                                    current_line = test_line;
-                                } else {
-                                    if (!current_line.empty()) {
-                                        legend_lines.push_back(current_line);
-                                    }
-                                    current_line = word;
-                                }
+                    // Construire des lignes
+                    std::string current_line;
+                    for (const std::string &word : words) {
+                        if (word == "\n") {
+                            if (!current_line.empty()) {
+                                legend_lines.push_back(current_line);
+                                current_line.clear();
                             }
+                            continue;
+                        }
 
+                        std::string test_line = current_line;
+                        if (!test_line.empty()) test_line += " ";
+                        test_line += word;
+
+                        text.setString(sf::String::fromUtf8(test_line.begin(), test_line.end()));
+                        bounds = text.getLocalBounds();
+
+                        if (bounds.width <= max_legend_width) {
+                            current_line = test_line;
+                        } else {
                             if (!current_line.empty()) {
                                 legend_lines.push_back(current_line);
                             }
+                            current_line = word;
                         }
-                        else
-                        {
-                            legend_lines.push_back(legend_text);
-                        }
+                    }
 
-                        // VISUALISATION DU STYLE: dessiner un exemple du style de courbe
-                        float sample_width = 40.0f;  // Largeur de l'exemple
-                        float sample_height = 16.0f; // Hauteur de l'exemple
-                        float start_x = legend_x;
-                        float mid_y = current_y + sample_height / 2.0f;
-                        
-                        // Dessiner la ligne ou une représentation du style
-                        if (curve.style.line_style == "solid") {
-                            // Ligne continue
-                            float thickness = std::max(1.0f, static_cast<float>(curve.style.thickness));
-                            sf::RectangleShape line(sf::Vector2f(sample_width, thickness));
-                            line.setPosition(start_x, mid_y - thickness/2);
-                            line.setFillColor(curve.style.color);
-                            texture.draw(line);
-                        } 
-                        else if (curve.style.line_style == "dashed") {
-                            // Ligne pointillée
-                            float dash_length = 8.0f;
-                            float thickness = std::max(1.0f, static_cast<float>(curve.style.thickness));
-                            for (int i = 0; i < 3; i++) {
-                                sf::RectangleShape dash(sf::Vector2f(dash_length, thickness));
-                                dash.setPosition(start_x + i * 2 * dash_length, mid_y - thickness/2);
-                                dash.setFillColor(curve.style.color);
-                                texture.draw(dash);
-                            }
-                        }
-                        
-                        // Ajouter le symbole si nécessaire
-                        if (curve.style.symbol_type != "none") {
-                            // Dessiner un symbole au milieu
-                            sf::Vector2f symbol_pos(start_x + sample_width/2, mid_y);
-                            draw_symbol(symbol_pos, curve.style.symbol_type, curve.style.symbol_size, curve.style.color);
-                        }
+                    if (!current_line.empty()) {
+                        legend_lines.push_back(current_line);
+                    }
+                } else {
+                    legend_lines.push_back(legend_text);
+                }
 
-                        // Dessiner le texte de la légende
-                        float text_y = current_y;
-                        for (const auto &line : legend_lines) {
-                            text.setString(sf::String::fromUtf8(line.begin(), line.end()));
-                            text.setPosition(start_x + sample_width + 10, text_y);
-                            texture.draw(text);
-                            text_y += 16;
-                        }
-                        
-                        // Passer à l'élément de légende suivant
-                        current_y += 24 + (legend_lines.size() - 1) * 16; // +8 pour l'espacement, +16 par ligne
+                // Ajouter à notre collection
+                legend_items.push_back({&curve, legend_lines});
+                
+                // Calculer la hauteur pour cette entrée
+                double item_height = 24 + (legend_lines.size() - 1) * 16; // 24px pour la première ligne, 16px pour les suivantes
+                total_legend_height += item_height;
+                
+                // Calculer la largeur maximale du contenu
+                for (const auto &line : legend_lines) {
+                    text.setString(sf::String::fromUtf8(line.begin(), line.end()));
+                    double line_width = text.getLocalBounds().width;
+                    max_content_width = std::max(max_content_width, line_width);
+                }
+            }
+        }
+        
+        // Si nous avons des éléments à afficher
+        if (!legend_items.empty()) {
+            // Calculer la taille exacte et la position du rectangle de la légende
+            double legend_width = max_content_width + 40.0f + 2 * padding_x; // 40px pour l'exemple de style
+            double legend_height = total_legend_height + 2 * padding_y;
+            
+            double legend_x, legend_y;
+            
+            // Déterminer la position en fonction de fig.legend_position
+            if (fig.legend_position == "top-right") {
+                legend_x = w - legend_width - padding_x;
+                legend_y = padding_y + margin;
+            } 
+            else if (fig.legend_position == "top-left") {
+                legend_x = margin + padding_x;
+                legend_y = padding_y + margin;
+            }
+            else if (fig.legend_position == "bottom-right") {
+                legend_x = w - legend_width - padding_x;
+                legend_y = h - legend_height - padding_y - margin;
+            }
+            else if (fig.legend_position == "bottom-left") {
+                legend_x = margin + padding_x;
+                legend_y = h - legend_height - padding_y - margin;
+            }
+            else if (fig.legend_position == "outside-right") {
+                // Placer la légende à l'extérieur du graphique à droite
+                legend_x = w + padding_x;
+                legend_y = margin + padding_y;
+                
+                // Ajuster la vue pour que la légende soit visible
+                sf::View current_view = texture.getView();
+                sf::FloatRect viewport = current_view.getViewport();
+                
+                // Élargir la vue pour inclure la légende
+                viewport.width += legend_width / w;
+                current_view.setViewport(viewport);
+                texture.setView(current_view);
+            }
+            else {
+                // Position par défaut: top-right
+                legend_x = w - legend_width - padding_x;
+                legend_y = padding_y + margin;
+            }
+            
+            // Dessiner l'arrière-plan de la légende
+            sf::RectangleShape legendBg;
+            legendBg.setSize(sf::Vector2f(legend_width, legend_height));
+            legendBg.setPosition(legend_x, legend_y);
+            legendBg.setFillColor(sf::Color(255, 255, 255, 220));
+            legendBg.setOutlineColor(sf::Color::Black);
+            legendBg.setOutlineThickness(1.0f);
+            texture.draw(legendBg);
+            
+            // Dessiner les éléments de la légende
+            double current_y = legend_y + padding_y;
+            
+            for (const auto &item : legend_items) {
+                const Figure::Curve* curve = item.first;
+                const std::vector<std::string> &legend_lines = item.second;
+                
+                // Dessiner l'exemple de style
+                float sample_width = 30.0f;
+                float sample_height = 16.0f;
+                float start_x = legend_x + padding_x;
+                float mid_y = current_y + 8.0f;
+                
+                // Style de ligne
+                if (curve->style.line_style == "solid") {
+                    float thickness = std::max(1.0f, static_cast<float>(curve->style.thickness));
+                    sf::RectangleShape line(sf::Vector2f(sample_width, thickness));
+                    line.setPosition(start_x, mid_y - thickness/2);
+                    line.setFillColor(curve->style.color);
+                    texture.draw(line);
+                } 
+                else if (curve->style.line_style == "dashed") {
+                    float dash_length = 6.0f;
+                    float thickness = std::max(1.0f, static_cast<float>(curve->style.thickness));
+                    for (int i = 0; i < 3; i++) {
+                        sf::RectangleShape dash(sf::Vector2f(dash_length, thickness));
+                        dash.setPosition(start_x + i * 2 * dash_length, mid_y - thickness/2);
+                        dash.setFillColor(curve->style.color);
+                        texture.draw(dash);
                     }
                 }
+                
+                // Symbole
+                if (curve->style.symbol_type != "none") {
+                    sf::Vector2f symbol_pos(start_x + sample_width/2, mid_y);
+                    draw_symbol(symbol_pos, curve->style.symbol_type, curve->style.symbol_size, curve->style.color);
+                }
+                
+                // Texte de la légende
+                text.setCharacterSize(12);
+                float text_y = current_y;
+                for (const auto &line : legend_lines) {
+                    text.setString(sf::String::fromUtf8(line.begin(), line.end()));
+                    text.setPosition(start_x + sample_width + 10, text_y);
+                    texture.draw(text);
+                    text_y += 16;
+                }
+                
+                // Passer à l'élément suivant
+                current_y += 24 + (legend_lines.size() - 1) * 16;
             }
         }
     }

@@ -125,6 +125,7 @@ void set_ylabel(Figure& fig, const std::string& label)
 void set_axis_limits(Figure& fig, float xmin, float xmax, float ymin, float ymax)
 void set_polar_axis_limits(Figure& fig, float max_radius)
 void show_legend(Figure& fig, bool show)
+void set_legend_position(Figure& fig, const std::string& position)
 void grid(Figure& fig, bool major = true, bool minor = false)
 void set_grid_color(Figure& fig, sf::Color major_color, sf::Color minor_color)
 void set_equal_axes(Figure& fig, bool equal = true)
@@ -142,6 +143,38 @@ void polar_plot(Figure& fig, const std::vector<float>& theta, const std::vector<
 void show()
 void save(const std::string& filename)
 ```
+
+### Positionnement des légendes
+```cpp
+void set_legend_position(Figure& fig, const std::string& position)
+```
+
+Cette fonction permet de contrôler où la légende apparaît sur le graphique. Les positions disponibles sont :
+- **"top-right"** (par défaut) : Positionne la légende dans la zone en haut à droite du graphique
+- **"top-left"** : Positionne la légende dans la zone en haut à gauche du graphique
+- **"bottom-right"** : Positionne la légende dans la zone en bas à droite du graphique
+- **"bottom-left"** : Positionne la légende dans la zone en bas à gauche du graphique
+- **"outside-right"** : Place la légende à l'extérieur du graphique sur le côté droit
+
+Exemple :
+```cpp
+auto& fig = plt.subplot(0, 0);
+// Configuration et tracé...
+plt.set_legend_position(fig, "bottom-left");
+```
+
+Avantages du nouveau système de légendes :
+- Dimensionnement automatique basé sur le contenu
+- Représentation visuelle des styles de lignes et des symboles dans les légendes
+- Positionnement flexible pour une mise en page optimale des graphiques
+- Prise en charge du placement des légendes en dehors de la zone de graphique pour éviter le chevauchement avec les données
+
+### Gestion optimisée des fenêtres
+
+PlotGenC++ propose désormais une gestion améliorée des fenêtres :
+- Aucune fenêtre n'est affichée lors de l'utilisation de `save()` sans `show()`
+- Tailles de police réduites pour les titres et les textes de légende pour de meilleures proportions
+- Titres positionnés en dehors de la zone de tracé pour une visualisation plus claire des données
 
 ## Exemples détaillés
 
@@ -289,6 +322,41 @@ Les légendes sont automatiquement découpées si elles dépassent une certaine 
 - D'afficher des descriptions détaillées
 - De maintenir la lisibilité des légendes longues
 - D'inclure des symboles Unicode dans les légendes
+
+### Légendes personnalisées
+```cpp
+void set_legend_position(Figure& fig, const std::string& position)
+```
+Cette fonction permet de contrôler où la légende apparaît sur le graphique. Les positions disponibles sont :
+- **"top-right"** (par défaut) : Positionne la légende dans la zone en haut à droite du graphique
+- **"top-left"** : Positionne la légende dans la zone en haut à gauche du graphique
+- **"bottom-right"** : Positionne la légende dans la zone en bas à droite du graphique
+- **"bottom-left"** : Positionne la légende dans la zone en bas à gauche du graphique
+- **"outside-right"** : Place la légende à l'extérieur du graphique sur le côté droit
+Exemple :
+```cpp
+auto& fig = plt.subplot(0, 0);
+// Configuration et tracé...
+plt.set_legend_position(fig, "bottom-left");
+```
+
+### Gestion optimisée des fenêtres
+PlotGenC++ propose désormais une gestion améliorée des fenêtres :
+- Aucune fenêtre n'est affichée lors de l'utilisation de `save()` sans `show()`
+- Tailles de police réduites pour les titres et les textes de légende pour de meilleures proportions
+- Titres positionnés en dehors de la zone de tracé pour une visualisation plus claire des données
+
+### Exportation d'images
+```cpp
+void save(const std::string& filename)
+```
+Cette méthode permet d'exporter le graphique au format PNG. Les options de qualité et de compression sont gérées automatiquement pour garantir une bonne qualité d'image.
+
+### Affichage interactif
+```cpp
+void show()
+```
+Cette méthode ouvre une fenêtre interactive pour visualiser le graphique. Elle gère les événements de la fenêtre, permettant de zoomer, déplacer et interagir avec le graphique.
 
 ## Astuces et bonnes pratiques
 

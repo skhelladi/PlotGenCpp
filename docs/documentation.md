@@ -125,6 +125,7 @@ void set_ylabel(Figure& fig, const std::string& label)
 void set_axis_limits(Figure& fig, float xmin, float xmax, float ymin, float ymax)
 void set_polar_axis_limits(Figure& fig, float max_radius)
 void show_legend(Figure& fig, bool show)
+void set_legend_position(Figure& fig, const std::string& position)
 void grid(Figure& fig, bool major = true, bool minor = false)
 void set_grid_color(Figure& fig, sf::Color major_color, sf::Color minor_color)
 void set_equal_axes(Figure& fig, bool equal = true)
@@ -141,6 +142,63 @@ void polar_plot(Figure& fig, const std::vector<float>& theta, const std::vector<
 ```cpp
 void show()
 void save(const std::string& filename)
+```
+
+### Legend Positioning
+```cpp
+void set_legend_position(Figure& fig, const std::string& position)
+```
+
+This function allows you to control where the legend appears on the chart. Available positions are:
+- **"top-right"** (default): Positions the legend in the top-right area of the chart
+- **"top-left"**: Positions the legend in the top-left area of the chart
+- **"bottom-right"**: Positions the legend in the bottom-right area of the chart
+- **"bottom-left"**: Positions the legend in the bottom-left area of the chart
+- **"outside-right"**: Places the legend outside the chart on the right side
+
+Example:
+```cpp
+auto& fig = plt.subplot(0, 0);
+// Configure and plot...
+plt.set_legend_position(fig, "bottom-left");
+```
+
+Benefits of the new legend system:
+- Automatic sizing based on content
+- Visual representation of line styles and symbols within legends
+- Flexible positioning for optimal chart layout
+- Support for placing legends outside the chart area to avoid overlapping with data
+
+### Optimized Window Management
+
+PlotGenC++ now features improved window management:
+- No window is displayed when only using `save()` without `show()`
+- Reduced font sizes for titles and legend text for better proportions
+- Titles positioned outside the plotting area for cleaner data visualization
+
+### Image Export
+```cpp
+void save(const std::string& filename)
+```
+This method allows you to export the chart in PNG or JPG format. Quality and compression options are automatically managed to ensure good image quality. The file format is determined by the extension of the filename:
+- Use `.png` for lossless PNG format (best for diagrams and charts with sharp lines)
+- Use `.jpg` for compressed JPG format (suitable for images with many color gradients)
+
+Example:
+```cpp
+plt.save("my_chart.png");  // Save as PNG
+plt.save("my_chart.jpg");  // Save as JPG
+```
+
+### Interactive Display
+```cpp
+void show()
+```
+This method opens an interactive window to visualize the chart. It handles window events, allowing you to close the window when you're done viewing the chart. The window remains open until it is closed by the user, either by clicking the close button or pressing the Escape key.
+
+Example:
+```cpp
+plt.show();  // Display the chart in an interactive window
 ```
 
 ## Detailed Examples

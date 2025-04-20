@@ -1,8 +1,9 @@
 # PlotGenC++
 
-A lightweight graphics generation library in C++ based on SFML.
+A lightweight C++ library for generating 2D plots and charts using SFML.
 
-PlotGenC++ allows you to easily create 2D charts, histograms, and polar plots with an interface inspired by languages like MATLAB or Python (matplotlib).
+## Overview
+PlotGenC++ is a C++ library designed for generating 2D plots and charts. It is built on top of the SFML (Simple and Fast Multimedia Library) and provides a simple interface for creating various types of plots, including line plots, histograms, and polar plots. The library is inspired by popular plotting libraries in Python and MATLAB, making it easy to use for those familiar with those environments.
 
 ## Features
 
@@ -45,7 +46,8 @@ PlotGenC++ allows you to easily create 2D charts, histograms, and polar plots wi
 
 - [SFML](https://www.sfml-dev.org/) for graphic rendering
   - Installation: `sudo apt install libsfml-dev`
-- [stb_image_write](https://github.com/nothings/stb) for image export
+- [stb_image_write](https://github.com/nothings/stb) for image export (it is included in the repository)
+  - Installation: `git clone https://github.com/nothings/stb.git`
 
 ### Build and Install
 

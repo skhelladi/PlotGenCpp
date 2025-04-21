@@ -82,6 +82,9 @@ public:
     // Polar plot
     void polar_plot(Figure& fig, const std::vector<double>& theta, const std::vector<double>& r, const Style& style = Style());
 
+    // Circle with center (x0, y0) and radius r
+    void circle(Figure& fig, double x0, double y0, double r, const Style& style = Style());
+
     // Display and render
     void show();
 

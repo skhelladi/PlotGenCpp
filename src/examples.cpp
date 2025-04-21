@@ -680,6 +680,7 @@ void example_symbol_plots() {
     plt.grid(fig4, true, false);
     
     plt.plot(fig4, x4, y_quad, style_quad_line_symbols);
+    // plt.circle(fig4, 5.0f, 2.5f, 0.5f, sf::Color::Red); // Draw a circle at (5, 2.5)
     
     plt.save("example6_symbol_plots.png");
     plt.show();

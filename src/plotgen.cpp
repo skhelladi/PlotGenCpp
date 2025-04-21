@@ -168,6 +168,64 @@ void PlotGen::plot(Figure& fig, const std::vector<double>& x, const std::vector<
     fig.curve_types.push_back("2D");
 }
 
+// Circle with center (x0, y0) and radius r
+void PlotGen::circle(Figure& fig, double x0, double y0, double r, const Style& style)
+{
+    // Validation du rayon
+    if (r <= 0)
+    {
+        throw std::invalid_argument("Circle radius must be positive");
+    }
+
+    // Générer les points du cercle en utilisant les équations paramétriques
+    const int num_points = 100; // Nombre de points pour dessiner le cercle
+    std::vector<double> x(num_points), y(num_points);
+
+    for (int i = 0; i < num_points; ++i)
+    {
+        double angle = 2.0 * M_PI * i / (num_points - 1);
+        x[i] = x0 + r * std::cos(angle);
+        y[i] = y0 + r * std::sin(angle);
+    }
+
+    // Activer l'option equal_axes pour garantir que le cercle est bien rond
+    bool was_equal = fig.equal_axes;
+    fig.equal_axes = true;
+
+    // Vérifier si les limites d'axes existantes sont suffisantes
+    bool using_default_limits = (fig.xmin == -10 && fig.xmax == 10 && fig.ymin == -10 && fig.ymax == 10);
+    
+    if (using_default_limits)
+    {
+        // Définir de nouvelles limites d'axes pour bien voir le cercle avec une marge
+        double margin = r * 0.2; // 20% de marge autour du cercle
+        fig.xmin = x0 - r - margin;
+        fig.xmax = x0 + r + margin;
+        fig.ymin = y0 - r - margin;
+        fig.ymax = y0 + r + margin;
+    }
+    else
+    {
+        // Vérifier si le cercle est visible dans les limites actuelles
+        double min_x = x0 - r;
+        double max_x = x0 + r;
+        double min_y = y0 - r;
+        double max_y = y0 + r;
+        
+        // Étendre les limites si nécessaire
+        if (min_x < fig.xmin) fig.xmin = min_x - r * 0.1;
+        if (max_x > fig.xmax) fig.xmax = max_x + r * 0.1;
+        if (min_y < fig.ymin) fig.ymin = min_y - r * 0.1;
+        if (max_y > fig.ymax) fig.ymax = max_y + r * 0.1;
+    }
+
+    // Tracer le cercle comme une courbe normale
+    plot(fig, x, y, style);
+
+    // Restaurer l'état précédent de equal_axes si nécessaire
+    fig.equal_axes = was_equal;
+}
+
 // Histogram
 void PlotGen::hist(Figure &fig, const std::vector<double> &data, int bins, const Style &style, double bar_width_ratio)
 {

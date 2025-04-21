@@ -1,5 +1,10 @@
 # Documentation PlotGenC++
 
+- Auteur : Sofiane KHELLADI
+- Date : 21/04/2025
+- Version: 1.0
+__________________________________
+
 Cette documentation détaille l'utilisation de la bibliothèque PlotGenC++ pour la génération de graphiques en C++.
 
 ## Table des matières
@@ -267,6 +272,39 @@ Points clés :
 - Personnalisation des tailles
 - Combinaison de styles de visualisation
 
+### Exemple 7 : Cercles, Texte et Flèches
+
+![Exemple 7](example7_circles_text_arrows.png)
+
+Cet exemple démontre l'utilisation des annotations et formes géométriques :
+- Tracé de cercles parfaits avec différents styles
+- Ajout de texte explicatif à des positions spécifiques
+- Utilisation de flèches pour indiquer des caractéristiques importantes
+- Combinaison de lignes et d'arcs pour des constructions géométriques
+
+Points clés :
+- Création d'objets géométriques précis
+- Annotations claires et lisibles
+- Intégration harmonieuse des différents éléments
+- Utilisation efficace des styles visuels
+
+### Exemple 8 : Courbes de Bézier et Splines
+
+![Exemple 8](example8_bezier_spline.png)
+
+Cet exemple illustre les différentes méthodes d'interpolation de courbes :
+- Courbes de Bézier cubiques contrôlées par des points
+- Splines naturelles passant par des points de données
+- Splines cardinales avec différentes tensions
+- Comparaison des différentes techniques d'interpolation
+
+Points clés :
+- Compréhension des différences entre les types de courbes
+- Contrôle précis de la forme avec les courbes de Bézier
+- Interpolation naturelle avec les splines cubiques
+- Ajustement de la tension pour les splines cardinales
+- Visualisation des points de contrôle et des courbes résultantes
+
 ## Symboles et styles
 
 ### Types de symboles disponibles
@@ -352,6 +390,160 @@ circle_style.color = sf::Color::Red;
 circle_style.thickness = 2.0;
 circle_style.legend = "Cercle (0,0) r=5";
 plt.circle(fig, 0, 0, 5, circle_style);
+
+plt.show();
+```
+
+### Lignes, Arcs et Flèches
+```cpp
+void line(Figure& fig, double x1, double y1, double x2, double y2, const Style& style = Style())
+void arc(Figure& fig, double x0, double y0, double r, double angle1, double angle2, const Style& style = Style(), int num_points = 50)
+void arrow(Figure& fig, double x1, double y1, double x2, double y2, const Style& style = Style(), double head_size = 10.0)
+```
+
+Ces fonctions permettent d'ajouter des annotations géométriques à vos graphiques :
+
+#### Ligne
+```cpp
+void line(Figure& fig, double x1, double y1, double x2, double y2, const Style& style = Style())
+```
+
+Trace une ligne droite entre deux points :
+- **(x1,y1)** : Point de départ
+- **(x2,y2)** : Point d'arrivée
+- **style** : Style visuel de la ligne
+
+Les lignes sont utiles pour :
+- Créer des lignes de grille personnalisées
+- Ajouter des lignes de référence pour mettre en évidence des seuils
+- Dessiner des formes géométriques en combinaison avec d'autres primitives
+
+Exemple :
+```cpp
+auto& fig = plt.subplot(0, 0);
+plt.set_title(fig, "Exemple de lignes");
+plt.grid(fig, true, false);
+plt.set_axis_limits(fig, -5, 5, -5, 5);
+
+// Tracer des lignes diagonales avec différents styles
+PlotGen::Style dash_style;
+dash_style.color = sf::Color::Red;
+dash_style.thickness = 2.0;
+dash_style.line_style = "dashed";
+dash_style.legend = "Ligne pointillée";
+plt.line(fig, -4, -4, 4, 4, dash_style);
+
+PlotGen::Style solid_style;
+solid_style.color = sf::Color::Blue;
+solid_style.thickness = 3.0;
+solid_style.legend = "Ligne continue";
+plt.line(fig, -4, 4, 4, -4, solid_style);
+
+plt.show();
+```
+
+#### Arc
+```cpp
+void arc(Figure& fig, double x0, double y0, double r, double angle1, double angle2, const Style& style = Style(), int num_points = 50)
+```
+
+Trace un arc (cercle partiel) centré sur un point spécifique :
+- **(x0,y0)** : Centre de l'arc
+- **r** : Rayon de l'arc
+- **angle1** : Angle de départ en degrés (0 = droite, 90 = haut)
+- **angle2** : Angle de fin en degrés
+- **style** : Style visuel de l'arc
+- **num_points** : Nombre de points à générer pour l'arc (plus élevé = plus lisse)
+
+Les arcs sont utiles pour :
+- Créer des secteurs circulaires
+- Dessiner des indicateurs d'angle
+- Construire des formes complexes à partir de primitives géométriques
+
+Exemple :
+```cpp
+auto& fig = plt.subplot(0, 0);
+plt.set_title(fig, "Exemple d'arcs");
+plt.grid(fig, true, false);
+plt.set_axis_limits(fig, -6, 6, -6, 6);
+plt.set_equal_axes(fig, true);
+
+// Tracer d'abord un cercle complet
+PlotGen::Style circle_style;
+circle_style.color = sf::Color(200, 200, 200);  // Gris clair
+circle_style.thickness = 1.0;
+plt.circle(fig, 0, 0, 5.0, circle_style);
+
+// Tracer plusieurs arcs autour du cercle
+PlotGen::Style arc1_style;
+arc1_style.color = sf::Color::Red;
+arc1_style.thickness = 3.0;
+arc1_style.legend = "0° à 90°";
+plt.arc(fig, 0, 0, 5.0, 0, 90, arc1_style);
+
+PlotGen::Style arc2_style;
+arc2_style.color = sf::Color::Blue;
+arc2_style.thickness = 3.0;
+arc2_style.legend = "90° à 180°";
+plt.arc(fig, 0, 0, 5.0, 90, 180, arc2_style);
+
+PlotGen::Style arc3_style;
+arc3_style.color = sf::Color::Green;
+arc3_style.thickness = 3.0;
+arc3_style.legend = "180° à 270°";
+plt.arc(fig, 0, 0, 5.0, 180, 270, arc3_style);
+
+PlotGen::Style arc4_style;
+arc4_style.color = sf::Color::Yellow;
+arc4_style.thickness = 3.0;
+arc4_style.legend = "270° à 360°";
+plt.arc(fig, 0, 0, 5.0, 270, 360, arc4_style);
+
+plt.show();
+```
+
+#### Flèche
+```cpp
+void arrow(Figure& fig, double x1, double y1, double x2, double y2, const Style& style = Style(), double head_size = 10.0)
+```
+
+Trace une flèche d'un point à un autre :
+- **(x1,y1)** : Point de départ (queue de la flèche)
+- **(x2,y2)** : Point d'arrivée (où pointe la tête de flèche)
+- **style** : Style visuel de la flèche
+- **head_size** : Taille de la tête de flèche en pixels
+
+Les flèches sont utiles pour :
+- Indiquer une direction ou un flux
+- Mettre en évidence des caractéristiques spécifiques sur un graphique
+- Créer des visualisations de champs vectoriels
+- Ajouter des annotations avec une emphase directionnelle
+
+Exemple :
+```cpp
+auto& fig = plt.subplot(0, 0);
+plt.set_title(fig, "Exemple de flèches");
+plt.grid(fig, true, false);
+plt.set_axis_limits(fig, -5, 5, -5, 5);
+
+// Tracer des flèches avec différents styles et tailles de tête
+PlotGen::Style arrow1_style;
+arrow1_style.color = sf::Color::Red;
+arrow1_style.thickness = 2.0;
+arrow1_style.legend = "Flèche standard";
+plt.arrow(fig, -3, -3, 3, 3, arrow1_style, 10.0);
+
+PlotGen::Style arrow2_style;
+arrow2_style.color = sf::Color::Blue;
+arrow2_style.thickness = 3.0;
+arrow2_style.legend = "Grande tête de flèche";
+plt.arrow(fig, 3, -3, -3, 3, arrow2_style, 20.0);
+
+// Ajouter des étiquettes textuelles
+PlotGen::Style text_style;
+text_style.color = sf::Color::Green;
+plt.text(fig, 3.2, 3.2, "Destination", text_style);
+plt.text(fig, -3.2, -3.2, "Origine", text_style);
 
 plt.show();
 ```

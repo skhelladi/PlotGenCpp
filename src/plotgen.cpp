@@ -226,6 +226,84 @@ void PlotGen::circle(Figure& fig, double x0, double y0, double r, const Style& s
     fig.equal_axes = was_equal;
 }
 
+// Arc centered at (x0, y0) from angle1 to angle2 (in radians) with radius r
+void PlotGen::arc(Figure& fig, double x0, double y0, double r, double angle1, double angle2, const Style& style, int num_points)
+{
+    // Validate inputs
+    if (r <= 0)
+    {
+        throw std::invalid_argument("Arc radius must be positive");
+    }
+    
+    if (num_points < 2)
+    {
+        throw std::invalid_argument("Number of points must be at least 2");
+    }
+    
+    // Ensure angle1 is less than angle2
+    if (angle1 > angle2)
+    {
+        std::swap(angle1, angle2);
+    }
+    
+    // Generate points for the arc using parametric equations
+    std::vector<double> x(num_points), y(num_points);
+    
+    for (int i = 0; i < num_points; ++i)
+    {
+        double angle = angle1 + (angle2 - angle1) * i / (num_points - 1);
+        x[i] = x0 + r * std::cos(angle);
+        y[i] = y0 + r * std::sin(angle);
+    }
+    
+    // Check if we need to adjust axis limits
+    bool using_default_limits = (fig.xmin == -10 && fig.xmax == 10 && fig.ymin == -10 && fig.ymax == 10);
+    
+    if (using_default_limits)
+    {
+        // Calculate arc bounds
+        double min_x = x0 - r;
+        double max_x = x0 + r;
+        double min_y = y0 - r;
+        double max_y = y0 + r;
+        
+        // Add margin (20% of radius)
+        double margin = r * 0.2;
+        
+        fig.xmin = min_x - margin;
+        fig.xmax = max_x + margin;
+        fig.ymin = min_y - margin;
+        fig.ymax = max_y + margin;
+        
+        // Use equal_axes to maintain circular appearance
+        fig.equal_axes = true;
+    }
+    else
+    {
+        // Check if the arc fits within current limits
+        double min_x = x0 + r * std::min(std::cos(angle1), std::cos(angle2));
+        double max_x = x0 + r * std::max(std::cos(angle1), std::cos(angle2));
+        double min_y = y0 + r * std::min(std::sin(angle1), std::sin(angle2));
+        double max_y = y0 + r * std::max(std::sin(angle1), std::sin(angle2));
+        
+        // Also check extreme points (0, π/2, π, 3π/2) if they fall within the angle range
+        if (angle1 <= 0 && angle2 >= 0) max_x = std::max(max_x, x0 + r);
+        if (angle1 <= M_PI/2 && angle2 >= M_PI/2) max_y = std::max(max_y, y0 + r);
+        if (angle1 <= M_PI && angle2 >= M_PI) min_x = std::min(min_x, x0 - r);
+        if (angle1 <= 3*M_PI/2 && angle2 >= 3*M_PI/2) min_y = std::min(min_y, y0 - r);
+        
+        // Extend limits if needed
+        if (min_x < fig.xmin) fig.xmin = min_x - r * 0.1;
+        if (max_x > fig.xmax) fig.xmax = max_x + r * 0.1;
+        if (min_y < fig.ymin) fig.ymin = min_y - r * 0.1;
+        if (max_y > fig.ymax) fig.ymax = max_y + r * 0.1;
+    }
+    
+    // Store the arc as a 2D curve
+    fig.curves.push_back({x, y, style});
+    fig.curve_types.push_back("2D");
+}
+
 // Text at a specific position (x, y) in data coordinates
 void PlotGen::text(Figure& fig, double x, double y, const std::string& text_content, const Style& style)
 {
@@ -275,6 +353,99 @@ void PlotGen::text(Figure& fig, double x, double y, const std::string& text_cont
             if (y > fig.ymax) fig.ymax = y + margin_y;
         }
     }
+}
+
+// Arrow from (x1,y1) to (x2,y2)
+void PlotGen::arrow(Figure& fig, double x1, double y1, double x2, double y2, const Style& style, double head_size)
+{
+    // Validate inputs
+    if (head_size <= 0)
+    {
+        throw std::invalid_argument("Arrow head size must be positive");
+    }
+
+    // First, draw the line from start to end point
+    std::vector<double> x = {x1, x2};
+    std::vector<double> y = {y1, y2};
+    
+    // We'll handle the line drawing here to avoid auto-adjusting axis twice
+    bool using_default_limits = (fig.xmin == -10 && fig.xmax == 10 && fig.ymin == -10 && fig.ymax == 10);
+    
+    if (using_default_limits)
+    {
+        // Auto-adjust axis limits to include the arrow with some margin
+        double x_min = std::min(x1, x2);
+        double x_max = std::max(x1, x2);
+        double y_min = std::min(y1, y2);
+        double y_max = std::max(y1, y2);
+        
+        // Add margin (10% of the data range or at least 1.0 unit)
+        double x_margin = std::max((x_max - x_min) * 0.1, 1.0);
+        double y_margin = std::max((y_max - y_min) * 0.1, 1.0);
+        
+        fig.xmin = x_min - x_margin;
+        fig.xmax = x_max + x_margin;
+        fig.ymin = y_min - y_margin;
+        fig.ymax = y_max + y_margin;
+    }
+    
+    // Store the arrow shaft as a regular 2D curve
+    fig.curves.push_back({x, y, style});
+    fig.curve_types.push_back("2D");
+    
+    // Store points for the arrowhead
+    // We'll calculate these in screen coordinates during rendering
+    // Just store the data points and head_size for now
+    Figure::Curve arrow_head_curve;
+    arrow_head_curve.x = {x1, x2}; // Store start and end points
+    arrow_head_curve.y = {y1, y2};
+    arrow_head_curve.style = style;
+    arrow_head_curve.head_size = head_size; // Store head size as a property
+    
+    // Add the arrowhead to the figure
+    fig.curves.push_back(arrow_head_curve);
+    fig.curve_types.push_back("ARROW_HEAD");
+}
+
+// Line from (x1,y1) to (x2,y2)
+void PlotGen::line(Figure& fig, double x1, double y1, double x2, double y2, const Style& style)
+{
+    // Create vector of points for the line
+    std::vector<double> x = {x1, x2};
+    std::vector<double> y = {y1, y2};
+    
+    // Check if we need to adjust axis limits
+    bool using_default_limits = (fig.xmin == -10 && fig.xmax == 10 && fig.ymin == -10 && fig.ymax == 10);
+    
+    if (using_default_limits)
+    {
+        // Auto-adjust axis limits to include the line with some margin
+        double x_min = std::min(x1, x2);
+        double x_max = std::max(x1, x2);
+        double y_min = std::min(y1, y2);
+        double y_max = std::max(y1, y2);
+        
+        // Add margin (10% of the data range or at least 1.0 unit)
+        double x_margin = std::max((x_max - x_min) * 0.1, 1.0);
+        double y_margin = std::max((y_max - y_min) * 0.1, 1.0);
+        
+        // Handle the case where x_min == x_max or y_min == y_max
+        if (std::abs(x_max - x_min) < 1e-10) {
+            x_margin = 1.0;
+        }
+        if (std::abs(y_max - y_min) < 1e-10) {
+            y_margin = 1.0;
+        }
+        
+        fig.xmin = x_min - x_margin;
+        fig.xmax = x_max + x_margin;
+        fig.ymin = y_min - y_margin;
+        fig.ymax = y_max + y_margin;
+    }
+    
+    // Store the line as a regular 2D curve
+    fig.curves.push_back({x, y, style});
+    fig.curve_types.push_back("2D");
 }
 
 // Histogram
@@ -555,6 +726,9 @@ void PlotGen::render()
                     else if (fig.curve_types[i] == "TEXT")
                         draw_text(fig, fig.curves[i], fig.is_polar || fig.equal_axes ? std::min(subplot_width, subplot_height) : subplot_width,
                                   fig.is_polar || fig.equal_axes ? std::min(subplot_width, subplot_height) : subplot_height);
+                    else if (fig.curve_types[i] == "ARROW_HEAD")
+                        draw_arrow_head(fig, fig.curves[i], fig.is_polar || fig.equal_axes ? std::min(subplot_width, subplot_height) : subplot_width,
+                                      fig.is_polar || fig.equal_axes ? std::min(subplot_width, subplot_height) : subplot_height);
                 }
             }
 
@@ -1460,4 +1634,498 @@ void PlotGen::draw_text(const Figure& fig, const Figure::Curve& curve, double w,
     
     // Draw the text
     texture.draw(text_obj);
+}
+
+// Method for drawing an arrow head
+void PlotGen::draw_arrow_head(const Figure& fig, const Figure::Curve& curve, double w, double h)
+{
+    if (curve.x.size() < 2 || curve.y.size() < 2) 
+        return; // Need at least a start and end point
+    
+    // Calculate screen coordinates for the arrow start and end
+    sf::Vector2f start = to_screen(fig, curve.x[0], curve.y[0], w, h);
+    sf::Vector2f end = to_screen(fig, curve.x[1], curve.y[1], w, h);
+    
+    // Calculate direction vector in screen coordinates
+    sf::Vector2f direction = end - start;
+    float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+    
+    // If the arrow is too short, don't draw the head
+    if (length < 1.0f)
+        return;
+    
+    // Normalize the direction vector
+    sf::Vector2f unitDirection = direction / length;
+    
+    // Calculate the perpendicular vector
+    sf::Vector2f unitPerpendicular(-unitDirection.y, unitDirection.x);
+    
+    // Calculate the arrow head size in pixels
+    // This value is adjustable according to visual preferences
+    float head_length = curve.head_size * 0.5f; // Length in pixels
+    float head_width = curve.head_size * 0.4f;  // Width in pixels
+    
+    // Calculate the arrow head points in screen coordinates
+    sf::Vector2f tip = end;
+    sf::Vector2f base = end - unitDirection * head_length;
+    sf::Vector2f left = base + unitPerpendicular * (head_width / 2.0f);
+    sf::Vector2f right = base - unitPerpendicular * (head_width / 2.0f);
+    
+    // Draw a filled triangle for the arrow head
+    sf::ConvexShape arrowhead;
+    arrowhead.setPointCount(3);
+    arrowhead.setPoint(0, left);
+    arrowhead.setPoint(1, tip);
+    arrowhead.setPoint(2, right);
+    arrowhead.setFillColor(curve.style.color);
+    
+    // Use an outline of the same color but slightly darker
+    sf::Color outlineColor = curve.style.color;
+    outlineColor.r = static_cast<sf::Uint8>(std::max(0, static_cast<int>(outlineColor.r * 0.8f)));
+    outlineColor.g = static_cast<sf::Uint8>(std::max(0, static_cast<int>(outlineColor.g * 0.8f)));
+    outlineColor.b = static_cast<sf::Uint8>(std::max(0, static_cast<int>(outlineColor.b * 0.8f)));
+    
+    arrowhead.setOutlineColor(outlineColor);
+    arrowhead.setOutlineThickness(1.0f);
+    
+    // Draw the arrowhead
+    texture.draw(arrowhead);
+}
+
+// Cubic Bezier curve with control points (x0,y0), (x1,y1), (x2,y2), (x3,y3)
+void PlotGen::bezier(Figure& fig, double x0, double y0, double x1, double y1, 
+                    double x2, double y2, double x3, double y3, 
+                    const Style& style, int num_points)
+{
+    if (num_points < 2)
+    {
+        throw std::invalid_argument("Number of points must be at least 2");
+    }
+    
+    // Generate points for the bezier curve
+    std::vector<double> x(num_points), y(num_points);
+    
+    for (int i = 0; i < num_points; ++i)
+    {
+        double t = static_cast<double>(i) / (num_points - 1);
+        
+        // Cubic Bezier formula: B(t) = (1-t)³P₀ + 3(1-t)²tP₁ + 3(1-t)t²P₂ + t³P₃
+        double mt = 1.0 - t;
+        double mt2 = mt * mt;
+        double mt3 = mt2 * mt;
+        double t2 = t * t;
+        double t3 = t2 * t;
+        
+        // Calculate point at parameter t
+        x[i] = mt3 * x0 + 3 * mt2 * t * x1 + 3 * mt * t2 * x2 + t3 * x3;
+        y[i] = mt3 * y0 + 3 * mt2 * t * y1 + 3 * mt * t2 * y2 + t3 * y3;
+    }
+    
+    // Check if we need to adjust axis limits
+    bool using_default_limits = (fig.xmin == -10 && fig.xmax == 10 && fig.ymin == -10 && fig.ymax == 10);
+    
+    if (using_default_limits)
+    {
+        // Find the extreme points to set appropriate axis limits
+        double min_x = std::min({x0, x1, x2, x3});
+        double max_x = std::max({x0, x1, x2, x3});
+        double min_y = std::min({y0, y1, y2, y3});
+        double max_y = std::max({y0, y1, y2, y3});
+        
+        // Add margin (10% of the data range)
+        double x_margin = (max_x - min_x) * 0.1 + 1.0;
+        double y_margin = (max_y - min_y) * 0.1 + 1.0;
+        
+        fig.xmin = min_x - x_margin;
+        fig.xmax = max_x + x_margin;
+        fig.ymin = min_y - y_margin;
+        fig.ymax = max_y + y_margin;
+    }
+    
+    // Store the bezier curve as a 2D curve
+    fig.curves.push_back({x, y, style});
+    fig.curve_types.push_back("2D");
+}
+
+// Bezier curve with control points
+void PlotGen::bezier(Figure& fig, const std::vector<double>& x, const std::vector<double>& y, 
+                    const Style& style, int num_points)
+{
+    if (x.size() != y.size())
+    {
+        throw std::invalid_argument("x and y vectors must have the same size");
+    }
+    
+    if (x.empty())
+    {
+        throw std::invalid_argument("Control points cannot be empty");
+    }
+
+    if (num_points < 2)
+    {
+        throw std::invalid_argument("Number of points must be at least 2");
+    }
+    
+    // If we have exactly 4 control points, use the cubic Bezier function
+    if (x.size() == 4)
+    {
+        bezier(fig, x[0], y[0], x[1], y[1], x[2], y[2], x[3], y[3], style, num_points);
+        return;
+    }
+    
+    // For other numbers of control points, implement de Casteljau's algorithm
+    std::vector<double> result_x(num_points), result_y(num_points);
+    
+    for (int i = 0; i < num_points; ++i)
+    {
+        double t = static_cast<double>(i) / (num_points - 1);
+        
+        // Create copies of the control points
+        std::vector<double> px = x;
+        std::vector<double> py = y;
+        
+        // Apply de Casteljau's algorithm
+        for (size_t j = 1; j < x.size(); ++j)
+        {
+            for (size_t k = 0; k < x.size() - j; ++k)
+            {
+                px[k] = (1 - t) * px[k] + t * px[k + 1];
+                py[k] = (1 - t) * py[k] + t * py[k + 1];
+            }
+        }
+        
+        // The first point is now the point on the curve
+        result_x[i] = px[0];
+        result_y[i] = py[0];
+    }
+    
+    // Check if we need to adjust axis limits
+    bool using_default_limits = (fig.xmin == -10 && fig.xmax == 10 && fig.ymin == -10 && fig.ymax == 10);
+    
+    if (using_default_limits)
+    {
+        // Find the extreme points to set appropriate axis limits
+        double min_x = *std::min_element(x.begin(), x.end());
+        double max_x = *std::max_element(x.begin(), x.end());
+        double min_y = *std::min_element(y.begin(), y.end());
+        double max_y = *std::max_element(y.begin(), y.end());
+        
+        // Add margin (10% of the data range)
+        double x_margin = (max_x - min_x) * 0.1 + 1.0;
+        double y_margin = (max_y - min_y) * 0.1 + 1.0;
+        
+        fig.xmin = min_x - x_margin;
+        fig.xmax = max_x + x_margin;
+        fig.ymin = min_y - y_margin;
+        fig.ymax = max_y + y_margin;
+    }
+    
+    // Store the bezier curve as a 2D curve
+    fig.curves.push_back({result_x, result_y, style});
+    fig.curve_types.push_back("2D");
+}
+
+// Natural cubic spline through points
+void PlotGen::spline(Figure& fig, const std::vector<double>& x, const std::vector<double>& y, 
+                    const Style& style, int num_points)
+{
+    if (x.size() != y.size())
+    {
+        throw std::invalid_argument("x and y vectors must have the same size");
+    }
+    
+    if (x.size() < 2)
+    {
+        throw std::invalid_argument("At least two points are needed for a spline");
+    }
+
+    if (num_points < 2)
+    {
+        throw std::invalid_argument("Number of points must be at least 2");
+    }
+    
+    size_t n = x.size();
+    
+    // Sort points by x-coordinate if not already sorted
+    std::vector<size_t> indices(n);
+    for (size_t i = 0; i < n; ++i) indices[i] = i;
+    
+    std::sort(indices.begin(), indices.end(), [&x](size_t i1, size_t i2) {
+        return x[i1] < x[i2];
+    });
+    
+    std::vector<double> sorted_x(n), sorted_y(n);
+    for (size_t i = 0; i < n; ++i) {
+        sorted_x[i] = x[indices[i]];
+        sorted_y[i] = y[indices[i]];
+    }
+    
+    // Calculate the second derivatives at each point (natural spline conditions)
+    std::vector<double> h(n - 1);
+    for (size_t i = 0; i < n - 1; ++i) {
+        h[i] = sorted_x[i + 1] - sorted_x[i];
+        if (h[i] <= 0) {
+            throw std::invalid_argument("Points must have strictly increasing x values");
+        }
+    }
+    
+    // Set up the tridiagonal system
+    std::vector<double> alpha(n - 2, 0.0);
+    for (size_t i = 0; i < n - 2; ++i) {
+        alpha[i] = 3.0 * ((sorted_y[i + 2] - sorted_y[i + 1]) / h[i + 1] - 
+                          (sorted_y[i + 1] - sorted_y[i]) / h[i]);
+    }
+    
+    // Solve the tridiagonal system using Thomas algorithm
+    std::vector<double> l(n - 2, 0.0);
+    std::vector<double> mu(n - 2, 0.0);
+    std::vector<double> z(n - 2, 0.0);
+    std::vector<double> c(n, 0.0); // Second derivatives
+    
+    // Forward sweep
+    l[0] = 2.0 * (h[0] + h[1]);
+    mu[0] = 0.5;
+    z[0] = alpha[0] / l[0];
+    
+    for (size_t i = 1; i < n - 2; ++i) {
+        l[i] = 2.0 * (h[i] + h[i + 1]) - h[i] * mu[i - 1];
+        mu[i] = h[i + 1] / l[i];
+        z[i] = (alpha[i] - h[i] * z[i - 1]) / l[i];
+    }
+    
+    // Backward sweep
+    for (int j = n - 3; j >= 0; --j) {
+        c[j + 1] = z[j] - mu[j] * c[j + 2];
+    }
+    
+    // Calculate coefficients for each segment
+    std::vector<double> a(n - 1), b(n - 1), d(n - 1);
+    
+    for (size_t i = 0; i < n - 1; ++i) {
+        a[i] = sorted_y[i];
+        b[i] = (sorted_y[i + 1] - sorted_y[i]) / h[i] - h[i] * (c[i + 1] + 2.0 * c[i]) / 3.0;
+        d[i] = (c[i + 1] - c[i]) / (3.0 * h[i]);
+    }
+    
+    // Generate points for the spline curve
+    std::vector<double> result_x, result_y;
+    result_x.reserve(num_points);
+    result_y.reserve(num_points);
+    
+    // Calculate number of points per segment
+    int points_per_segment = num_points / (n - 1);
+    int extra_points = num_points % (n - 1);
+    
+    for (size_t i = 0; i < n - 1; ++i) {
+        int seg_points = points_per_segment + (i < static_cast<size_t>(extra_points) ? 1 : 0);
+        
+        for (int j = 0; j < seg_points; ++j) {
+            // Don't duplicate points between segments
+            if (i > 0 && j == 0) continue;
+            
+            double t = static_cast<double>(j) / seg_points;
+            double dx = sorted_x[i + 1] - sorted_x[i];
+            double x_val = sorted_x[i] + t * dx;
+            
+            double s = x_val - sorted_x[i];
+            double y_val = a[i] + b[i] * s + c[i] * s * s + d[i] * s * s * s;
+            
+            result_x.push_back(x_val);
+            result_y.push_back(y_val);
+        }
+    }
+    
+    // Add the last point
+    result_x.push_back(sorted_x[n - 1]);
+    result_y.push_back(sorted_y[n - 1]);
+    
+    // Ensure we have exactly num_points points
+    while (result_x.size() < static_cast<size_t>(num_points)) {
+        // Add duplicate of last point
+        result_x.push_back(result_x.back());
+        result_y.push_back(result_y.back());
+    }
+    
+    while (result_x.size() > static_cast<size_t>(num_points)) {
+        // Remove points from the end
+        result_x.pop_back();
+        result_y.pop_back();
+    }
+    
+    // Check if we need to adjust axis limits
+    bool using_default_limits = (fig.xmin == -10 && fig.xmax == 10 && fig.ymin == -10 && fig.ymax == 10);
+    
+    if (using_default_limits)
+    {
+        // Find the extreme points in the resulting curve
+        double min_x = *std::min_element(result_x.begin(), result_x.end());
+        double max_x = *std::max_element(result_x.begin(), result_x.end());
+        double min_y = *std::min_element(result_y.begin(), result_y.end());
+        double max_y = *std::max_element(result_y.begin(), result_y.end());
+        
+        // Add margin (10% of the data range)
+        double x_margin = (max_x - min_x) * 0.1 + 1.0;
+        double y_margin = (max_y - min_y) * 0.1 + 1.0;
+        
+        fig.xmin = min_x - x_margin;
+        fig.xmax = max_x + x_margin;
+        fig.ymin = min_y - y_margin;
+        fig.ymax = max_y + y_margin;
+    }
+    
+    // Store the spline curve as a 2D curve
+    fig.curves.push_back({result_x, result_y, style});
+    fig.curve_types.push_back("2D");
+}
+
+// Cardinal spline through points with tension parameter
+void PlotGen::cardinal_spline(Figure& fig, const std::vector<double>& x, const std::vector<double>& y, 
+                             double tension, const Style& style, int num_points)
+{
+    if (x.size() != y.size())
+    {
+        throw std::invalid_argument("x and y vectors must have the same size");
+    }
+    
+    if (x.size() < 2)
+    {
+        throw std::invalid_argument("At least two points are needed for a spline");
+    }
+
+    if (num_points < 2)
+    {
+        throw std::invalid_argument("Number of points must be at least 2");
+    }
+    
+    // Constrain tension parameter between 0 and 1
+    tension = std::max(0.0, std::min(1.0, tension));
+    
+    // For Cardinal splines, we use a tension factor c
+    // c = 0 gives a Catmull-Rom spline (tight)
+    // c = 1 gives a linear interpolation (loose)
+    double c = 1.0 - tension;
+    
+    size_t n = x.size();
+    
+    // Generate points for the cardinal spline
+    std::vector<double> result_x, result_y;
+    result_x.reserve(num_points);
+    result_y.reserve(num_points);
+    
+    // Handle the case of just 2 points - straight line
+    if (n == 2) {
+        for (int i = 0; i < num_points; ++i) {
+            double t = static_cast<double>(i) / (num_points - 1);
+            result_x.push_back(x[0] + t * (x[1] - x[0]));
+            result_y.push_back(y[0] + t * (y[1] - y[0]));
+        }
+    } else {
+        // For each segment between points
+        int points_per_segment = num_points / (n - 1);
+        int extra_points = num_points % (n - 1);
+        
+        for (size_t i = 0; i < n - 1; ++i) {
+            // Get the four points needed for this segment
+            double x0, y0, x1, y1, x2, y2, x3, y3;
+            
+            // First point (can be virtual for the first segment)
+            if (i == 0) {
+                // Create a virtual point before the first point
+                x0 = x[0] - (x[1] - x[0]);
+                y0 = y[0] - (y[1] - y[0]);
+            } else {
+                x0 = x[i - 1];
+                y0 = y[i - 1];
+            }
+            
+            // Middle two points (actual segment)
+            x1 = x[i];
+            y1 = y[i];
+            x2 = x[i + 1];
+            y2 = y[i + 1];
+            
+            // Last point (can be virtual for the last segment)
+            if (i == n - 2) {
+                // Create a virtual point after the last point
+                x3 = x[n - 1] + (x[n - 1] - x[n - 2]);
+                y3 = y[n - 1] + (y[n - 1] - y[n - 2]);
+            } else {
+                x3 = x[i + 2];
+                y3 = y[i + 2];
+            }
+            
+            // Calculate tangents at points p1 and p2
+            double m1_x = c * (x2 - x0) / 2;
+            double m1_y = c * (y2 - y0) / 2;
+            double m2_x = c * (x3 - x1) / 2;
+            double m2_y = c * (y3 - y1) / 2;
+            
+            int seg_points = points_per_segment + (i < static_cast<size_t>(extra_points) ? 1 : 0);
+            
+            // Generate points for this segment
+            for (int j = 0; j < seg_points; ++j) {
+                // Skip duplicated points between segments
+                if (i > 0 && j == 0) continue;
+                
+                double t = static_cast<double>(j) / seg_points;
+                double t2 = t * t;
+                double t3 = t2 * t;
+                
+                // Hermite basis functions
+                double h1 = 2*t3 - 3*t2 + 1;
+                double h2 = -2*t3 + 3*t2;
+                double h3 = t3 - 2*t2 + t;
+                double h4 = t3 - t2;
+                
+                // Calculate point
+                double x_val = h1*x1 + h2*x2 + h3*m1_x + h4*m2_x;
+                double y_val = h1*y1 + h2*y2 + h3*m1_y + h4*m2_y;
+                
+                result_x.push_back(x_val);
+                result_y.push_back(y_val);
+            }
+        }
+        
+        // Add the last point
+        result_x.push_back(x[n - 1]);
+        result_y.push_back(y[n - 1]);
+    }
+    
+    // Ensure we have exactly num_points points
+    while (result_x.size() < static_cast<size_t>(num_points)) {
+        // Add duplicate of last point
+        result_x.push_back(result_x.back());
+        result_y.push_back(result_y.back());
+    }
+    
+    while (result_x.size() > static_cast<size_t>(num_points)) {
+        // Remove points from the end
+        result_x.pop_back();
+        result_y.pop_back();
+    }
+    
+    // Check if we need to adjust axis limits
+    bool using_default_limits = (fig.xmin == -10 && fig.xmax == 10 && fig.ymin == -10 && fig.ymax == 10);
+    
+    if (using_default_limits)
+    {
+        // Find the extreme points in the resulting curve
+        double min_x = *std::min_element(result_x.begin(), result_x.end());
+        double max_x = *std::max_element(result_x.begin(), result_x.end());
+        double min_y = *std::min_element(result_y.begin(), result_y.end());
+        double max_y = *std::max_element(result_y.begin(), result_y.end());
+        
+        // Add margin (10% of the data range)
+        double x_margin = (max_x - min_x) * 0.1 + 1.0;
+        double y_margin = (max_y - min_y) * 0.1 + 1.0;
+        
+        fig.xmin = min_x - x_margin;
+        fig.xmax = max_x + x_margin;
+        fig.ymin = min_y - y_margin;
+        fig.ymax = max_y + y_margin;
+    }
+    
+    // Store the cardinal spline curve as a 2D curve
+    fig.curves.push_back({result_x, result_y, style});
+    fig.curve_types.push_back("2D");
 }

@@ -687,6 +687,444 @@ void example_symbol_plots() {
     plt.show();
 }
 
+// Example 7: Circles, Text, Arrows, Lines and Arcs
+void example_circles_text_arrows() {
+    PlotGen plt(1200, 900, 2, 2);
+    
+    // Example 1: Circles with different styles and lines
+    auto& fig1 = plt.subplot(0, 0);
+    
+    // Create different styles for the circles and lines
+    PlotGen::Style style_circle1, style_circle2, style_circle3;
+    PlotGen::Style style_line1, style_line2;
+    
+    style_circle1.color = sf::Color::Red;
+    style_circle1.thickness = 2.0;
+    style_circle1.legend = "Circle (3,2) r=1";
+    
+    style_circle2.color = sf::Color::Blue;
+    style_circle2.thickness = 3.0;
+    style_circle2.legend = "Circle (0,0) r=3";
+    
+    style_circle3.color = sf::Color::Green;
+    style_circle3.thickness = 1.0;
+    style_circle3.line_style = "dashed";
+    style_circle3.legend = "Dashed circle (1,-2) r=2";
+    
+    style_line1.color = sf::Color::Magenta;
+    style_line1.thickness = 2.5;
+    style_line1.legend = "Diagonal line";
+    
+    style_line2.color = sf::Color::Cyan;
+    style_line2.thickness = 1.5;
+    style_line2.line_style = "dashed";
+    style_line2.legend = "Dashed horizontal line";
+    
+    plt.set_title(fig1, "Circles and lines");
+    plt.set_xlabel(fig1, "X");
+    plt.set_ylabel(fig1, "Y");
+    plt.grid(fig1, true, false);
+    
+    // Draw three circles with different positions, sizes and styles
+    plt.circle(fig1, 3, 2, 1, style_circle1);     // Red circle at (3,2) with radius 1
+    plt.circle(fig1, 0, 0, 3, style_circle2);     // Blue circle at (0,0) with radius 3
+    plt.circle(fig1, 1, -2, 2, style_circle3);    // Green dashed circle at (1,-2) with radius 2
+    
+    // Add lines to connect circles
+    plt.line(fig1, 3, 2, 0, 0, style_line1);       // Diagonal line connecting two circles
+    plt.line(fig1, -3, -2, 3, -2, style_line2);    // Horizontal dashed line
+    
+    // Example 2: Text annotations and arcs
+    auto& fig2 = plt.subplot(0, 1);
+    
+    // Generate some data for a parabola
+    std::vector<double> x(100), y(100);
+    for (int i = 0; i < 100; ++i) {
+        x[i] = i * 0.1 - 5.0;
+        y[i] = x[i] * x[i];
+    }
+    
+    // Create a style for the parabola, text annotations and arcs
+    PlotGen::Style style_curve, style_text1, style_text2, style_text3;
+    PlotGen::Style style_arc1, style_arc2;
+    
+    style_curve.color = sf::Color::Blue;
+    style_curve.thickness = 2.0;
+    style_curve.legend = "y = x" + SQUARED;
+    
+    style_text1.color = sf::Color::Red;
+    style_text1.thickness = 3.0;  // Larger text
+    
+    style_text2.color = sf::Color(255, 165, 0);
+    style_text2.thickness = 2.0;  // Medium text
+    
+    style_text3.color = sf::Color::Magenta;
+    style_text3.thickness = 1.5;  // Smaller text
+    
+    style_arc1.color = sf::Color::Black;
+    style_arc1.thickness = 2.5;
+    style_arc1.legend = "180° arc";
+    
+    style_arc2.color = sf::Color(255, 165, 0); // Orange
+    style_arc2.thickness = 2.0;
+    style_arc2.line_style = "dashed";
+    style_arc2.legend = "90° arc";
+    
+    plt.set_title(fig2, "Parabola with text and arcs");
+    plt.set_xlabel(fig2, "X");
+    plt.set_ylabel(fig2, "Y");
+    plt.set_axis_limits(fig2, -5, 5, -1, 25);
+    plt.grid(fig2, true, false);
+    
+    // Plot the parabola
+    plt.plot(fig2, x, y, style_curve);
+    
+    // Add text annotations at different positions
+    plt.text(fig2, 0, 0, "Origin (0,0)", style_text1);
+    plt.text(fig2, -3, 9, "y = x²", style_text2);
+    plt.text(fig2, 4, 16, "Increasing slope here", style_text3);
+    
+    // Add arcs to highlight regions of the parabola
+    plt.arc(fig2, 0, 0, 3, 0, M_PI, style_arc1);        // 180° arc centered at origin
+    plt.arc(fig2, 2, 4, 2, M_PI/4, M_PI/4*3, style_arc2); // 90° arc elsewhere
+    
+    // Example 3: Sine wave with arrows and tangent lines
+    auto& fig3 = plt.subplot(1, 0);
+    
+    // Generate data for a sine wave
+    std::vector<double> x_sin(200), y_sin(200);
+    for (int i = 0; i < 200; ++i) {
+        x_sin[i] = i * 0.05;
+        y_sin[i] = sin(x_sin[i]);
+    }
+    
+    // Create styles for sine curve, arrows and lines
+    PlotGen::Style style_sin, style_arrow1, style_arrow2, style_arrow3;
+    PlotGen::Style style_tangent1, style_tangent2;
+    
+    style_sin.color = sf::Color::Blue;
+    style_sin.thickness = 2.0;
+    style_sin.legend = "sin(x)";
+    
+    style_arrow1.color = sf::Color::Red;
+    style_arrow1.thickness = 1.5;
+    
+    style_arrow2.color = sf::Color::Green;
+    style_arrow2.thickness = 2.0;
+    
+    style_arrow3.color = sf::Color(255, 165, 0); // Orange
+    style_arrow3.thickness = 3.0;
+    
+    style_tangent1.color = sf::Color::Cyan;
+    style_tangent1.thickness = 1.5;
+    style_tangent1.line_style = "dashed";
+    style_tangent1.legend = "Tangent line at x=π";
+    
+    style_tangent2.color = sf::Color::Yellow;
+    style_tangent2.thickness = 1.5;
+    style_tangent2.line_style = "dashed";
+    style_tangent2.legend = "Tangent line at x=2π";
+    
+    plt.set_title(fig3, "Sine wave with arrows and tangents");
+    plt.set_xlabel(fig3, "X");
+    plt.set_ylabel(fig3, "Y");
+    plt.set_axis_limits(fig3, 0, 10, -1.5, 1.5);
+    plt.grid(fig3, true, false);
+    
+    // Plot the sine wave
+    plt.plot(fig3, x_sin, y_sin, style_sin);
+    
+    // Draw arrows pointing to interesting features
+    plt.arrow(fig3, 2.2, -1, 1.57, 0, style_arrow1, 20.0);    // Arrow to first minimum
+    plt.arrow(fig3, 6.5, 1, 4.71, 0, style_arrow2, 30.0);    // Arrow to second maximum
+    plt.arrow(fig3, 8.5, -1, 7.85, 0, style_arrow3, 50.0);   // Arrow to third minimum
+    
+    // Add text to explain the arrows
+    plt.text(fig3, 2.2, -1.2, "First minimum", PlotGen::Style(sf::Color::Red));
+    plt.text(fig3, 6.5, 1.2, "Second maximum", PlotGen::Style(sf::Color::Green));
+    plt.text(fig3, 8.5, -1.2, "Third minimum", PlotGen::Style(sf::Color(255, 165, 0)));
+    
+    // Add tangent lines at specific points
+    double x_pi = M_PI;
+    double y_pi = sin(x_pi);        // y = 0 at x = π
+    double slope_pi = cos(x_pi);    // derivative = cos(x)
+    
+    double x_2pi = 2 * M_PI;
+    double y_2pi = sin(x_2pi);      // y = 0 at x = 2π
+    double slope_2pi = cos(x_2pi);  // derivative = cos(x)
+    
+    // Draw tangent lines (y = y0 + slope*(x-x0))
+    plt.line(fig3, x_pi - 1, y_pi - slope_pi, x_pi + 1, y_pi + slope_pi, style_tangent1);
+    plt.line(fig3, x_2pi - 1, y_2pi - slope_2pi, x_2pi + 1, y_2pi + slope_2pi, style_tangent2);
+    
+    // Example 4: Vector field with arrows, lines and arcs
+    auto& fig4 = plt.subplot(1, 1);
+    
+    plt.set_title(fig4, "Vector field with geometric elements");
+    plt.set_xlabel(fig4, "X");
+    plt.set_ylabel(fig4, "Y");
+    plt.set_axis_limits(fig4, -5, 5, -5, 5);
+    plt.grid(fig4, true, true);
+    plt.set_equal_axes(fig4, true);
+    
+    // Draw a vector field (circular pattern)
+    for (int i = -4; i <= 4; i += 2) {
+        for (int j = -4; j <= 4; j += 2) {
+            double x = i;
+            double y = j;
+            
+            // Calculate vector direction (perpendicular to radius)
+            double r = sqrt(x*x + y*y);
+            
+            if (r < 0.1) continue; // Skip center point
+            
+            double scale = 0.8; // Scale factor for arrow length
+            double dx = -y/r * scale;
+            double dy = x/r * scale;
+            
+            // Create arrow style with color based on distance from origin
+            PlotGen::Style arrow_style;
+            arrow_style.thickness = 1.5;
+            
+            // Color gradient: blue at center to red at edges
+            double dist_norm = r / 5.0; // Normalize to [0,1]
+            arrow_style.color = sf::Color(
+                static_cast<sf::Uint8>(255 * dist_norm),  // Red
+                0,                                         // Green
+                static_cast<sf::Uint8>(255 * (1-dist_norm)) // Blue
+            );
+            
+            // Draw arrow from (x,y) with calculated direction
+            plt.arrow(fig4, x, y, x + dx, y + dy, arrow_style, 10.0);
+        }
+    }
+    
+    // Add concentric circles
+    PlotGen::Style circle_style1, circle_style2, circle_style3;
+    circle_style1.color = sf::Color::Black;
+    circle_style1.thickness = 2.0;
+    circle_style1.legend = "r = 1 circle";
+    
+    circle_style2.color = sf::Color(255, 165, 0); // Orange
+    circle_style2.thickness = 1.5;
+    circle_style2.line_style = "dashed";
+    circle_style2.legend = "r = 3 circle";
+    
+    // Draw concentric circles
+    plt.circle(fig4, 0, 0, 0.2, circle_style1);
+    plt.circle(fig4, 0, 0, 1, circle_style1);
+    plt.circle(fig4, 0, 0, 3, circle_style2);
+    
+    // Add some connecting lines
+    PlotGen::Style line_style;
+    line_style.color = sf::Color::Cyan;
+    line_style.thickness = 1.0;
+    line_style.line_style = "dashed";
+    
+    // Connect points with lines
+    plt.line(fig4, -4, -4, 4, 4, line_style);
+    plt.line(fig4, -4, 4, 4, -4, line_style);
+    
+    // Add arcs
+    PlotGen::Style arc_style;
+    arc_style.color = sf::Color::Magenta;
+    arc_style.thickness = 2.0;
+    arc_style.legend = "90° arc";
+    
+    // Draw an arc in each quadrant
+    plt.arc(fig4, 0, 0, 2, 0, M_PI/2, arc_style);         // First quadrant
+    plt.arc(fig4, 0, 0, 2, M_PI/2, M_PI, arc_style);      // Second quadrant
+    plt.arc(fig4, 0, 0, 2, M_PI, 3*M_PI/2, arc_style);    // Third quadrant
+    plt.arc(fig4, 0, 0, 2, 3*M_PI/2, 2*M_PI, arc_style);  // Fourth quadrant
+    
+    // Add text label for the vector field
+    plt.text(fig4, 0, 4, "Circular vector field", PlotGen::Style(sf::Color::White, 2.5));
+    
+    plt.save("example7_circles_text_arrows.png");
+    plt.show();
+}
+
+// Example 8: Bezier and Spline Curves
+void example_bezier_spline() {
+    PlotGen plt(1200, 900, 2, 2);
+    
+    // Example 1: Cubic Bezier curve
+    auto& fig1 = plt.subplot(0, 0);
+    
+    // Define control points for a cubic Bezier curve
+    double x0 = -4, y0 = 0;   // Starting point
+    double x1 = -1, y1 = 4;   // First control point
+    double x2 = 1, y2 = -4;   // Second control point
+    double x3 = 4, y3 = 0;    // End point
+    
+    PlotGen::Style style_bezier, style_cp, style_lines;
+    
+    style_bezier.color = sf::Color::Blue;
+    style_bezier.thickness = 3.0;
+    style_bezier.legend = "Cubic Bezier curve";
+    
+    style_cp.color = sf::Color::Red;
+    style_cp.symbol_type = "circle";
+    style_cp.symbol_size = 10.0;
+    style_cp.line_style = "none";
+    style_cp.legend = "Control points";
+    
+    style_lines.color = sf::Color(100, 100, 100); // Gray
+    style_lines.thickness = 1.0;
+    style_lines.line_style = "dashed";
+    style_lines.legend = "Control polygon";
+    
+    plt.set_title(fig1, "Cubic Bezier Curve");
+    plt.set_xlabel(fig1, "X");
+    plt.set_ylabel(fig1, "Y");
+    plt.grid(fig1, true, false);
+    
+    // Draw the Bezier curve
+    plt.bezier(fig1, x0, y0, x1, y1, x2, y2, x3, y3, style_bezier);
+    
+    // Draw the control points
+    std::vector<double> cp_x = {x0, x1, x2, x3};
+    std::vector<double> cp_y = {y0, y1, y2, y3};
+    plt.plot(fig1, cp_x, cp_y, style_cp);
+    
+    // Draw the control polygon (lines connecting control points)
+    plt.plot(fig1, cp_x, cp_y, style_lines);
+    
+    // Example 2: Multiple Bezier curves with different control points
+    auto& fig2 = plt.subplot(0, 1);
+    
+    // Define several sets of control points for Bezier curves
+    std::vector<std::vector<double>> bezier_points = {
+        {-4, -3, -1, 0},  // First curve: control points x-coordinates
+        {-3, 0, 0, -3},   // First curve: control points y-coordinates
+        {0, 1, 3, 4},     // Second curve: control points x-coordinates
+        {-3, 0, 0, 3},    // Second curve: control points y-coordinates
+        {-2, 0, 0, 2},    // Third curve: control points x-coordinates
+        {0, 3, -3, 0}     // Third curve: control points y-coordinates
+    };
+    
+    std::vector<sf::Color> colors = {
+        sf::Color::Red,
+        sf::Color::Blue,
+        sf::Color::Green
+    };
+    
+    plt.set_title(fig2, "Multiple Bezier Curves");
+    plt.set_xlabel(fig2, "X");
+    plt.set_ylabel(fig2, "Y");
+    plt.set_axis_limits(fig2, -5, 5, -5, 5);
+    plt.grid(fig2, true, false);
+    
+    // Draw each Bezier curve and its control points
+    for (size_t i = 0; i < 3; ++i) {
+        PlotGen::Style curve_style, cp_style;
+        
+        curve_style.color = colors[i];
+        curve_style.thickness = 3.0;
+        curve_style.legend = "Bezier curve " + std::to_string(i+1);
+        
+        cp_style.color = colors[i];
+        cp_style.symbol_type = "circle";
+        cp_style.symbol_size = 6.0;
+        cp_style.line_style = "dashed";
+        cp_style.legend = "Control points " + std::to_string(i+1);
+        
+        // Extract control points for this curve
+        std::vector<double> x_points = {
+            bezier_points[i*2][0], 
+            bezier_points[i*2][1], 
+            bezier_points[i*2][2], 
+            bezier_points[i*2][3]
+        };
+        std::vector<double> y_points = {
+            bezier_points[i*2+1][0], 
+            bezier_points[i*2+1][1], 
+            bezier_points[i*2+1][2], 
+            bezier_points[i*2+1][3]
+        };
+        
+        // Draw the Bezier curve
+        plt.bezier(fig2, x_points, y_points, curve_style);
+        
+        // Draw the control points and connecting lines
+        plt.plot(fig2, x_points, y_points, cp_style);
+    }
+    
+    // Example 3: Natural Cubic Spline
+    auto& fig3 = plt.subplot(1, 0);
+    
+    // Points for the natural cubic spline
+    std::vector<double> spline_x = {-4, -2, 0, 2, 4};
+    std::vector<double> spline_y = {-2, 3, 0, 1, -1};
+    
+    PlotGen::Style style_spline, style_points;
+    
+    style_spline.color = sf::Color::Red;
+    style_spline.thickness = 3.0;
+    style_spline.legend = "Natural cubic spline";
+    
+    style_points.color = sf::Color::Blue;
+    style_points.symbol_type = "circle";
+    style_points.symbol_size = 8.0;
+    style_points.line_style = "none";
+    style_points.legend = "Data points";
+    
+    plt.set_title(fig3, "Natural Cubic Spline");
+    plt.set_xlabel(fig3, "X");
+    plt.set_ylabel(fig3, "Y");
+    plt.grid(fig3, true, false);
+    
+    // Draw the natural cubic spline
+    plt.spline(fig3, spline_x, spline_y, style_spline);
+    
+    // Draw the spline points
+    plt.plot(fig3, spline_x, spline_y, style_points);
+    
+    // Example 4: Cardinal Spline with tension parameter
+    auto& fig4 = plt.subplot(1, 1);
+    
+    // Points for the cardinal spline
+    std::vector<double> cardinal_x = {-4, -3, -1, 1, 3, 4};
+    std::vector<double> cardinal_y = {0, -2, 1, -1, 2, 0};
+    
+    // Different tensions for cardinal splines
+    std::vector<double> tensions = {0.0, 0.5, 1.0};
+    std::vector<sf::Color> tension_colors = {
+        sf::Color::Green,
+        sf::Color::Blue,
+        sf::Color::Red
+    };
+    
+    plt.set_title(fig4, "Cardinal Splines with Different Tensions");
+    plt.set_xlabel(fig4, "X");
+    plt.set_ylabel(fig4, "Y");
+    plt.grid(fig4, true, false);
+    
+    // Draw cardinal splines with different tension values
+    for (size_t i = 0; i < tensions.size(); ++i) {
+        PlotGen::Style spline_style;
+        
+        spline_style.color = tension_colors[i];
+        spline_style.thickness = 2.5;
+        spline_style.legend = "Tension = " + std::to_string(tensions[i]);
+        
+        plt.cardinal_spline(fig4, cardinal_x, cardinal_y, tensions[i], spline_style);
+    }
+    
+    // Draw the data points
+    PlotGen::Style points_style;
+    points_style.color = sf::Color::Cyan;
+    points_style.symbol_type = "circle";
+    points_style.symbol_size = 8.0;
+    points_style.line_style = "none";
+    points_style.legend = "Data points";
+    
+    plt.plot(fig4, cardinal_x, cardinal_y, points_style);
+    
+    plt.save("example8_bezier_spline.png");
+    plt.show();
+}
+
 // Main program to choose which example to run
 int main() {
     std::cout << "PlotGen - Plotting examples" << std::endl;
@@ -696,7 +1134,9 @@ int main() {
     std::cout << "4. Multiple plots and customization" << std::endl;
     std::cout << "5. Advanced histograms" << std::endl;
     std::cout << "6. Curves with symbols" << std::endl;
-    std::cout << "Enter your choice (1-6): ";
+    std::cout << "7. Circles, Text and Arrows" << std::endl;
+    std::cout << "8. Bezier and Spline Curves" << std::endl;
+    std::cout << "Enter your choice (1-8): ";
     
     int choice;
     std::cin >> choice;
@@ -708,6 +1148,8 @@ int main() {
         case 4: example_multiple_plots(); break;
         case 5: example_advanced_histograms(); break;
         case 6: example_symbol_plots(); break;
+        case 7: example_circles_text_arrows(); break;
+        case 8: example_bezier_spline(); break;
         default: 
             std::cout << "Invalid choice." << std::endl;
             return 1;

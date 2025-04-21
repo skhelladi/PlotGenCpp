@@ -1,5 +1,10 @@
 # PlotGenC++ Documentation
 
+- Author: Sofiane KHELLADI
+- Date: 21/04/2025
+- Version: 1.0
+__________________________________
+
 This documentation details the usage of the PlotGenC++ library for generating graphics in C++.
 
 ## Table of Contents
@@ -138,6 +143,13 @@ void hist(Figure& fig, const std::vector<float>& data, int bins = 10, const Styl
 void polar_plot(Figure& fig, const std::vector<float>& theta, const std::vector<float>& r, const Style& style = Style())
 void circle(Figure& fig, double x0, double y0, double r, const Style& style = Style())
 void text(Figure& fig, double x, double y, const std::string& text_content, const Style& style = Style())
+void arrow(Figure& fig, double x1, double y1, double x2, double y2, const Style& style = Style(), double head_size = 10.0)
+void line(Figure& fig, double x1, double y1, double x2, double y2, const Style& style = Style())
+void arc(Figure& fig, double x0, double y0, double r, double angle1, double angle2, const Style& style = Style(), int num_points = 50)
+void bezier(Figure& fig, double x0, double y0, double x1, double y1, double x2, double y2, double x3, double y3, const Style& style = Style(), int num_points = 100)
+void bezier(Figure& fig, const std::vector<double>& x, const std::vector<double>& y, const Style& style = Style(), int num_points = 100)
+void spline(Figure& fig, const std::vector<double>& x, const std::vector<double>& y, const Style& style = Style(), int num_points = 100)
+void cardinal_spline(Figure& fig, const std::vector<double>& x, const std::vector<double>& y, double tension = 0.5, const Style& style = Style(), int num_points = 100)
 ```
 
 ##### Display and Export
@@ -292,6 +304,39 @@ Key points:
 - Size customization
 - Combination of visualization styles
 
+### Example 7: Circles, Text and Arrows
+
+![Example 7](example7_circles_text_arrows.png)
+
+This example demonstrates the use of geometric annotations and shapes:
+- Drawing perfect circles with different styles
+- Adding explanatory text at specific positions
+- Using arrows to indicate important features
+- Combining lines and arcs for geometric constructions
+
+Key points:
+- Creation of precise geometric objects
+- Clear and readable annotations
+- Harmonious integration of different elements
+- Effective use of visual styles
+
+### Example 8: Bezier and Spline Curves
+
+![Example 8](example8_bezier_spline.png)
+
+This example illustrates different methods of curve interpolation:
+- Cubic Bezier curves controlled by points
+- Natural splines passing through data points
+- Cardinal splines with different tension values
+- Comparison of different interpolation techniques
+
+Key points:
+- Understanding the differences between curve types
+- Precise shape control with Bezier curves
+- Natural interpolation with cubic splines
+- Tension adjustments for cardinal splines
+- Visualization of control points and resulting curves
+
 ## Symbols and Styles
 
 ### Available Symbol Types
@@ -381,6 +426,160 @@ plt.circle(fig, 0, 0, 5, circle_style);
 plt.show();
 ```
 
+### Lines, Arcs and Arrows
+```cpp
+void line(Figure& fig, double x1, double y1, double x2, double y2, const Style& style = Style())
+void arc(Figure& fig, double x0, double y0, double r, double angle1, double angle2, const Style& style = Style(), int num_points = 50)
+void arrow(Figure& fig, double x1, double y1, double x2, double y2, const Style& style = Style(), double head_size = 10.0)
+```
+
+These functions allow you to add geometric annotations to your plots:
+
+#### Line
+```cpp
+void line(Figure& fig, double x1, double y1, double x2, double y2, const Style& style = Style())
+```
+
+Draws a straight line between two points:
+- **(x1,y1)**: Starting point
+- **(x2,y2)**: Ending point
+- **style**: Visual style of the line
+
+Lines are useful for:
+- Creating custom grid lines
+- Adding reference lines to highlight thresholds
+- Drawing geometric shapes in combination with other primitives
+
+Example:
+```cpp
+auto& fig = plt.subplot(0, 0);
+plt.set_title(fig, "Line Example");
+plt.grid(fig, true, false);
+plt.set_axis_limits(fig, -5, 5, -5, 5);
+
+// Draw diagonal lines with different styles
+PlotGen::Style dash_style;
+dash_style.color = sf::Color::Red;
+dash_style.thickness = 2.0;
+dash_style.line_style = "dashed";
+dash_style.legend = "Dashed Line";
+plt.line(fig, -4, -4, 4, 4, dash_style);
+
+PlotGen::Style solid_style;
+solid_style.color = sf::Color::Blue;
+solid_style.thickness = 3.0;
+solid_style.legend = "Solid Line";
+plt.line(fig, -4, 4, 4, -4, solid_style);
+
+plt.show();
+```
+
+#### Arc
+```cpp
+void arc(Figure& fig, double x0, double y0, double r, double angle1, double angle2, const Style& style = Style(), int num_points = 50)
+```
+
+Draws an arc (partial circle) centered at a specific point:
+- **(x0,y0)**: Center of the arc
+- **r**: Radius of the arc
+- **angle1**: Starting angle in degrees (0 = right, 90 = up)
+- **angle2**: Ending angle in degrees
+- **style**: Visual style of the arc
+- **num_points**: Number of points to generate for the arc (higher = smoother)
+
+Arcs are useful for:
+- Creating circular sectors
+- Drawing angle indicators
+- Building complex shapes from geometric primitives
+
+Example:
+```cpp
+auto& fig = plt.subplot(0, 0);
+plt.set_title(fig, "Arc Example");
+plt.grid(fig, true, false);
+plt.set_axis_limits(fig, -6, 6, -6, 6);
+plt.set_equal_axes(fig, true);
+
+// Draw a complete circle first
+PlotGen::Style circle_style;
+circle_style.color = sf::Color(200, 200, 200);  // Light gray
+circle_style.thickness = 1.0;
+plt.circle(fig, 0, 0, 5.0, circle_style);
+
+// Draw several arcs around the circle
+PlotGen::Style arc1_style;
+arc1_style.color = sf::Color::Red;
+arc1_style.thickness = 3.0;
+arc1_style.legend = "0° to 90°";
+plt.arc(fig, 0, 0, 5.0, 0, 90, arc1_style);
+
+PlotGen::Style arc2_style;
+arc2_style.color = sf::Color::Blue;
+arc2_style.thickness = 3.0;
+arc2_style.legend = "90° to 180°";
+plt.arc(fig, 0, 0, 5.0, 90, 180, arc2_style);
+
+PlotGen::Style arc3_style;
+arc3_style.color = sf::Color::Green;
+arc3_style.thickness = 3.0;
+arc3_style.legend = "180° to 270°";
+plt.arc(fig, 0, 0, 5.0, 180, 270, arc3_style);
+
+PlotGen::Style arc4_style;
+arc4_style.color = sf::Color::Yellow;
+arc4_style.thickness = 3.0;
+arc4_style.legend = "270° to 360°";
+plt.arc(fig, 0, 0, 5.0, 270, 360, arc4_style);
+
+plt.show();
+```
+
+#### Arrow
+```cpp
+void arrow(Figure& fig, double x1, double y1, double x2, double y2, const Style& style = Style(), double head_size = 10.0)
+```
+
+Draws an arrow from one point to another:
+- **(x1,y1)**: Starting point (tail of the arrow)
+- **(x2,y2)**: Ending point (where the arrowhead points)
+- **style**: Visual style of the arrow
+- **head_size**: Size of the arrowhead in pixels
+
+Arrows are useful for:
+- Indicating direction or flow
+- Highlighting specific features on a plot
+- Creating vector field visualizations
+- Adding annotations with directional emphasis
+
+Example:
+```cpp
+auto& fig = plt.subplot(0, 0);
+plt.set_title(fig, "Arrow Example");
+plt.grid(fig, true, false);
+plt.set_axis_limits(fig, -5, 5, -5, 5);
+
+// Draw arrows with different styles and head sizes
+PlotGen::Style arrow1_style;
+arrow1_style.color = sf::Color::Red;
+arrow1_style.thickness = 2.0;
+arrow1_style.legend = "Standard Arrow";
+plt.arrow(fig, -3, -3, 3, 3, arrow1_style, 10.0);
+
+PlotGen::Style arrow2_style;
+arrow2_style.color = sf::Color::Blue;
+arrow2_style.thickness = 3.0;
+arrow2_style.legend = "Large Arrowhead";
+plt.arrow(fig, 3, -3, -3, 3, arrow2_style, 20.0);
+
+// Add text labels
+PlotGen::Style text_style;
+text_style.color = sf::Color::Green;
+plt.text(fig, 3.2, 3.2, "Destination", text_style);
+plt.text(fig, -3.2, -3.2, "Origin", text_style);
+
+plt.show();
+```
+
 ### Text Annotations
 ```cpp
 void text(Figure& fig, double x, double y, const std::string& text_content, const Style& style = Style())
@@ -415,6 +614,143 @@ plt.text(fig, 2, 3, "Maximum value", text_style);
 // Add another text with default size
 plt.text(fig, 4, 1, "Inflection point", PlotGen::Style(sf::Color::Red));
 
+plt.show();
+```
+
+### Bézier Curves
+```cpp
+void bezier(Figure& fig, double x0, double y0, double x1, double y1, 
+            double x2, double y2, double x3, double y3, 
+            const Style& style = Style(), int num_points = 100)
+
+void bezier(Figure& fig, const std::vector<double>& x, const std::vector<double>& y, 
+            const Style& style = Style(), int num_points = 100)
+```
+
+These functions allow you to create smooth Bézier curves on your plots:
+
+1. The first version creates a cubic Bézier curve using four control points:
+   - **(x0,y0)**: The starting point
+   - **(x1,y1)** and **(x2,y2)**: The intermediate control points that influence the curve's shape
+   - **(x3,y3)**: The ending point
+   
+2. The second version allows for Bézier curves of any degree by providing vectors of control points:
+   - The curve will pass through the first and last points
+   - The intermediate points act as control points to shape the curve
+   - The number of control points determines the degree of the curve
+
+The `num_points` parameter controls the smoothness of the rendered curve (more points = smoother curve).
+
+Bézier curves are useful for:
+- Creating smooth interpolations between data points
+- Designing custom curve shapes with precise control
+- Visualizing parametric designs or animations paths
+- Creating aesthetically pleasing illustrations
+
+Example of cubic Bézier curve:
+```cpp
+auto& fig = plt.subplot(0, 0);
+plt.set_title(fig, "Cubic Bézier Curve");
+plt.grid(fig, true, false);
+plt.set_axis_limits(fig, -2, 6, -2, 6);
+
+// Create a cubic Bézier curve from (0,0) to (5,0) with control points at (2,4) and (3,4)
+PlotGen::Style bezier_style;
+bezier_style.color = sf::Color::Red;
+bezier_style.thickness = 3.0;
+bezier_style.legend = "Cubic Bézier";
+plt.bezier(fig, 0, 0, 2, 4, 3, 4, 5, 0, bezier_style);
+
+// Draw the control points
+PlotGen::Style control_style;
+control_style.color = sf::Color::Blue;
+control_style.symbol_type = "circle";
+control_style.symbol_size = 8.0;
+control_style.line_style = "none";
+control_style.legend = "Control Points";
+
+std::vector<double> ctrl_x = {0, 2, 3, 5};
+std::vector<double> ctrl_y = {0, 4, 4, 0};
+plt.plot(fig, ctrl_x, ctrl_y, control_style);
+
+plt.show();
+```
+
+### Splines
+```cpp
+void spline(Figure& fig, const std::vector<double>& x, const std::vector<double>& y, 
+           const Style& style = Style(), int num_points = 100)
+
+void cardinal_spline(Figure& fig, const std::vector<double>& x, const std::vector<double>& y, 
+                    double tension = 0.5, const Style& style = Style(), int num_points = 100)
+```
+
+PlotGenC++ provides two types of splines for creating smooth curves through a set of points:
+
+1. **Natural Cubic Spline** (`spline`): 
+   - Creates a smooth curve that passes through all given points
+   - Uses natural boundary conditions (second derivative is zero at endpoints)
+   - Produces a curve with continuous second derivatives (C² continuity)
+   
+2. **Cardinal Spline** (`cardinal_spline`):
+   - Creates a smoother curve that passes through all given points
+   - The `tension` parameter controls how tightly the curve follows the control points:
+     - `tension = 0`: Maximum smoothness (Catmull-Rom spline)
+     - `tension = 1`: Tighter curves (less smooth but closer to control points)
+   - Ideal for visualization where preserving the shape of data is important
+
+The `num_points` parameter controls the resolution of the rendered curve.
+
+Splines are excellent for:
+- Smoothly interpolating between data points for visualization
+- Creating natural-looking curves for scientific data
+- Generating smooth trajectories for animations
+- Approximating functions from sampled data
+
+Example of using splines:
+```cpp
+auto& fig = plt.subplot(0, 0);
+plt.set_title(fig, "Comparison of Spline Types");
+plt.grid(fig, true, false);
+plt.set_axis_limits(fig, -1, 11, -2, 8);
+
+// Create some irregular data points
+std::vector<double> x = {0, 2, 3, 5, 7, 9, 10};
+std::vector<double> y = {0, 1, 5, 3, 6, 4, 2};
+
+// Original data points
+PlotGen::Style points_style;
+points_style.color = sf::Color::Blue;
+points_style.symbol_type = "circle";
+points_style.symbol_size = 8.0;
+points_style.line_style = "none";
+points_style.legend = "Data Points";
+plt.plot(fig, x, y, points_style);
+
+// Natural cubic spline
+PlotGen::Style spline_style;
+spline_style.color = sf::Color::Red;
+spline_style.thickness = 2.0;
+spline_style.legend = "Natural Cubic Spline";
+plt.spline(fig, x, y, spline_style);
+
+// Cardinal spline with tension = 0.5
+PlotGen::Style cardinal_style;
+cardinal_style.color = sf::Color::Green;
+cardinal_style.thickness = 2.0;
+cardinal_style.line_style = "dashed";
+cardinal_style.legend = "Cardinal Spline (tension=0.5)";
+plt.cardinal_spline(fig, x, y, 0.5, cardinal_style);
+
+// Cardinal spline with tension = 0.0 (Catmull-Rom)
+PlotGen::Style catmull_style;
+catmull_style.color = sf::Color::Magenta;
+catmull_style.thickness = 2.0;
+catmull_style.line_style = "dashed";
+catmull_style.legend = "Catmull-Rom Spline (tension=0.0)";
+plt.cardinal_spline(fig, x, y, 0.0, catmull_style);
+
+plt.set_legend_position(fig, "outside-right");
 plt.show();
 ```
 

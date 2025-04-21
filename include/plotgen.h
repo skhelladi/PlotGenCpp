@@ -51,6 +51,7 @@ public:
             Style style;
             double bar_width_ratio = 0.9f; // Field to store width ratio
             std::string text_content; // For storing text to display at a position
+            double head_size = 10.0;  // For storing arrow head size
         };
         std::vector<Curve> curves;
         std::vector<std::string> curve_types;
@@ -88,6 +89,32 @@ public:
 
     // Text at position (x, y)
     void text(Figure& fig, double x, double y, const std::string& text_content, const Style& style = Style());
+    
+    // Arrow from (x1, y1) to (x2, y2)
+    void arrow(Figure& fig, double x1, double y1, double x2, double y2, const Style& style = Style(), double head_size = 10.0);
+    
+    // Line from (x1, y1) to (x2, y2)
+    void line(Figure& fig, double x1, double y1, double x2, double y2, const Style& style = Style());
+    
+    // Arc centered at (x0, y0) from angle1 to angle2 (in radians) with radius r
+    void arc(Figure& fig, double x0, double y0, double r, double angle1, double angle2, const Style& style = Style(), int num_points = 50);
+
+    // Bezier curve with control points (x0,y0), (x1,y1), (x2,y2), (x3,y3)
+    void bezier(Figure& fig, double x0, double y0, double x1, double y1, 
+                double x2, double y2, double x3, double y3, 
+                const Style& style = Style(), int num_points = 100);
+
+    // Bezier curve with control points
+    void bezier(Figure& fig, const std::vector<double>& x, const std::vector<double>& y, 
+                const Style& style = Style(), int num_points = 100);
+
+    // Natural cubic spline through points
+    void spline(Figure& fig, const std::vector<double>& x, const std::vector<double>& y, 
+                const Style& style = Style(), int num_points = 100);
+                
+    // Cardinal spline through points with tension parameter
+    void cardinal_spline(Figure& fig, const std::vector<double>& x, const std::vector<double>& y, 
+                         double tension = 0.5, const Style& style = Style(), int num_points = 100);
 
     // Display and render
     void show();
@@ -118,6 +145,7 @@ private:
     sf::Vector2f to_screen(const Figure& fig, double x, double y, double w, double h) const;
     void draw_text(const Figure& fig, double w, double h);
     void draw_text(const Figure& fig, const Figure::Curve& curve, double w, double h);
+    void draw_arrow_head(const Figure& fig, const Figure::Curve& curve, double w, double h);
     void draw_symbol(const sf::Vector2f& position, const std::string& symbol_type, double size, const sf::Color& color);
 };
 

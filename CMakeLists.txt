@@ -1,35 +1,35 @@
 cmake_minimum_required(VERSION 3.10)
 
-# Nom du projet
-project(PlotGenCpp)
+# Project name
+project(PlotGenCpp VERSION 0.1 LANGUAGES CXX)
 
-# Définir le standard C++
+# Define C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_BUILD_TYPE Release)
 # set(CMAKE_BUILD_TYPE Debug)
 
-# Trouver SFML
+# Find SFML
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
-# Ajouter les fichiers sources pour le programme principal
+# Add source files for the main program
 set(SOURCES
     src/plotgen.cpp
 )
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
-# # Créer l'exécutable principal
+# # Create the main executable
 # add_executable(${PROJECT_NAME} ${SOURCES})
 
-# Créer librairie
+# Create library
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
-# Ajouter l'exécutable pour les exemples
+# Add executable for examples
 add_executable(PlotterExamples src/examples.cpp)
 
-# Inclure les répertoires pour les en-têtes
+# Include header directories
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
@@ -38,12 +38,11 @@ target_include_directories(PlotterExamples PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-# Lier les bibliothèques SFML pour les deux exécutables
+# Link SFML libraries for both executables
 target_link_libraries(${PROJECT_NAME} PRIVATE
     sfml-graphics
     sfml-window
     sfml-system
-
 )
 
 target_link_libraries(PlotterExamples PRIVATE
@@ -69,9 +68,9 @@ elseif(MSVC)
     )
 endif()
 
-# Copier la police arial.ttf dans le répertoire de construction
+# Copy arial.ttf font to the build directory
 # configure_file(arial.ttf arial.ttf COPYONLY)
 
-# Installation (optionnel)
+# Installation (optional)
 install(TARGETS ${PROJECT_NAME} PlotterExamples DESTINATION bin)
 install(FILES arial.ttf DESTINATION bin)

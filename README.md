@@ -12,32 +12,16 @@ PlotGenC++ is a C++ library designed for generating 2D plots and charts. It is b
 - **Polar Plots** for parametric and polar functions
 - **Circle Drawing** with automatic scaling
 - **Text Annotations** at specific coordinates
+- **Lines, Arcs and Arrows** for geometric annotations
 - **Multiple layouts** to display several plots on the same figure
+- **Bézier Curves** for smooth curve generation with control points
+- **Splines** including natural cubic splines and cardinal splines
 - **Complete customization** of colors, symbols, grids, and legends
 - **PNG/JPG export** for integration into documents
 - **Configurable legend positioning** including outside the plot area
 - **Visual representation of styles** in legends (lines, symbols, etc.)
 - **Optimized window management** (no unnecessary window display)
 
-## Examples
-
-### Example 1: Basic 2D Plots
-![Basic 2D Plots](docs/example1_basic_plots.png)
-
-### Example 2: Histograms
-![Histograms](docs/example2_histograms.png)
-
-### Example 3: Polar Plots
-![Polar Plots](docs/example3_polar_plots.png)
-
-### Example 4: Multiple Plots and Customization
-![Multiple Plots](docs/example4_multiple_plots.png)
-
-### Example 5: Advanced Histograms
-![Advanced Histograms](docs/example5_advanced_histograms.png)
-
-### Example 6: Plots with Symbols
-![Plots with Symbols](docs/example6_symbol_plots.png)
 
 ## Installation
 
@@ -132,6 +116,33 @@ Run the example application to see the various available features:
 ```bash
 ./build/PlotterExamples
 ```
+
+## Examples
+
+### Example 1: Basic 2D Plots
+![Basic 2D Plots](docs/example1_basic_plots.png)
+
+### Example 2: Histograms
+![Histograms](docs/example2_histograms.png)
+
+### Example 3: Polar Plots
+![Polar Plots](docs/example3_polar_plots.png)
+
+### Example 4: Multiple Plots and Customization
+![Multiple Plots](docs/example4_multiple_plots.png)
+
+### Example 5: Advanced Histograms
+![Advanced Histograms](docs/example5_advanced_histograms.png)
+
+### Example 6: Plots with Symbols
+![Plots with Symbols](docs/example6_symbol_plots.png)
+
+### Example 7: Circles, Text and Arrows
+![Circles, Text and Arrows](docs/example7_circles_text_arrows.png)
+
+### Example 8: Bezier and Spline Curves
+![Bezier and Spline Curves](docs/example8_bezier_spline.png)
+
 
 ## Documentation
 

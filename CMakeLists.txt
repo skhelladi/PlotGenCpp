@@ -53,6 +53,22 @@ target_link_libraries(PlotterExamples PRIVATE
     ${PROJECT_NAME}
 )
 
+# Add compiler flags for optimization and warnings
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(${PROJECT_NAME} PRIVATE
+        -O3
+        -Wall
+        # -Wextra
+        # -Wpedantic
+        # -Wno-unused-parameter
+    )
+elseif(MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE
+        /O2
+        /W4
+    )
+endif()
+
 # Copier la police arial.ttf dans le répertoire de construction
 # configure_file(arial.ttf arial.ttf COPYONLY)
 

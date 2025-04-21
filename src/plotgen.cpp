@@ -459,7 +459,7 @@ void PlotGen::render()
 
 void PlotGen::draw_axes(const Figure &fig, double w, double h)
 {
-    double margin = 50.0f;
+    // double margin = 50.0f;
 
     // Draw grids first (to be in the background)
     if (fig.show_major_grid || fig.show_minor_grid)
@@ -1200,7 +1200,7 @@ void PlotGen::draw_text(const Figure &fig, double w, double h)
                 
                 // Dessiner l'exemple de style
                 float sample_width = 30.0f;
-                float sample_height = 16.0f;
+                // float sample_height = 16.0f;
                 float start_x = legend_x + padding_x;
                 float mid_y = current_y + 8.0f;
                 

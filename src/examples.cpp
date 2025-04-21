@@ -79,6 +79,7 @@ void example_basic_plots() {
     plt.plot(fig3, x, y_log, style_log);
     // Définir la position de la légende: en bas à gauche
     plt.set_legend_position(fig3, "bottom-left");
+    plt.text(fig3, 1.0, 1.0, "Logarithmic Function", PlotGen::Style(sf::Color::Red));
     
     // Different line styles
     auto& fig4 = plt.subplot(1, 1);

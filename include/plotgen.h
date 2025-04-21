@@ -50,6 +50,7 @@ public:
             std::vector<double> x, y;
             Style style;
             double bar_width_ratio = 0.9f; // Field to store width ratio
+            std::string text_content; // For storing text to display at a position
         };
         std::vector<Curve> curves;
         std::vector<std::string> curve_types;
@@ -85,6 +86,9 @@ public:
     // Circle with center (x0, y0) and radius r
     void circle(Figure& fig, double x0, double y0, double r, const Style& style = Style());
 
+    // Text at position (x, y)
+    void text(Figure& fig, double x, double y, const std::string& text_content, const Style& style = Style());
+
     // Display and render
     void show();
 
@@ -113,6 +117,7 @@ private:
     sf::Color getColorFromHeight(double height);
     sf::Vector2f to_screen(const Figure& fig, double x, double y, double w, double h) const;
     void draw_text(const Figure& fig, double w, double h);
+    void draw_text(const Figure& fig, const Figure::Curve& curve, double w, double h);
     void draw_symbol(const sf::Vector2f& position, const std::string& symbol_type, double size, const sf::Color& color);
 };
 

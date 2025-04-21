@@ -226,6 +226,57 @@ void PlotGen::circle(Figure& fig, double x0, double y0, double r, const Style& s
     fig.equal_axes = was_equal;
 }
 
+// Text at a specific position (x, y) in data coordinates
+void PlotGen::text(Figure& fig, double x, double y, const std::string& text_content, const Style& style)
+{
+    if (text_content.empty())
+    {
+        return; // Nothing to render
+    }
+
+    // Create a new data structure for storing the text position and content
+    // We'll use the plot method's data structures but modify the type
+    std::vector<double> x_pos = {x};
+    std::vector<double> y_pos = {y};
+    
+    // Store the text content in the curve structure, but mark it with a special type
+    // We'll use the "TEXT" type to distinguish it from other curve types
+    Figure::Curve text_curve = {x_pos, y_pos, style};
+    text_curve.text_content = text_content; // We'll need to add this field to the Curve struct
+    
+    fig.curves.push_back(text_curve);
+    fig.curve_types.push_back("TEXT");
+    
+    // Check if we need to adjust the axis limits to include the text position
+    bool using_default_limits = (fig.xmin == -10 && fig.xmax == 10 && fig.ymin == -10 && fig.ymax == 10);
+    if (using_default_limits)
+    {
+        // If using default limits, adjust to include the text position with a margin
+        double margin_x = std::abs(x) * 0.2 + 1.0; // 20% margin or at least 1.0 unit
+        double margin_y = std::abs(y) * 0.2 + 1.0;
+        
+        fig.xmin = std::min(fig.xmin, x - margin_x);
+        fig.xmax = std::max(fig.xmax, x + margin_x);
+        fig.ymin = std::min(fig.ymin, y - margin_y);
+        fig.ymax = std::max(fig.ymax, y + margin_y);
+    }
+    else
+    {
+        // Check if the text position is outside the current limits
+        if (x < fig.xmin || x > fig.xmax || y < fig.ymin || y > fig.ymax)
+        {
+            // Expand limits to include the text position with a small margin
+            double margin_x = (fig.xmax - fig.xmin) * 0.05;
+            double margin_y = (fig.ymax - fig.ymin) * 0.05;
+            
+            if (x < fig.xmin) fig.xmin = x - margin_x;
+            if (x > fig.xmax) fig.xmax = x + margin_x;
+            if (y < fig.ymin) fig.ymin = y - margin_y;
+            if (y > fig.ymax) fig.ymax = y + margin_y;
+        }
+    }
+}
+
 // Histogram
 void PlotGen::hist(Figure &fig, const std::vector<double> &data, int bins, const Style &style, double bar_width_ratio)
 {
@@ -501,6 +552,9 @@ void PlotGen::render()
                     else if (fig.curve_types[i] == "POLAR")
                         draw_curve(fig, fig.curves[i], fig.is_polar || fig.equal_axes ? std::min(subplot_width, subplot_height) : subplot_width,
                                    fig.is_polar || fig.equal_axes ? std::min(subplot_width, subplot_height) : subplot_height);
+                    else if (fig.curve_types[i] == "TEXT")
+                        draw_text(fig, fig.curves[i], fig.is_polar || fig.equal_axes ? std::min(subplot_width, subplot_height) : subplot_width,
+                                  fig.is_polar || fig.equal_axes ? std::min(subplot_width, subplot_height) : subplot_height);
                 }
             }
 
@@ -1376,4 +1430,34 @@ void PlotGen::draw_symbol(const sf::Vector2f &position, const std::string &symbo
 
         texture.draw(star);
     }
+}
+
+// Method for drawing text for a TEXT type curve
+void PlotGen::draw_text(const Figure& fig, const Figure::Curve& curve, double w, double h)
+{
+    if (curve.text_content.empty() || curve.x.empty() || curve.y.empty())
+        return;
+    
+    // Get screen position for the text
+    sf::Vector2f position = to_screen(fig, curve.x[0], curve.y[0], w, h);
+    
+    // Create the text object
+    sf::Text text_obj;
+    text_obj.setFont(font);
+    text_obj.setString(sf::String::fromUtf8(curve.text_content.begin(), curve.text_content.end()));
+    text_obj.setFillColor(curve.style.color);
+    
+    // Set character size based on style thickness or use default
+    unsigned int char_size = curve.style.thickness > 0 ? 
+                            static_cast<unsigned int>(curve.style.thickness * 6) : 12;
+    text_obj.setCharacterSize(char_size);
+    
+    // Get text bounds to center it on the position point
+    sf::FloatRect textRect = text_obj.getLocalBounds();
+    
+    // Position the text with a slight offset to avoid overlapping the exact point
+    text_obj.setPosition(position.x - textRect.width/2, position.y - textRect.height - 5);
+    
+    // Draw the text
+    texture.draw(text_obj);
 }

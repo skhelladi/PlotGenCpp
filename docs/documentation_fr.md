@@ -136,6 +136,8 @@ void set_equal_axes(Figure& fig, bool equal = true)
 void plot(Figure& fig, const std::vector<float>& x, const std::vector<float>& y, const Style& style = Style())
 void hist(Figure& fig, const std::vector<float>& data, int bins = 10, const Style& style = Style(), float bar_width_ratio = 0.9f)
 void polar_plot(Figure& fig, const std::vector<float>& theta, const std::vector<float>& r, const Style& style = Style())
+void circle(Figure& fig, double x0, double y0, double r, const Style& style = Style())
+void text(Figure& fig, double x, double y, const std::string& text_content, const Style& style = Style())
 ```
 
 ##### Affichage et exportation
@@ -322,6 +324,74 @@ Les légendes sont automatiquement découpées si elles dépassent une certaine 
 - D'afficher des descriptions détaillées
 - De maintenir la lisibilité des légendes longues
 - D'inclure des symboles Unicode dans les légendes
+
+### Tracé de cercles
+```cpp
+void circle(Figure& fig, double x0, double y0, double r, const Style& style = Style())
+```
+
+Cette fonction permet de tracer un cercle parfait sur un graphique en spécifiant les coordonnées de son centre et son rayon :
+- **x0, y0** : Les coordonnées du centre du cercle
+- **r** : Le rayon du cercle
+- **style** : Le style visuel du cercle (couleur, épaisseur, etc.)
+
+La fonction automatiquement :
+- Assure que le cercle apparaît parfaitement rond (en activant temporairement les axes égaux si nécessaire)
+- Ajuste les limites des axes pour afficher correctement le cercle si nécessaire
+- Applique le style spécifié au contour du cercle
+
+Exemple :
+```cpp
+auto& fig = plt.subplot(0, 0);
+plt.set_title(fig, "Exemple de cercle");
+plt.grid(fig, true, false);
+
+// Tracer un cercle rouge avec centre en (0,0) et rayon 5
+PlotGen::Style circle_style;
+circle_style.color = sf::Color::Red;
+circle_style.thickness = 2.0;
+circle_style.legend = "Cercle (0,0) r=5";
+plt.circle(fig, 0, 0, 5, circle_style);
+
+plt.show();
+```
+
+### Annotations textuelles
+```cpp
+void text(Figure& fig, double x, double y, const std::string& text_content, const Style& style = Style())
+```
+
+Cette fonction permet d'ajouter des étiquettes ou annotations textuelles à des coordonnées spécifiques sur votre graphique :
+- **x, y** : La position où le texte doit être placé
+- **text_content** : Le texte à afficher
+- **style** : Le style visuel du texte (couleur, taille, etc.)
+
+Les annotations textuelles sont utiles pour :
+- Étiqueter des points de données spécifiques
+- Ajouter des explications directement sur le graphique
+- Marquer des caractéristiques ou régions importantes
+- Inclure des formules mathématiques ou équations
+
+La taille du texte peut être contrôlée en utilisant la propriété `thickness` dans le style :
+- Des valeurs d'épaisseur plus élevées créent un texte plus grand
+- La valeur par défaut produit un texte lisible qui correspond à l'échelle du graphique
+
+Exemple :
+```cpp
+auto& fig = plt.subplot(0, 0);
+// Tracer des données...
+
+// Ajouter une annotation textuelle à la position (2, 3)
+PlotGen::Style text_style;
+text_style.color = sf::Color::Blue;
+text_style.thickness = 3.0;  // Texte plus grand
+plt.text(fig, 2, 3, "Valeur maximale", text_style);
+
+// Ajouter un autre texte avec taille par défaut
+plt.text(fig, 4, 1, "Point d'inflexion", PlotGen::Style(sf::Color::Red));
+
+plt.show();
+```
 
 ### Légendes personnalisées
 ```cpp

@@ -136,6 +136,8 @@ void set_equal_axes(Figure& fig, bool equal = true)
 void plot(Figure& fig, const std::vector<float>& x, const std::vector<float>& y, const Style& style = Style())
 void hist(Figure& fig, const std::vector<float>& data, int bins = 10, const Style& style = Style(), float bar_width_ratio = 0.9f)
 void polar_plot(Figure& fig, const std::vector<float>& theta, const std::vector<float>& r, const Style& style = Style())
+void circle(Figure& fig, double x0, double y0, double r, const Style& style = Style())
+void text(Figure& fig, double x, double y, const std::string& text_content, const Style& style = Style())
 ```
 
 ##### Display and Export
@@ -347,6 +349,74 @@ Legends are automatically wrapped if they exceed a certain width, which allows:
 - Displaying detailed descriptions
 - Maintaining readability of long legends
 - Including Unicode symbols in legends
+
+### Circle Drawing
+```cpp
+void circle(Figure& fig, double x0, double y0, double r, const Style& style = Style())
+```
+
+This function allows you to draw a perfect circle on a plot by specifying its center coordinates and radius:
+- **x0, y0**: The coordinates of the circle's center
+- **r**: The radius of the circle
+- **style**: The visual style of the circle (color, thickness, etc.)
+
+The function automatically:
+- Ensures the circle appears perfectly round (by temporarily enabling equal axes if needed)
+- Adjusts axis limits to properly display the circle if necessary
+- Applies the specified style to the circle's outline
+
+Example:
+```cpp
+auto& fig = plt.subplot(0, 0);
+plt.set_title(fig, "Circle Example");
+plt.grid(fig, true, false);
+
+// Draw a red circle with center at (0,0) and radius 5
+PlotGen::Style circle_style;
+circle_style.color = sf::Color::Red;
+circle_style.thickness = 2.0;
+circle_style.legend = "Circle (0,0) r=5";
+plt.circle(fig, 0, 0, 5, circle_style);
+
+plt.show();
+```
+
+### Text Annotations
+```cpp
+void text(Figure& fig, double x, double y, const std::string& text_content, const Style& style = Style())
+```
+
+This function allows you to add text labels or annotations at specific coordinates on your plot:
+- **x, y**: The position where the text should be placed
+- **text_content**: The text to display
+- **style**: The visual style of the text (color, size, etc.)
+
+Text annotations are useful for:
+- Labeling specific data points
+- Adding explanations directly on the chart
+- Marking important features or regions
+- Including mathematical formulas or equations
+
+The text size can be controlled using the `thickness` property in the style:
+- Higher thickness values create larger text
+- Default value produces readable text that matches the chart's scale
+
+Example:
+```cpp
+auto& fig = plt.subplot(0, 0);
+// Plot data...
+
+// Add text annotation at position (2, 3)
+PlotGen::Style text_style;
+text_style.color = sf::Color::Blue;
+text_style.thickness = 3.0;  // Larger text
+plt.text(fig, 2, 3, "Maximum value", text_style);
+
+// Add another text with default size
+plt.text(fig, 4, 1, "Inflection point", PlotGen::Style(sf::Color::Red));
+
+plt.show();
+```
 
 ## Tips and Best Practices
 

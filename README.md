@@ -10,6 +10,8 @@ PlotGenC++ is a C++ library designed for generating 2D plots and charts. It is b
 - Various **2D Charts** with multiple style options
 - **Histograms** with customizable bars
 - **Polar Plots** for parametric and polar functions
+- **Circle Drawing** with automatic scaling
+- **Text Annotations** at specific coordinates
 - **Multiple layouts** to display several plots on the same figure
 - **Complete customization** of colors, symbols, grids, and legends
 - **PNG/JPG export** for integration into documents
@@ -104,6 +106,16 @@ int main() {
     
     // Position the legend in the top-left corner
     plt.set_legend_position(fig, "top-left");
+    
+    // Add a circle and text annotation
+    PlotGen::Style circle_style;
+    circle_style.color = sf::Color::Red;
+    circle_style.thickness = 2.0;
+    plt.circle(fig, 0, 0, 1.0, circle_style);
+    
+    PlotGen::Style text_style;
+    text_style.color = sf::Color::Green;
+    plt.text(fig, 0, 1.5, "Maximum value", text_style);
     
     // Display and save
     plt.save("sinusoid.png");

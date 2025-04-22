@@ -18,6 +18,7 @@ PlotGenC++ is a C++ library designed for generating 2D plots and charts. It is b
 - **Splines** including natural cubic splines and cardinal splines
 - **Complete customization** of colors, symbols, grids, and legends
 - **PNG/JPG export** for integration into documents
+- **SVG export** for high-quality vector graphics suitable for publications
 - **Configurable legend positioning** including outside the plot area
 - **Visual representation of styles** in legends (lines, symbols, etc.)
 - **Optimized window management** (no unnecessary window display)
@@ -37,6 +38,7 @@ PlotGenC++ is a C++ library designed for generating 2D plots and charts. It is b
   - Installation: `sudo apt install libsfml-dev`
 - [stb_image_write](https://github.com/nothings/stb) for image export (it is included in the repository)
   - Installation: `git clone https://github.com/nothings/stb.git`
+- [Simple SVG](https://github.com/adishavit/simple-svg) for SVG export (automatically fetched by CMake)
 
 ### Build and Install
 
@@ -101,8 +103,9 @@ int main() {
     text_style.color = sf::Color::Green;
     plt.text(fig, 0, 1.5, "Maximum value", text_style);
     
-    // Display and save
+    // Display and save as PNG/JPG and SVG
     plt.save("sinusoid.png");
+    plt.save_svg("sinusoid.svg");
     plt.show();
     
     return 0;
@@ -143,6 +146,8 @@ Run the example application to see the various available features:
 ### Example 8: Bezier and Spline Curves
 ![Bezier and Spline Curves](docs/example8_bezier_spline.png)
 
+### Example 9: SVG Export Demo
+![SVG Export Demo](docs/example9_svg_demo.svg)
 
 ## Documentation
 

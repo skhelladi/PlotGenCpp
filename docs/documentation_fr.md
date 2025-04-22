@@ -183,6 +183,38 @@ PlotGenC++ propose désormais une gestion améliorée des fenêtres :
 - Tailles de police réduites pour les titres et les textes de légende pour de meilleures proportions
 - Titres positionnés en dehors de la zone de tracé pour une visualisation plus claire des données
 
+### Exportation vectorielle SVG
+
+```cpp
+void save_svg(const std::string& filename)
+```
+
+Cette méthode permet d'exporter le graphique au format SVG (Scalable Vector Graphics). Le format SVG présente plusieurs avantages par rapport aux formats bitmap comme PNG ou JPG :
+
+- **Mise à l'échelle parfaite** : Les graphiques SVG peuvent être agrandis à n'importe quelle taille sans perte de qualité
+- **Taille de fichier réduite** pour les graphiques composés principalement de lignes et de formes géométriques
+- **Édition ultérieure** : Les fichiers SVG peuvent être modifiés avec des éditeurs vectoriels comme Inkscape ou Adobe Illustrator
+- **Intégration dans des documents** : Idéal pour l'intégration dans des documents scientifiques et des présentations
+- **Compatibilité web** : Les fichiers SVG peuvent être directement intégrés dans des pages web
+
+Les graphiques exportés en SVG incluent toutes les fonctionnalités visuelles de la version raster :
+- Grilles polaires et cartésiennes avec annotations améliorées (valeurs décimales)
+- Courbes, symboles et légendes
+- Textes et annotations
+- Formes géométriques et flèches
+
+Exemple d'utilisation :
+```cpp
+// Après avoir créé votre graphique
+plt.save_svg("mon_graphique.svg");
+```
+
+#### Exemple de sortie SVG
+
+![Exemple SVG](example9_svg_demo.svg)
+
+L'exemple ci-dessus montre un graphique exporté en SVG avec la fonction `save_svg()`. Notez la netteté des lignes et du texte, ainsi que la qualité préservée à n'importe quelle échelle d'affichage.
+
 ## Exemples détaillés
 
 ### Exemple 1 : Graphiques 2D basiques

@@ -8,6 +8,18 @@
 #include <algorithm>
 #include <iostream>
 
+// Include simple_svg library for better SVG export
+#include "simple_svg_1.0.0.hpp"
+
+// Define STB_IMAGE_WRITE_IMPLEMENTATION before including stb_image_write.h
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "../stb/stb_image_write.h"
+
+// Forward declaration for simple_svg
+namespace svg {
+    class Document;
+}
+
 // Forward declaration for stb_image_write
 namespace stb {
     int stbi_write_jpg(char const *filename, int w, int h, int comp, const void *data, int quality);
@@ -122,6 +134,9 @@ public:
     // Save to file
     void save(const std::string& filename);
 
+    // Export as SVG - nouvelle méthode pour l'export vectoriel
+    void save_svg(const std::string& filename);
+
 private:
     sf::RenderWindow window;
     sf::RenderTexture texture;
@@ -147,5 +162,16 @@ private:
     void draw_text(const Figure& fig, const Figure::Curve& curve, double w, double h);
     void draw_arrow_head(const Figure& fig, const Figure::Curve& curve, double w, double h);
     void draw_symbol(const sf::Vector2f& position, const std::string& symbol_type, double size, const sf::Color& color);
+    
+
+    // Helpers pour l'export SVG
+    void export_svg_figure(const Figure& fig, std::ofstream& svg_file, double x_offset, double y_offset, double width, double height);
+    void export_svg_curve(const Figure& fig, const Figure::Curve& curve, std::ofstream& svg_file, double x_offset, double y_offset, double width, double height);
+    void export_svg_histogram(const Figure& fig, const Figure::Curve& curve, std::ofstream& svg_file, double x_offset, double y_offset, double width, double height);
+    void export_svg_text(const Figure& fig, std::ofstream& svg_file, double x_offset, double y_offset, double width, double height);
+    void export_svg_grid(const Figure& fig, std::ofstream& svg_file, double x_offset, double y_offset, double width, double height);
+    void export_svg_polar_grid(const Figure& fig, std::ofstream& svg_file, double x_offset, double y_offset, double width, double height);
+    std::string color_to_svg(const sf::Color& color);
+    std::string line_style_to_svg(const std::string& line_style, float thickness);
 };
 

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1200" height="900" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<rect width="100%" height="100%" fill="white"/>
+<g transform="translate(0,0)">
+<rect x="0" y="0" width="600" height="450" fill="none" stroke="black" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="150" y1="50" x2="150" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="250" y1="50" x2="250" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="350" y1="50" x2="350" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="450" y1="50" x2="450" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="550" y1="50" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="400" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="330" x2="550" y2="330" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="260" x2="550" y2="260" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="190" x2="550" y2="190" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="120" x2="550" y2="120" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="50" x2="550" y2="50" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="201.351" x2="550" y2="201.351" stroke="black" stroke-width="1.5"/>
+<line x1="270" y1="50" x2="270" y2="400" stroke="black" stroke-width="1.5"/>
+<line x1="50" y1="201.351" x2="50" y2="206.351" stroke="black" stroke-width="1"/>
+<text x="50" y="221.351" text-anchor="middle" font-family="Arial" font-size="12">-3.3</text>
+<line x1="150" y1="201.351" x2="150" y2="206.351" stroke="black" stroke-width="1"/>
+<text x="150" y="221.351" text-anchor="middle" font-family="Arial" font-size="12">-1.8</text>
+<line x1="250" y1="201.351" x2="250" y2="206.351" stroke="black" stroke-width="1"/>
+<text x="250" y="221.351" text-anchor="middle" font-family="Arial" font-size="12">-0.3</text>
+<line x1="350" y1="201.351" x2="350" y2="206.351" stroke="black" stroke-width="1"/>
+<text x="350" y="221.351" text-anchor="middle" font-family="Arial" font-size="12">1.2</text>
+<line x1="450" y1="201.351" x2="450" y2="206.351" stroke="black" stroke-width="1"/>
+<text x="450" y="221.351" text-anchor="middle" font-family="Arial" font-size="12">2.7</text>
+<line x1="550" y1="201.351" x2="550" y2="206.351" stroke="black" stroke-width="1"/>
+<text x="550" y="221.351" text-anchor="middle" font-family="Arial" font-size="12">4.2</text>
+<line x1="270" y1="400" x2="265" y2="400" stroke="black" stroke-width="1"/>
+<text x="255" y="405" text-anchor="end" font-family="Arial" font-size="12">-4.2</text>
+<line x1="270" y1="330" x2="265" y2="330" stroke="black" stroke-width="1"/>
+<text x="255" y="335" text-anchor="end" font-family="Arial" font-size="12">-2.7</text>
+<line x1="270" y1="260" x2="265" y2="260" stroke="black" stroke-width="1"/>
+<text x="255" y="265" text-anchor="end" font-family="Arial" font-size="12">-1.2</text>
+<line x1="270" y1="190" x2="265" y2="190" stroke="black" stroke-width="1"/>
+<text x="255" y="195" text-anchor="end" font-family="Arial" font-size="12">0.2</text>
+<line x1="270" y1="120" x2="265" y2="120" stroke="black" stroke-width="1"/>
+<text x="255" y="125" text-anchor="end" font-family="Arial" font-size="12">1.7</text>
+<line x1="270" y1="50" x2="265" y2="50" stroke="black" stroke-width="1"/>
+<text x="255" y="55" text-anchor="end" font-family="Arial" font-size="12">3.2</text>
+<path d="M536.667 106.757 L 536.532 103.757 L 536.13 100.769 L 535.462 97.8057 L 534.53 94.8781 L 533.338 91.9984 L 531.891 89.1781 L 530.195 86.4286 L 528.257 83.761 L 526.084 81.1859 L 523.685 78.7138 L 521.07 76.3546 L 518.249 74.1179 L 515.234 72.0126 L 512.037 70.0471 L 508.67 68.2295 L 505.148 66.567 L 501.485 65.0664 L 497.694 63.7336 L 493.792 62.5741 L 489.795 61.5925 L 485.717 60.7927 L 481.577 60.178 L 477.389 59.7509 L 473.172 59.513 L 468.942 59.4654 L 464.717 59.6082 L 460.512 59.9409 L 456.346 60.462 L 452.235 61.1696 L 448.195 62.0608 L 444.244 63.1319 L 440.396 64.3787 L 436.667 65.7961 L 433.072 67.3785 L 429.626 69.1194 L 426.343 71.0118 L 423.235 73.0482 L 420.316 75.2204 L 417.596 77.5195 L 415.088 79.9364 L 412.801 82.4612 L 410.744 85.0839 L 408.926 87.7938 L 407.354 90.5801 L 406.034 93.4316 L 404.971 96.3367 L 404.171 99.2837 L 403.635 102.261 L 403.367 105.256 L 403.367 108.257 L 403.635 111.253 L 404.171 114.23 L 404.971 117.177 L 406.034 120.082 L 407.354 122.933 L 408.926 125.72 L 410.744 128.43 L 412.801 131.052 L 415.088 133.577 L 417.596 135.994 L 420.316 138.293 L 423.235 140.465 L 426.343 142.502 L 429.626 144.394 L 433.072 146.135 L 436.667 147.717 L 440.396 149.135 L 444.244 150.382 L 448.195 151.453 L 452.235 152.344 L 456.346 153.051 L 460.512 153.573 L 464.717 153.905 L 468.942 154.048 L 473.172 154 L 477.389 153.763 L 481.577 153.336 L 485.717 152.721 L 489.795 151.921 L 493.792 150.939 L 497.694 149.78 L 501.485 148.447 L 505.148 146.946 L 508.67 145.284 L 512.037 143.466 L 515.234 141.501 L 518.249 139.396 L 521.07 137.159 L 523.685 134.8 L 526.084 132.328 L 528.257 129.753 L 530.195 127.085 L 531.891 124.335 L 533.338 121.515 L 534.53 118.635 L 535.462 115.708 L 536.13 112.744 L 536.532 109.757 L 536.667 106.757" fill="none" stroke="#ff0000" stroke-width="2"  />
+<path d="M470 201.351 L 469.597 192.352 L 468.391 183.389 L 466.386 174.498 L 463.59 165.715 L 460.014 157.076 L 455.674 148.615 L 450.585 140.367 L 444.77 132.364 L 438.251 124.639 L 431.054 117.223 L 423.209 110.145 L 414.747 103.435 L 405.702 97.1187 L 396.111 91.2225 L 386.011 85.7696 L 375.445 80.7822 L 364.454 76.2803 L 353.083 72.2819 L 341.377 68.8033 L 329.384 65.8585 L 317.152 63.4592 L 304.73 61.6151 L 292.168 60.3337 L 279.516 59.6202 L 266.827 59.4773 L 254.15 59.9057 L 241.537 60.9037 L 229.039 62.4672 L 216.705 64.59 L 204.586 67.2634 L 192.731 70.4768 L 181.187 74.2171 L 170 78.4694 L 159.216 83.2164 L 148.878 88.4392 L 139.028 94.1166 L 129.705 100.226 L 120.947 106.742 L 112.789 113.64 L 105.265 120.89 L 98.4033 128.465 L 92.2329 136.333 L 86.7783 144.463 L 82.0615 152.821 L 78.1014 161.376 L 74.914 170.091 L 72.5122 178.932 L 70.9056 187.864 L 70.1007 196.849 L 70.1007 205.853 L 70.9056 214.839 L 72.5122 223.77 L 74.914 232.612 L 78.1014 241.327 L 82.0615 249.881 L 86.7783 258.24 L 92.2329 266.37 L 98.4033 274.238 L 105.265 281.813 L 112.789 289.063 L 120.947 295.96 L 129.705 302.477 L 139.028 308.586 L 148.878 314.264 L 159.216 319.486 L 170 324.233 L 181.187 328.486 L 192.731 332.226 L 204.586 335.439 L 216.705 338.113 L 229.039 340.235 L 241.537 341.799 L 254.15 342.797 L 266.827 343.225 L 279.516 343.083 L 292.168 342.369 L 304.73 341.088 L 317.152 339.244 L 329.384 336.844 L 341.377 333.899 L 353.083 330.421 L 364.454 326.422 L 375.445 321.921 L 386.011 316.933 L 396.111 311.48 L 405.702 305.584 L 414.747 299.268 L 423.209 292.558 L 431.054 285.48 L 438.251 278.064 L 444.77 270.339 L 450.585 262.336 L 455.674 254.087 L 460.014 245.626 L 463.59 236.987 L 466.386 228.205 L 468.391 219.314 L 469.597 210.351 L 470 201.351" fill="none" stroke="#0000ff" stroke-width="3"  />
+<path d="M470 295.946 L 469.732 289.946 L 468.927 283.971 L 467.59 278.044 L 465.726 272.189 L 463.343 266.429 L 460.449 260.789 L 457.057 255.29 L 453.18 249.954 L 448.834 244.804 L 444.036 239.86 L 438.806 235.142 L 433.165 230.668 L 427.135 226.458 L 420.74 222.527 L 414.008 218.891 L 406.963 215.567 L 399.636 212.565 L 392.055 209.9 L 384.251 207.581 L 376.256 205.617 L 368.101 204.018 L 359.82 202.788 L 351.445 201.934 L 343.011 201.458 L 334.551 201.363 L 326.1 201.649 L 317.691 202.314 L 309.359 203.357 L 301.137 204.772 L 293.058 206.554 L 285.154 208.696 L 277.458 211.19 L 270 214.025 L 262.811 217.189 L 255.919 220.671 L 249.352 224.456 L 243.137 228.529 L 237.298 232.873 L 231.86 237.471 L 226.843 242.305 L 222.269 247.355 L 218.155 252.6 L 214.519 258.02 L 211.374 263.593 L 208.734 269.296 L 206.609 275.106 L 205.008 281 L 203.937 286.954 L 203.4 292.945 L 203.4 298.947 L 203.937 304.938 L 205.008 310.892 L 206.609 316.786 L 208.734 322.596 L 211.374 328.299 L 214.519 333.872 L 218.155 339.292 L 222.269 344.537 L 226.843 349.587 L 231.86 354.42 L 237.298 359.019 L 243.137 363.363 L 249.352 367.436 L 255.919 371.221 L 262.811 374.703 L 270 377.867 L 277.458 380.702 L 285.154 383.196 L 293.058 385.338 L 301.137 387.12 L 309.359 388.535 L 317.691 389.578 L 326.1 390.243 L 334.551 390.529 L 343.011 390.433 L 351.445 389.958 L 359.82 389.103 L 368.101 387.874 L 376.256 386.275 L 384.251 384.311 L 392.055 381.992 L 399.636 379.327 L 406.963 376.325 L 414.008 373 L 420.74 369.365 L 427.135 365.434 L 433.165 361.224 L 438.806 356.75 L 444.036 352.032 L 448.834 347.088 L 453.18 341.938 L 457.057 336.602 L 460.449 331.103 L 463.343 325.463 L 465.726 319.703 L 467.59 313.848 L 468.927 307.921 L 469.732 301.946 L 470 295.946" fill="none" stroke="#00ff00" stroke-width="1" stroke-dasharray="5,3" />
+<path d="M470 106.757 L 270 201.351" fill="none" stroke="#ff00ff" stroke-width="2.5"  />
+<path d="M70 295.946 L 470 295.946" fill="none" stroke="#00ffff" stroke-width="1.5" stroke-dasharray="7.5,4.5" />
+<text x="300" y="25" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold">Circles and lines</text>
+<text x="300" y="440" text-anchor="middle" font-family="Arial" font-size="14">X</text>
+<text x="16.6667" y="225" text-anchor="middle" font-family="Arial" font-size="14" transform="rotate(-90 16.6667,225)">Y</text>
+<rect x="440" y="60" width="150" height="110" fill="white" fill-opacity="0.8" stroke="black" stroke-width="1"/>
+<line x1="450" y1="75" x2="480" y2="75" stroke="#ff0000" stroke-width="2"/>
+<text x="485" y="80" font-family="Arial" font-size="12">Circle (3,2) r=1</text>
+<line x1="450" y1="95" x2="480" y2="95" stroke="#0000ff" stroke-width="3"/>
+<text x="485" y="100" font-family="Arial" font-size="12">Circle (0,0) r=3</text>
+<line x1="450" y1="115" x2="480" y2="115" stroke="#00ff00" stroke-width="1" stroke-dasharray="5,3"/>
+<text x="485" y="120" font-family="Arial" font-size="12">Dashed circle (1,-2) r=2</text>
+<line x1="450" y1="135" x2="480" y2="135" stroke="#ff00ff" stroke-width="2.5"/>
+<text x="485" y="140" font-family="Arial" font-size="12">Diagonal line</text>
+<line x1="450" y1="155" x2="480" y2="155" stroke="#00ffff" stroke-width="1.5" stroke-dasharray="7.5,4.5"/>
+<text x="485" y="160" font-family="Arial" font-size="12">Dashed horizontal line</text>
+</g>
+<g transform="translate(600,0)">
+<rect x="0" y="0" width="600" height="450" fill="none" stroke="black" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="150" y1="50" x2="150" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="250" y1="50" x2="250" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="350" y1="50" x2="350" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="450" y1="50" x2="450" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="550" y1="50" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="400" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="330" x2="550" y2="330" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="260" x2="550" y2="260" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="190" x2="550" y2="190" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="120" x2="550" y2="120" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="50" x2="550" y2="50" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="386.538" x2="550" y2="386.538" stroke="black" stroke-width="1.5"/>
+<line x1="300" y1="50" x2="300" y2="400" stroke="black" stroke-width="1.5"/>
+<line x1="50" y1="386.538" x2="50" y2="391.538" stroke="black" stroke-width="1"/>
+<text x="50" y="406.538" text-anchor="middle" font-family="Arial" font-size="12">-5.0</text>
+<line x1="150" y1="386.538" x2="150" y2="391.538" stroke="black" stroke-width="1"/>
+<text x="150" y="406.538" text-anchor="middle" font-family="Arial" font-size="12">-3.0</text>
+<line x1="250" y1="386.538" x2="250" y2="391.538" stroke="black" stroke-width="1"/>
+<text x="250" y="406.538" text-anchor="middle" font-family="Arial" font-size="12">-1.0</text>
+<line x1="350" y1="386.538" x2="350" y2="391.538" stroke="black" stroke-width="1"/>
+<text x="350" y="406.538" text-anchor="middle" font-family="Arial" font-size="12">1.0</text>
+<line x1="450" y1="386.538" x2="450" y2="391.538" stroke="black" stroke-width="1"/>
+<text x="450" y="406.538" text-anchor="middle" font-family="Arial" font-size="12">3.0</text>
+<line x1="550" y1="386.538" x2="550" y2="391.538" stroke="black" stroke-width="1"/>
+<text x="550" y="406.538" text-anchor="middle" font-family="Arial" font-size="12">5.0</text>
+<line x1="300" y1="400" x2="295" y2="400" stroke="black" stroke-width="1"/>
+<text x="285" y="405" text-anchor="end" font-family="Arial" font-size="12">-1.0</text>
+<line x1="300" y1="330" x2="295" y2="330" stroke="black" stroke-width="1"/>
+<text x="285" y="335" text-anchor="end" font-family="Arial" font-size="12">4.2</text>
+<line x1="300" y1="260" x2="295" y2="260" stroke="black" stroke-width="1"/>
+<text x="285" y="265" text-anchor="end" font-family="Arial" font-size="12">9.4</text>
+<line x1="300" y1="190" x2="295" y2="190" stroke="black" stroke-width="1"/>
+<text x="285" y="195" text-anchor="end" font-family="Arial" font-size="12">14</text>
+<line x1="300" y1="120" x2="295" y2="120" stroke="black" stroke-width="1"/>
+<text x="285" y="125" text-anchor="end" font-family="Arial" font-size="12">19</text>
+<line x1="300" y1="50" x2="295" y2="50" stroke="black" stroke-width="1"/>
+<text x="285" y="55" text-anchor="end" font-family="Arial" font-size="12">25</text>
+<path d="M50 50 L 55 63.3269 L 60 76.3846 L 65 89.1731 L 70 101.692 L 75 113.942 L 80 125.923 L 85 137.635 L 90 149.077 L 95 160.25 L 100 171.154 L 105 181.788 L 110 192.154 L 115 202.25 L 120 212.077 L 125 221.635 L 130 230.923 L 135 239.942 L 140 248.692 L 145 257.173 L 150 265.385 L 155 273.327 L 160 281 L 165 288.404 L 170 295.538 L 175 302.404 L 180 309 L 185 315.327 L 190 321.385 L 195 327.173 L 200 332.692 L 205 337.942 L 210 342.923 L 215 347.635 L 220 352.077 L 225 356.25 L 230 360.154 L 235 363.788 L 240 367.154 L 245 370.25 L 250 373.077 L 255 375.635 L 260 377.923 L 265 379.942 L 270 381.692 L 275 383.173 L 280 384.385 L 285 385.327 L 290 386 L 295 386.404 L 300 386.538 L 305 386.404 L 310 386 L 315 385.327 L 320 384.385 L 325 383.173 L 330 381.692 L 335 379.942 L 340 377.923 L 345 375.635 L 350 373.077 L 355 370.25 L 360 367.154 L 365 363.788 L 370 360.154 L 375 356.25 L 380 352.077 L 385 347.635 L 390 342.923 L 395 337.942 L 400 332.692 L 405 327.173 L 410 321.385 L 415 315.327 L 420 309 L 425 302.404 L 430 295.538 L 435 288.404 L 440 281 L 445 273.327 L 450 265.385 L 455 257.173 L 460 248.692 L 465 239.942 L 470 230.923 L 475 221.635 L 480 212.077 L 485 202.25 L 490 192.154 L 495 181.788 L 500 171.154 L 505 160.25 L 510 149.077 L 515 137.635 L 520 125.923 L 525 113.942 L 530 101.692 L 535 89.1731 L 540 76.3846 L 545 63.3269" fill="none" stroke="#0000ff" stroke-width="2"  />
+<text x="300" y="386.538" text-anchor="middle" font-family="Arial" font-size="18" fill="#ff0000">Origin (0,0)</text>
+<text x="150" y="265.385" text-anchor="middle" font-family="Arial" font-size="12" fill="#ffa500">y = x²</text>
+<text x="500" y="171.154" text-anchor="middle" font-family="Arial" font-size="9" fill="#ff00ff">Increasing slope here</text>
+<path d="M450 386.538 L 449.692 383.951 L 448.769 381.374 L 447.234 378.819 L 445.094 376.295 L 442.358 373.813 L 439.038 371.383 L 435.145 369.016 L 430.698 366.721 L 425.713 364.507 L 420.212 362.384 L 414.217 360.36 L 407.752 358.444 L 400.845 356.643 L 393.523 354.964 L 385.817 353.416 L 377.759 352.004 L 369.381 350.733 L 360.718 349.61 L 351.805 348.639 L 342.679 347.823 L 333.378 347.166 L 323.94 346.672 L 314.403 346.34 L 304.808 346.175 L 295.192 346.175 L 285.597 346.34 L 276.06 346.672 L 266.622 347.166 L 257.321 347.823 L 248.195 348.639 L 239.282 349.61 L 230.619 350.733 L 222.241 352.004 L 214.183 353.416 L 206.477 354.964 L 199.155 356.643 L 192.248 358.444 L 185.783 360.36 L 179.788 362.384 L 174.287 364.507 L 169.302 366.721 L 164.855 369.016 L 160.962 371.383 L 157.642 373.813 L 154.906 376.295 L 152.766 378.819 L 151.231 381.374 L 150.308 383.951 L 150 386.538" fill="none" stroke="#000000" stroke-width="2.5"  />
+<path d="M470.711 313.655 L 468.408 313.054 L 466.035 312.474 L 463.594 311.915 L 461.088 311.377 L 458.519 310.86 L 455.89 310.367 L 453.203 309.896 L 450.462 309.448 L 447.669 309.025 L 444.827 308.626 L 441.939 308.251 L 439.008 307.902 L 436.036 307.578 L 433.028 307.28 L 429.986 307.008 L 426.913 306.763 L 423.812 306.544 L 420.687 306.352 L 417.54 306.187 L 414.376 306.049 L 411.196 305.939 L 408.006 305.856 L 404.807 305.8 L 401.603 305.773 L 398.397 305.773 L 395.193 305.8 L 391.994 305.856 L 388.804 305.939 L 385.624 306.049 L 382.46 306.187 L 379.313 306.352 L 376.188 306.544 L 373.087 306.763 L 370.014 307.008 L 366.972 307.28 L 363.964 307.578 L 360.992 307.902 L 358.061 308.251 L 355.173 308.626 L 352.331 309.025 L 349.538 309.448 L 346.797 309.896 L 344.11 310.367 L 341.481 310.86 L 338.912 311.377 L 336.406 311.915 L 333.965 312.474 L 331.592 313.054 L 329.289 313.655" fill="none" stroke="#ffa500" stroke-width="2" stroke-dasharray="10,6" />
+<text x="300" y="25" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold">Parabola with text and arcs</text>
+<text x="300" y="440" text-anchor="middle" font-family="Arial" font-size="14">X</text>
+<text x="16.6667" y="225" text-anchor="middle" font-family="Arial" font-size="14" transform="rotate(-90 16.6667,225)">Y</text>
+<rect x="440" y="60" width="150" height="70" fill="white" fill-opacity="0.8" stroke="black" stroke-width="1"/>
+<line x1="450" y1="75" x2="480" y2="75" stroke="#0000ff" stroke-width="2"/>
+<text x="485" y="80" font-family="Arial" font-size="12">y = x²</text>
+<line x1="450" y1="95" x2="480" y2="95" stroke="#000000" stroke-width="2.5"/>
+<text x="485" y="100" font-family="Arial" font-size="12">180° arc</text>
+<line x1="450" y1="115" x2="480" y2="115" stroke="#ffa500" stroke-width="2" stroke-dasharray="10,6"/>
+<text x="485" y="120" font-family="Arial" font-size="12">90° arc</text>
+</g>
+<g transform="translate(0,450)">
+<rect x="0" y="0" width="600" height="450" fill="none" stroke="black" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="150" y1="50" x2="150" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="250" y1="50" x2="250" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="350" y1="50" x2="350" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="450" y1="50" x2="450" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="550" y1="50" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="400" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="330" x2="550" y2="330" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="260" x2="550" y2="260" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="190" x2="550" y2="190" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="120" x2="550" y2="120" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="50" x2="550" y2="50" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="225" x2="550" y2="225" stroke="black" stroke-width="1.5"/>
+<line x1="50" y1="50" x2="50" y2="400" stroke="black" stroke-width="1.5"/>
+<line x1="50" y1="225" x2="50" y2="230" stroke="black" stroke-width="1"/>
+<text x="50" y="245" text-anchor="middle" font-family="Arial" font-size="12">0</text>
+<line x1="150" y1="225" x2="150" y2="230" stroke="black" stroke-width="1"/>
+<text x="150" y="245" text-anchor="middle" font-family="Arial" font-size="12">2.0</text>
+<line x1="250" y1="225" x2="250" y2="230" stroke="black" stroke-width="1"/>
+<text x="250" y="245" text-anchor="middle" font-family="Arial" font-size="12">4.0</text>
+<line x1="350" y1="225" x2="350" y2="230" stroke="black" stroke-width="1"/>
+<text x="350" y="245" text-anchor="middle" font-family="Arial" font-size="12">6.0</text>
+<line x1="450" y1="225" x2="450" y2="230" stroke="black" stroke-width="1"/>
+<text x="450" y="245" text-anchor="middle" font-family="Arial" font-size="12">8.0</text>
+<line x1="550" y1="225" x2="550" y2="230" stroke="black" stroke-width="1"/>
+<text x="550" y="245" text-anchor="middle" font-family="Arial" font-size="12">10</text>
+<line x1="50" y1="400" x2="45" y2="400" stroke="black" stroke-width="1"/>
+<text x="35" y="405" text-anchor="end" font-family="Arial" font-size="12">-1.5</text>
+<line x1="50" y1="330" x2="45" y2="330" stroke="black" stroke-width="1"/>
+<text x="35" y="335" text-anchor="end" font-family="Arial" font-size="12">-0.9</text>
+<line x1="50" y1="260" x2="45" y2="260" stroke="black" stroke-width="1"/>
+<text x="35" y="265" text-anchor="end" font-family="Arial" font-size="12">-0.3</text>
+<line x1="50" y1="190" x2="45" y2="190" stroke="black" stroke-width="1"/>
+<text x="35" y="195" text-anchor="end" font-family="Arial" font-size="12">0.3</text>
+<line x1="50" y1="120" x2="45" y2="120" stroke="black" stroke-width="1"/>
+<text x="35" y="125" text-anchor="end" font-family="Arial" font-size="12">0.9</text>
+<line x1="50" y1="50" x2="45" y2="50" stroke="black" stroke-width="1"/>
+<text x="35" y="55" text-anchor="end" font-family="Arial" font-size="12">1.5</text>
+<path d="M50 225 L 52.5 219.169 L 55 213.353 L 57.5 207.566 L 60 201.822 L 62.5 196.136 L 65 190.523 L 67.5 184.995 L 70 179.568 L 72.5 174.254 L 75 169.067 L 77.5 164.02 L 80 159.125 L 82.5 154.395 L 85 149.841 L 87.5 145.475 L 90 141.308 L 92.5 137.351 L 95 133.612 L 97.5 130.102 L 100 126.828 L 102.5 123.801 L 105 121.026 L 107.5 118.511 L 110 116.262 L 112.5 114.285 L 115 112.585 L 117.5 111.166 L 120 110.031 L 122.5 109.183 L 125 108.626 L 127.5 108.359 L 130 108.383 L 132.5 108.699 L 135 109.306 L 137.5 110.202 L 140 111.384 L 142.5 112.851 L 145 114.598 L 147.5 116.621 L 150 118.915 L 152.5 121.474 L 155 124.292 L 157.5 127.362 L 160 130.675 L 162.5 134.225 L 165 138.001 L 167.5 141.995 L 170 146.196 L 172.5 150.594 L 175 155.178 L 177.5 159.937 L 180 164.858 L 182.5 169.93 L 185 175.139 L 187.5 180.473 L 190 185.918 L 192.5 191.461 L 195 197.088 L 197.5 202.784 L 200 208.536 L 202.5 214.329 L 205 220.149 L 207.5 225.981 L 210 231.81 L 212.5 237.623 L 215 243.404 L 217.5 249.139 L 220 254.813 L 222.5 260.413 L 225 265.925 L 227.5 271.334 L 230 276.627 L 232.5 281.792 L 235 286.814 L 237.5 291.682 L 240 296.383 L 242.5 300.906 L 245 305.239 L 247.5 309.372 L 250 313.294 L 252.5 316.995 L 255 320.466 L 257.5 323.698 L 260 326.684 L 262.5 329.415 L 265 331.886 L 267.5 334.089 L 270 336.02 L 272.5 337.674 L 275 339.045 L 277.5 340.132 L 280 340.931 L 282.5 341.44 L 285 341.658 L 287.5 341.584 L 290 341.219 L 292.5 340.564 L 295 339.619 L 297.5 338.389 L 300 336.874 L 302.5 335.081 L 305 333.012 L 307.5 330.673 L 310 328.07 L 312.5 325.209 L 315 322.098 L 317.5 318.744 L 320 315.156 L 322.5 311.342 L 325 307.313 L 327.5 303.078 L 330 298.648 L 332.5 294.033 L 335 289.247 L 337.5 284.299 L 340 279.204 L 342.5 273.972 L 345 268.619 L 347.5 263.156 L 350 257.598 L 352.5 251.959 L 355 246.252 L 357.5 240.492 L 360 234.694 L 362.5 228.871 L 365 223.038 L 367.5 217.211 L 370 211.403 L 372.5 205.628 L 375 199.903 L 377.5 194.24 L 380 188.654 L 382.5 183.158 L 385 177.768 L 387.5 172.495 L 390 167.353 L 392.5 162.356 L 395 157.515 L 397.5 152.843 L 400 148.352 L 402.5 144.051 L 405 139.954 L 407.5 136.068 L 410 132.405 L 412.5 128.974 L 415 125.782 L 417.5 122.839 L 420 120.151 L 422.5 117.725 L 425 115.567 L 427.5 113.682 L 430 112.076 L 432.5 110.752 L 435 109.714 L 437.5 108.963 L 440 108.503 L 442.5 108.334 L 445 108.457 L 447.5 108.871 L 450 109.575 L 452.5 110.568 L 455 111.846 L 457.5 113.408 L 460 115.248 L 462.5 117.363 L 465 119.747 L 467.5 122.393 L 470 125.297 L 472.5 128.449 L 475 131.843 L 477.5 135.47 L 480 139.32 L 482.5 143.385 L 485 147.654 L 487.5 152.116 L 490 156.76 L 492.5 161.574 L 495 166.548 L 497.5 171.667 L 500 176.92 L 502.5 182.292 L 505 187.772 L 507.5 193.344 L 510 198.996 L 512.5 204.713 L 515 210.48 L 517.5 216.284 L 520 222.11 L 522.5 227.942 L 525 233.768 L 527.5 239.571 L 530 245.338 L 532.5 251.054 L 535 256.705 L 537.5 262.277 L 540 267.756 L 542.5 273.128 L 545 278.379 L 547.5 283.497" fill="none" stroke="#0000ff" stroke-width="2"  />
+<path d="M160 341.667 L 128.5 225" fill="none" stroke="#ff0000" stroke-width="1.5"  />
+<line x1="160" y1="341.667" x2="128.5" y2="225" stroke="#ff0000" stroke-width="1.5"/>
+<polygon points="128.5,225 135.585,232.058 125.93,234.664" fill="#ff0000"/>
+<path d="M375 108.333 L 285.5 225" fill="none" stroke="#00ff00" stroke-width="2"  />
+<line x1="375" y1="108.333" x2="285.5" y2="225" stroke="#00ff00" stroke-width="2"/>
+<polygon points="285.5,225 287.456,210.128 299.358,219.258" fill="#00ff00"/>
+<path d="M475 341.667 L 442.5 225" fill="none" stroke="#ffa500" stroke-width="3"  />
+<line x1="475" y1="341.667" x2="442.5" y2="225" stroke="#ffa500" stroke-width="3"/>
+<polygon points="442.5,225 460.352,242.502 436.269,249.211" fill="#ffa500"/>
+<text x="160" y="365" text-anchor="middle" font-family="Arial" font-size="12" fill="#ff0000">First minimum</text>
+<text x="375" y="85" text-anchor="middle" font-family="Arial" font-size="12" fill="#00ff00">Second maximum</text>
+<text x="475" y="365" text-anchor="middle" font-family="Arial" font-size="12" fill="#ffa500">Third minimum</text>
+<path d="M157.08 108.333 L 257.08 341.667" fill="none" stroke="#00ffff" stroke-width="1.5" stroke-dasharray="7.5,4.5" />
+<path d="M314.159 341.667 L 414.159 108.333" fill="none" stroke="#ffff00" stroke-width="1.5" stroke-dasharray="7.5,4.5" />
+<text x="300" y="25" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold">Sine wave with arrows and tangents</text>
+<text x="300" y="440" text-anchor="middle" font-family="Arial" font-size="14">X</text>
+<text x="16.6667" y="225" text-anchor="middle" font-family="Arial" font-size="14" transform="rotate(-90 16.6667,225)">Y</text>
+<rect x="440" y="60" width="150" height="70" fill="white" fill-opacity="0.8" stroke="black" stroke-width="1"/>
+<line x1="450" y1="75" x2="480" y2="75" stroke="#0000ff" stroke-width="2"/>
+<text x="485" y="80" font-family="Arial" font-size="12">sin(x)</text>
+<line x1="450" y1="95" x2="480" y2="95" stroke="#00ffff" stroke-width="1.5" stroke-dasharray="7.5,4.5"/>
+<text x="485" y="100" font-family="Arial" font-size="12">Tangent line at x=π</text>
+<line x1="450" y1="115" x2="480" y2="115" stroke="#ffff00" stroke-width="1.5" stroke-dasharray="7.5,4.5"/>
+<text x="485" y="120" font-family="Arial" font-size="12">Tangent line at x=2π</text>
+</g>
+<g transform="translate(675,450)">
+<rect x="0" y="0" width="450" height="450" fill="none" stroke="black" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="120" y1="50" x2="120" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="190" y1="50" x2="190" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="260" y1="50" x2="260" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="330" y1="50" x2="330" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="400" y1="50" x2="400" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="400" x2="400" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="330" x2="400" y2="330" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="260" x2="400" y2="260" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="190" x2="400" y2="190" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="120" x2="400" y2="120" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="50" x2="400" y2="50" stroke="#c8c8c8" stroke-width="1" />
+<line x1="67.5" y1="50" x2="67.5" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="85" y1="50" x2="85" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="102.5" y1="50" x2="102.5" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="137.5" y1="50" x2="137.5" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="155" y1="50" x2="155" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="172.5" y1="50" x2="172.5" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="207.5" y1="50" x2="207.5" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="225" y1="50" x2="225" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="242.5" y1="50" x2="242.5" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="277.5" y1="50" x2="277.5" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="295" y1="50" x2="295" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="312.5" y1="50" x2="312.5" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="347.5" y1="50" x2="347.5" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="365" y1="50" x2="365" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="382.5" y1="50" x2="382.5" y2="400" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="382.5" x2="400" y2="382.5" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="365" x2="400" y2="365" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="347.5" x2="400" y2="347.5" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="312.5" x2="400" y2="312.5" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="295" x2="400" y2="295" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="277.5" x2="400" y2="277.5" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="242.5" x2="400" y2="242.5" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="225" x2="400" y2="225" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="207.5" x2="400" y2="207.5" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="172.5" x2="400" y2="172.5" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="155" x2="400" y2="155" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="137.5" x2="400" y2="137.5" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="102.5" x2="400" y2="102.5" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="85" x2="400" y2="85" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="67.5" x2="400" y2="67.5" stroke="#e6e6e6" stroke-width="1" />
+<line x1="50" y1="225" x2="400" y2="225" stroke="black" stroke-width="1.5"/>
+<line x1="225" y1="50" x2="225" y2="400" stroke="black" stroke-width="1.5"/>
+<line x1="50" y1="225" x2="50" y2="230" stroke="black" stroke-width="1"/>
+<text x="50" y="245" text-anchor="middle" font-family="Arial" font-size="12">-5.0</text>
+<line x1="120" y1="225" x2="120" y2="230" stroke="black" stroke-width="1"/>
+<text x="120" y="245" text-anchor="middle" font-family="Arial" font-size="12">-3.0</text>
+<line x1="190" y1="225" x2="190" y2="230" stroke="black" stroke-width="1"/>
+<text x="190" y="245" text-anchor="middle" font-family="Arial" font-size="12">-1.0</text>
+<line x1="260" y1="225" x2="260" y2="230" stroke="black" stroke-width="1"/>
+<text x="260" y="245" text-anchor="middle" font-family="Arial" font-size="12">1.0</text>
+<line x1="330" y1="225" x2="330" y2="230" stroke="black" stroke-width="1"/>
+<text x="330" y="245" text-anchor="middle" font-family="Arial" font-size="12">3.0</text>
+<line x1="400" y1="225" x2="400" y2="230" stroke="black" stroke-width="1"/>
+<text x="400" y="245" text-anchor="middle" font-family="Arial" font-size="12">5.0</text>
+<line x1="225" y1="400" x2="220" y2="400" stroke="black" stroke-width="1"/>
+<text x="210" y="405" text-anchor="end" font-family="Arial" font-size="12">-5.0</text>
+<line x1="225" y1="330" x2="220" y2="330" stroke="black" stroke-width="1"/>
+<text x="210" y="335" text-anchor="end" font-family="Arial" font-size="12">-3.0</text>
+<line x1="225" y1="260" x2="220" y2="260" stroke="black" stroke-width="1"/>
+<text x="210" y="265" text-anchor="end" font-family="Arial" font-size="12">-1.0</text>
+<line x1="225" y1="190" x2="220" y2="190" stroke="black" stroke-width="1"/>
+<text x="210" y="195" text-anchor="end" font-family="Arial" font-size="12">1.0</text>
+<line x1="225" y1="120" x2="220" y2="120" stroke="black" stroke-width="1"/>
+<text x="210" y="125" text-anchor="end" font-family="Arial" font-size="12">3.0</text>
+<line x1="225" y1="50" x2="220" y2="50" stroke="black" stroke-width="1"/>
+<text x="210" y="55" text-anchor="end" font-family="Arial" font-size="12">5.0</text>
+<path d="M85 365 L 104.799 384.799" fill="none" stroke="#2000df" stroke-width="1.5"  />
+<line x1="85" y1="365" x2="104.799" y2="384.799" stroke="#2000df" stroke-width="1.5"/>
+<polygon points="104.799,384.799 99.9694,383.505 103.505,379.969" fill="#2000df"/>
+<path d="M85 295 L 97.522 320.044" fill="none" stroke="#e4001a" stroke-width="1.5"  />
+<line x1="85" y1="295" x2="97.522" y2="320.044" stroke="#e4001a" stroke-width="1.5"/>
+<polygon points="97.522,320.044 93.3494,317.289 97.8216,315.053" fill="#e4001a"/>
+<path d="M85 225 L 85 253" fill="none" stroke="#cc0032" stroke-width="1.5"  />
+<line x1="85" y1="225" x2="85" y2="253" stroke="#cc0032" stroke-width="1.5"/>
+<polygon points="85,253 82.5,248.67 87.5,248.67" fill="#cc0032"/>
+<path d="M85 155 L 72.478 180.044" fill="none" stroke="#e4001a" stroke-width="1.5"  />
+<line x1="85" y1="155" x2="72.478" y2="180.044" stroke="#e4001a" stroke-width="1.5"/>
+<polygon points="72.478,180.044 72.1784,175.053 76.6506,177.289" fill="#e4001a"/>
+<path d="M85 85 L 65.201 104.799" fill="none" stroke="#2000df" stroke-width="1.5"  />
+<line x1="85" y1="85" x2="65.201" y2="104.799" stroke="#2000df" stroke-width="1.5"/>
+<polygon points="65.201,104.799 66.4951,99.9694 70.0306,103.505" fill="#2000df"/>
+<path d="M155 365 L 180.044 377.522" fill="none" stroke="#e4001a" stroke-width="1.5"  />
+<line x1="155" y1="365" x2="180.044" y2="377.522" stroke="#e4001a" stroke-width="1.5"/>
+<polygon points="180.044,377.522 175.053,377.822 177.289,373.349" fill="#e4001a"/>
+<path d="M155 295 L 174.799 314.799" fill="none" stroke="#90006e" stroke-width="1.5"  />
+<line x1="155" y1="295" x2="174.799" y2="314.799" stroke="#90006e" stroke-width="1.5"/>
+<polygon points="174.799,314.799 169.969,313.505 173.505,309.969" fill="#90006e"/>
+<path d="M155 225 L 155 253" fill="none" stroke="#660099" stroke-width="1.5"  />
+<line x1="155" y1="225" x2="155" y2="253" stroke="#660099" stroke-width="1.5"/>
+<polygon points="155,253 152.5,248.67 157.5,248.67" fill="#660099"/>
+<path d="M155 155 L 135.201 174.799" fill="none" stroke="#90006e" stroke-width="1.5"  />
+<line x1="155" y1="155" x2="135.201" y2="174.799" stroke="#90006e" stroke-width="1.5"/>
+<polygon points="135.201,174.799 136.495,169.969 140.031,173.505" fill="#90006e"/>
+<path d="M155 85 L 129.956 97.522" fill="none" stroke="#e4001a" stroke-width="1.5"  />
+<line x1="155" y1="85" x2="129.956" y2="97.522" stroke="#e4001a" stroke-width="1.5"/>
+<polygon points="129.956,97.522 132.711,93.3494 134.947,97.8216" fill="#e4001a"/>
+<path d="M225 365 L 253 365" fill="none" stroke="#cc0032" stroke-width="1.5"  />
+<line x1="225" y1="365" x2="253" y2="365" stroke="#cc0032" stroke-width="1.5"/>
+<polygon points="253,365 248.67,367.5 248.67,362.5" fill="#cc0032"/>
+<path d="M225 295 L 253 295" fill="none" stroke="#660099" stroke-width="1.5"  />
+<line x1="225" y1="295" x2="253" y2="295" stroke="#660099" stroke-width="1.5"/>
+<polygon points="253,295 248.67,297.5 248.67,292.5" fill="#660099"/>
+<path d="M225 155 L 197 155" fill="none" stroke="#660099" stroke-width="1.5"  />
+<line x1="225" y1="155" x2="197" y2="155" stroke="#660099" stroke-width="1.5"/>
+<polygon points="197,155 201.33,152.5 201.33,157.5" fill="#660099"/>
+<path d="M225 85 L 197 85" fill="none" stroke="#cc0032" stroke-width="1.5"  />
+<line x1="225" y1="85" x2="197" y2="85" stroke="#cc0032" stroke-width="1.5"/>
+<polygon points="197,85 201.33,82.5 201.33,87.5" fill="#cc0032"/>
+<path d="M295 365 L 320.044 352.478" fill="none" stroke="#e4001a" stroke-width="1.5"  />
+<line x1="295" y1="365" x2="320.044" y2="352.478" stroke="#e4001a" stroke-width="1.5"/>
+<polygon points="320.044,352.478 317.289,356.651 315.053,352.178" fill="#e4001a"/>
+<path d="M295 295 L 314.799 275.201" fill="none" stroke="#90006e" stroke-width="1.5"  />
+<line x1="295" y1="295" x2="314.799" y2="275.201" stroke="#90006e" stroke-width="1.5"/>
+<polygon points="314.799,275.201 313.505,280.031 309.969,276.495" fill="#90006e"/>
+<path d="M295 225 L 295 197" fill="none" stroke="#660099" stroke-width="1.5"  />
+<line x1="295" y1="225" x2="295" y2="197" stroke="#660099" stroke-width="1.5"/>
+<polygon points="295,197 297.5,201.33 292.5,201.33" fill="#660099"/>
+<path d="M295 155 L 275.201 135.201" fill="none" stroke="#90006e" stroke-width="1.5"  />
+<line x1="295" y1="155" x2="275.201" y2="135.201" stroke="#90006e" stroke-width="1.5"/>
+<polygon points="275.201,135.201 280.031,136.495 276.495,140.031" fill="#90006e"/>
+<path d="M295 85 L 269.956 72.478" fill="none" stroke="#e4001a" stroke-width="1.5"  />
+<line x1="295" y1="85" x2="269.956" y2="72.478" stroke="#e4001a" stroke-width="1.5"/>
+<polygon points="269.956,72.478 274.947,72.1784 272.711,76.6506" fill="#e4001a"/>
+<path d="M365 365 L 384.799 345.201" fill="none" stroke="#2000df" stroke-width="1.5"  />
+<line x1="365" y1="365" x2="384.799" y2="345.201" stroke="#2000df" stroke-width="1.5"/>
+<polygon points="384.799,345.201 383.505,350.031 379.969,346.495" fill="#2000df"/>
+<path d="M365 295 L 377.522 269.956" fill="none" stroke="#e4001a" stroke-width="1.5"  />
+<line x1="365" y1="295" x2="377.522" y2="269.956" stroke="#e4001a" stroke-width="1.5"/>
+<polygon points="377.522,269.956 377.822,274.947 373.349,272.711" fill="#e4001a"/>
+<path d="M365 225 L 365 197" fill="none" stroke="#cc0032" stroke-width="1.5"  />
+<line x1="365" y1="225" x2="365" y2="197" stroke="#cc0032" stroke-width="1.5"/>
+<polygon points="365,197 367.5,201.33 362.5,201.33" fill="#cc0032"/>
+<path d="M365 155 L 352.478 129.956" fill="none" stroke="#e4001a" stroke-width="1.5"  />
+<line x1="365" y1="155" x2="352.478" y2="129.956" stroke="#e4001a" stroke-width="1.5"/>
+<polygon points="352.478,129.956 356.651,132.711 352.178,134.947" fill="#e4001a"/>
+<path d="M365 85 L 345.201 65.201" fill="none" stroke="#2000df" stroke-width="1.5"  />
+<line x1="365" y1="85" x2="345.201" y2="65.201" stroke="#2000df" stroke-width="1.5"/>
+<polygon points="345.201,65.201 350.031,66.4951 346.495,70.0306" fill="#2000df"/>
+<path d="M232 225 L 231.986 224.556 L 231.944 224.114 L 231.874 223.675 L 231.776 223.242 L 231.65 222.816 L 231.499 222.398 L 231.32 221.991 L 231.117 221.597 L 230.889 221.216 L 230.637 220.85 L 230.362 220.5 L 230.066 220.169 L 229.75 219.858 L 229.414 219.567 L 229.06 219.298 L 228.691 219.052 L 228.306 218.83 L 227.908 218.633 L 227.498 218.461 L 227.078 218.316 L 226.65 218.197 L 226.216 218.106 L 225.776 218.043 L 225.333 218.008 L 224.889 218.001 L 224.445 218.022 L 224.004 218.071 L 223.566 218.148 L 223.135 218.253 L 222.711 218.385 L 222.296 218.544 L 221.892 218.728 L 221.5 218.938 L 221.123 219.172 L 220.761 219.43 L 220.416 219.71 L 220.09 220.011 L 219.783 220.333 L 219.498 220.673 L 219.234 221.031 L 218.994 221.404 L 218.778 221.792 L 218.587 222.193 L 218.422 222.606 L 218.284 223.028 L 218.172 223.458 L 218.088 223.894 L 218.032 224.335 L 218.004 224.778 L 218.004 225.222 L 218.032 225.665 L 218.088 226.106 L 218.172 226.542 L 218.284 226.972 L 218.422 227.394 L 218.587 227.807 L 218.778 228.208 L 218.994 228.596 L 219.234 228.969 L 219.498 229.327 L 219.783 229.667 L 220.09 229.989 L 220.416 230.29 L 220.761 230.57 L 221.123 230.828 L 221.5 231.062 L 221.892 231.272 L 222.296 231.456 L 222.711 231.615 L 223.135 231.747 L 223.566 231.852 L 224.004 231.929 L 224.445 231.978 L 224.889 231.999 L 225.333 231.992 L 225.776 231.957 L 226.216 231.894 L 226.65 231.803 L 227.078 231.684 L 227.498 231.539 L 227.908 231.367 L 228.306 231.17 L 228.691 230.948 L 229.06 230.702 L 229.414 230.433 L 229.75 230.142 L 230.066 229.831 L 230.362 229.5 L 230.637 229.15 L 230.889 228.784 L 231.117 228.403 L 231.32 228.009 L 231.499 227.602 L 231.65 227.184 L 231.776 226.758 L 231.874 226.325 L 231.944 225.886 L 231.986 225.444 L 232 225" fill="none" stroke="#000000" stroke-width="2"  />
+<path d="M260 225 L 259.93 222.78 L 259.718 220.569 L 259.368 218.376 L 258.878 216.21 L 258.252 214.079 L 257.493 211.992 L 256.602 209.957 L 255.585 207.983 L 254.444 206.078 L 253.184 204.248 L 251.812 202.502 L 250.331 200.847 L 248.748 199.289 L 247.069 197.835 L 245.302 196.49 L 243.453 195.26 L 241.529 194.149 L 239.54 193.163 L 237.491 192.305 L 235.392 191.578 L 233.252 190.987 L 231.078 190.532 L 228.879 190.216 L 226.665 190.04 L 224.445 190.004 L 222.226 190.11 L 220.019 190.356 L 217.832 190.742 L 215.673 191.266 L 213.553 191.925 L 211.478 192.718 L 209.458 193.64 L 207.5 194.689 L 205.613 195.86 L 203.804 197.148 L 202.08 198.549 L 200.448 200.056 L 198.916 201.663 L 197.488 203.364 L 196.171 205.153 L 194.971 207.021 L 193.891 208.962 L 192.936 210.967 L 192.111 213.029 L 191.418 215.139 L 190.86 217.289 L 190.44 219.47 L 190.158 221.673 L 190.018 223.89 L 190.018 226.11 L 190.158 228.327 L 190.44 230.53 L 190.86 232.711 L 191.418 234.861 L 192.111 236.971 L 192.936 239.033 L 193.891 241.038 L 194.971 242.979 L 196.171 244.847 L 197.488 246.636 L 198.916 248.337 L 200.448 249.944 L 202.08 251.451 L 203.804 252.852 L 205.613 254.14 L 207.5 255.311 L 209.458 256.36 L 211.478 257.282 L 213.553 258.075 L 215.673 258.734 L 217.832 259.258 L 220.019 259.644 L 222.226 259.89 L 224.445 259.996 L 226.665 259.96 L 228.879 259.784 L 231.078 259.468 L 233.252 259.013 L 235.392 258.422 L 237.491 257.695 L 239.54 256.837 L 241.529 255.851 L 243.453 254.74 L 245.302 253.51 L 247.069 252.165 L 248.748 250.711 L 250.331 249.153 L 251.812 247.498 L 253.184 245.752 L 254.444 243.922 L 255.585 242.017 L 256.602 240.043 L 257.493 238.008 L 258.252 235.921 L 258.878 233.79 L 259.368 231.624 L 259.718 229.431 L 259.93 227.22 L 260 225" fill="none" stroke="#000000" stroke-width="2"  />
+<path d="M330 225 L 329.789 218.34 L 329.155 211.708 L 328.103 205.129 L 326.635 198.629 L 324.757 192.236 L 322.479 185.975 L 319.807 179.872 L 316.754 173.949 L 313.332 168.233 L 309.553 162.745 L 305.435 157.507 L 300.992 152.542 L 296.243 147.868 L 291.208 143.505 L 285.906 139.47 L 280.359 135.779 L 274.588 132.447 L 268.619 129.489 L 262.473 126.914 L 256.177 124.735 L 249.755 122.96 L 243.233 121.595 L 236.638 120.647 L 229.996 120.119 L 223.334 120.013 L 216.679 120.33 L 210.057 121.069 L 203.495 122.226 L 197.02 123.797 L 190.658 125.775 L 184.434 128.153 L 178.373 130.921 L 172.5 134.067 L 166.838 137.58 L 161.411 141.445 L 156.24 145.646 L 151.345 150.167 L 146.747 154.989 L 142.464 160.093 L 138.514 165.459 L 134.912 171.064 L 131.672 176.886 L 128.809 182.902 L 126.332 189.088 L 124.253 195.418 L 122.58 201.867 L 121.319 208.41 L 120.475 215.019 L 120.053 221.669 L 120.053 228.331 L 120.475 234.981 L 121.319 241.59 L 122.58 248.133 L 124.253 254.582 L 126.332 260.912 L 128.809 267.098 L 131.672 273.114 L 134.912 278.936 L 138.514 284.541 L 142.464 289.907 L 146.747 295.011 L 151.345 299.833 L 156.24 304.354 L 161.411 308.555 L 166.838 312.42 L 172.5 315.933 L 178.373 319.079 L 184.434 321.847 L 190.658 324.225 L 197.02 326.203 L 203.495 327.774 L 210.057 328.931 L 216.679 329.67 L 223.334 329.987 L 229.996 329.881 L 236.638 329.353 L 243.233 328.405 L 249.755 327.04 L 256.177 325.265 L 262.473 323.086 L 268.619 320.511 L 274.588 317.553 L 280.359 314.221 L 285.906 310.53 L 291.208 306.495 L 296.243 302.132 L 300.992 297.458 L 305.435 292.493 L 309.553 287.255 L 313.332 281.767 L 316.754 276.051 L 319.807 270.128 L 322.479 264.025 L 324.757 257.764 L 326.635 251.371 L 328.103 244.871 L 329.155 238.292 L 329.789 231.66 L 330 225" fill="none" stroke="#ffa500" stroke-width="1.5" stroke-dasharray="7.5,4.5" />
+<path d="M85 365 L 365 85" fill="none" stroke="#00ffff" stroke-width="1" stroke-dasharray="5,3" />
+<path d="M85 85 L 365 365" fill="none" stroke="#00ffff" stroke-width="1" stroke-dasharray="5,3" />
+<path d="M295 225 L 294.964 222.756 L 294.856 220.515 L 294.677 218.278 L 294.425 216.049 L 294.103 213.828 L 293.709 211.619 L 293.245 209.424 L 292.711 207.244 L 292.107 205.083 L 291.434 202.942 L 290.693 200.824 L 289.884 198.731 L 289.009 196.665 L 288.068 194.628 L 287.062 192.622 L 285.992 190.65 L 284.86 188.713 L 283.666 186.813 L 282.412 184.952 L 281.099 183.132 L 279.728 181.356 L 278.301 179.624 L 276.819 177.939 L 275.284 176.302 L 273.698 174.716 L 272.061 173.181 L 270.376 171.699 L 268.644 170.272 L 266.868 168.901 L 265.048 167.588 L 263.187 166.334 L 261.287 165.14 L 259.35 164.008 L 257.378 162.938 L 255.372 161.932 L 253.335 160.991 L 251.269 160.116 L 249.176 159.307 L 247.058 158.566 L 244.917 157.893 L 242.756 157.289 L 240.576 156.755 L 238.381 156.291 L 236.172 155.897 L 233.951 155.575 L 231.722 155.323 L 229.485 155.144 L 227.244 155.036 L 225 155" fill="none" stroke="#ff00ff" stroke-width="2"  />
+<path d="M225 155 L 222.756 155.036 L 220.515 155.144 L 218.278 155.323 L 216.049 155.575 L 213.828 155.897 L 211.619 156.291 L 209.424 156.755 L 207.244 157.289 L 205.083 157.893 L 202.942 158.566 L 200.824 159.307 L 198.731 160.116 L 196.665 160.991 L 194.628 161.932 L 192.622 162.938 L 190.65 164.008 L 188.713 165.14 L 186.813 166.334 L 184.952 167.588 L 183.132 168.901 L 181.356 170.272 L 179.624 171.699 L 177.939 173.181 L 176.302 174.716 L 174.716 176.302 L 173.181 177.939 L 171.699 179.624 L 170.272 181.356 L 168.901 183.132 L 167.588 184.952 L 166.334 186.813 L 165.14 188.713 L 164.008 190.65 L 162.938 192.622 L 161.932 194.628 L 160.991 196.665 L 160.116 198.731 L 159.307 200.824 L 158.566 202.942 L 157.893 205.083 L 157.289 207.244 L 156.755 209.424 L 156.291 211.619 L 155.897 213.828 L 155.575 216.049 L 155.323 218.278 L 155.144 220.515 L 155.036 222.756 L 155 225" fill="none" stroke="#ff00ff" stroke-width="2"  />
+<path d="M155 225 L 155.036 227.244 L 155.144 229.485 L 155.323 231.722 L 155.575 233.951 L 155.897 236.172 L 156.291 238.381 L 156.755 240.576 L 157.289 242.756 L 157.893 244.917 L 158.566 247.058 L 159.307 249.176 L 160.116 251.269 L 160.991 253.335 L 161.932 255.372 L 162.938 257.378 L 164.008 259.35 L 165.14 261.287 L 166.334 263.187 L 167.588 265.048 L 168.901 266.868 L 170.272 268.644 L 171.699 270.376 L 173.181 272.061 L 174.716 273.698 L 176.302 275.284 L 177.939 276.819 L 179.624 278.301 L 181.356 279.728 L 183.132 281.099 L 184.952 282.412 L 186.813 283.666 L 188.713 284.86 L 190.65 285.992 L 192.622 287.062 L 194.628 288.068 L 196.665 289.009 L 198.731 289.884 L 200.824 290.693 L 202.942 291.434 L 205.083 292.107 L 207.244 292.711 L 209.424 293.245 L 211.619 293.709 L 213.828 294.103 L 216.049 294.425 L 218.278 294.677 L 220.515 294.856 L 222.756 294.964 L 225 295" fill="none" stroke="#ff00ff" stroke-width="2"  />
+<path d="M225 295 L 227.244 294.964 L 229.485 294.856 L 231.722 294.677 L 233.951 294.425 L 236.172 294.103 L 238.381 293.709 L 240.576 293.245 L 242.756 292.711 L 244.917 292.107 L 247.058 291.434 L 249.176 290.693 L 251.269 289.884 L 253.335 289.009 L 255.372 288.068 L 257.378 287.062 L 259.35 285.992 L 261.287 284.86 L 263.187 283.666 L 265.048 282.412 L 266.868 281.099 L 268.644 279.728 L 270.376 278.301 L 272.061 276.819 L 273.698 275.284 L 275.284 273.698 L 276.819 272.061 L 278.301 270.376 L 279.728 268.644 L 281.099 266.868 L 282.412 265.048 L 283.666 263.187 L 284.86 261.287 L 285.992 259.35 L 287.062 257.378 L 288.068 255.372 L 289.009 253.335 L 289.884 251.269 L 290.693 249.176 L 291.434 247.058 L 292.107 244.917 L 292.711 242.756 L 293.245 240.576 L 293.709 238.381 L 294.103 236.172 L 294.425 233.951 L 294.677 231.722 L 294.856 229.485 L 294.964 227.244 L 295 225" fill="none" stroke="#ff00ff" stroke-width="2"  />
+<text x="225" y="85" text-anchor="middle" font-family="Arial" font-size="15" fill="#ffffff">Circular vector field</text>
+<text x="225" y="25" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold">Vector field with geometric elements</text>
+<text x="225" y="440" text-anchor="middle" font-family="Arial" font-size="14">X</text>
+<text x="16.6667" y="225" text-anchor="middle" font-family="Arial" font-size="14" transform="rotate(-90 16.6667,225)">Y</text>
+<rect x="290" y="60" width="150" height="150" fill="white" fill-opacity="0.8" stroke="black" stroke-width="1"/>
+<line x1="300" y1="75" x2="330" y2="75" stroke="#000000" stroke-width="2"/>
+<text x="335" y="80" font-family="Arial" font-size="12">r = 1 circle</text>
+<line x1="300" y1="95" x2="330" y2="95" stroke="#000000" stroke-width="2"/>
+<text x="335" y="100" font-family="Arial" font-size="12">r = 1 circle</text>
+<line x1="300" y1="115" x2="330" y2="115" stroke="#ffa500" stroke-width="1.5" stroke-dasharray="7.5,4.5"/>
+<text x="335" y="120" font-family="Arial" font-size="12">r = 3 circle</text>
+<line x1="300" y1="135" x2="330" y2="135" stroke="#ff00ff" stroke-width="2"/>
+<text x="335" y="140" font-family="Arial" font-size="12">90° arc</text>
+<line x1="300" y1="155" x2="330" y2="155" stroke="#ff00ff" stroke-width="2"/>
+<text x="335" y="160" font-family="Arial" font-size="12">90° arc</text>
+<line x1="300" y1="175" x2="330" y2="175" stroke="#ff00ff" stroke-width="2"/>
+<text x="335" y="180" font-family="Arial" font-size="12">90° arc</text>
+<line x1="300" y1="195" x2="330" y2="195" stroke="#ff00ff" stroke-width="2"/>
+<text x="335" y="200" font-family="Arial" font-size="12">90° arc</text>
+</g>
+</svg>

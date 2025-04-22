@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="1200" height="900" xmlns="http://www.w3.org/2000/svg" version="1.1">
+<rect width="100%" height="100%" fill="white"/>
+<g transform="translate(0,0)">
+<rect x="0" y="0" width="600" height="450" fill="none" stroke="black" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="150" y1="50" x2="150" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="250" y1="50" x2="250" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="350" y1="50" x2="350" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="450" y1="50" x2="450" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="550" y1="50" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="400" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="330" x2="550" y2="330" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="260" x2="550" y2="260" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="190" x2="550" y2="190" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="120" x2="550" y2="120" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="50" x2="550" y2="50" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="283.333" x2="550" y2="283.333" stroke="black" stroke-width="1.5"/>
+<line x1="95.4545" y1="50" x2="95.4545" y2="400" stroke="black" stroke-width="1.5"/>
+<line x1="50" y1="283.333" x2="50" y2="288.333" stroke="black" stroke-width="1"/>
+<text x="50" y="303.333" text-anchor="middle" font-family="Arial" font-size="12">-1.0</text>
+<line x1="150" y1="283.333" x2="150" y2="288.333" stroke="black" stroke-width="1"/>
+<text x="150" y="303.333" text-anchor="middle" font-family="Arial" font-size="12">1.2</text>
+<line x1="250" y1="283.333" x2="250" y2="288.333" stroke="black" stroke-width="1"/>
+<text x="250" y="303.333" text-anchor="middle" font-family="Arial" font-size="12">3.4</text>
+<line x1="350" y1="283.333" x2="350" y2="288.333" stroke="black" stroke-width="1"/>
+<text x="350" y="303.333" text-anchor="middle" font-family="Arial" font-size="12">5.6</text>
+<line x1="450" y1="283.333" x2="450" y2="288.333" stroke="black" stroke-width="1"/>
+<text x="450" y="303.333" text-anchor="middle" font-family="Arial" font-size="12">7.8</text>
+<line x1="550" y1="283.333" x2="550" y2="288.333" stroke="black" stroke-width="1"/>
+<text x="550" y="303.333" text-anchor="middle" font-family="Arial" font-size="12">10</text>
+<line x1="95.4545" y1="400" x2="90.4545" y2="400" stroke="black" stroke-width="1"/>
+<text x="80.4545" y="405" text-anchor="end" font-family="Arial" font-size="12">-1.5</text>
+<line x1="95.4545" y1="330" x2="90.4545" y2="330" stroke="black" stroke-width="1"/>
+<text x="80.4545" y="335" text-anchor="end" font-family="Arial" font-size="12">-0.6</text>
+<line x1="95.4545" y1="260" x2="90.4545" y2="260" stroke="black" stroke-width="1"/>
+<text x="80.4545" y="265" text-anchor="end" font-family="Arial" font-size="12">0.3</text>
+<line x1="95.4545" y1="190" x2="90.4545" y2="190" stroke="black" stroke-width="1"/>
+<text x="80.4545" y="195" text-anchor="end" font-family="Arial" font-size="12">1.2</text>
+<line x1="95.4545" y1="120" x2="90.4545" y2="120" stroke="black" stroke-width="1"/>
+<text x="80.4545" y="125" text-anchor="end" font-family="Arial" font-size="12">2.1</text>
+<line x1="95.4545" y1="50" x2="90.4545" y2="50" stroke="black" stroke-width="1"/>
+<text x="80.4545" y="55" text-anchor="end" font-family="Arial" font-size="12">3.0</text>
+<circle cx="95.4545" cy="283.333" r="4" fill="#ff0000" stroke="black" stroke-width="1" />
+<circle cx="140.909" cy="253.045" r="4" fill="#ff0000" stroke="black" stroke-width="1" />
+<circle cx="186.364" cy="227.539" r="4" fill="#ff0000" stroke="black" stroke-width="1" />
+<circle cx="231.818" cy="210.841" r="4" fill="#ff0000" stroke="black" stroke-width="1" />
+<circle cx="277.273" cy="205.589" r="4" fill="#ff0000" stroke="black" stroke-width="1" />
+<circle cx="322.727" cy="212.61" r="4" fill="#ff0000" stroke="black" stroke-width="1" />
+<circle cx="368.182" cy="230.797" r="4" fill="#ff0000" stroke="black" stroke-width="1" />
+<circle cx="413.636" cy="257.279" r="4" fill="#ff0000" stroke="black" stroke-width="1" />
+<circle cx="459.091" cy="287.874" r="4" fill="#ff0000" stroke="black" stroke-width="1" />
+<circle cx="504.545" cy="317.752" r="4" fill="#ff0000" stroke="black" stroke-width="1" />
+<rect x="91.4545" y="240.444" width="8" height="8" fill="#0000ff" stroke="black" stroke-width="1" />
+<rect x="136.909" y="210.156" width="8" height="8" fill="#0000ff" stroke="black" stroke-width="1" />
+<rect x="182.364" y="184.65" width="8" height="8" fill="#0000ff" stroke="black" stroke-width="1" />
+<rect x="227.818" y="167.953" width="8" height="8" fill="#0000ff" stroke="black" stroke-width="1" />
+<rect x="273.273" y="162.7" width="8" height="8" fill="#0000ff" stroke="black" stroke-width="1" />
+<rect x="318.727" y="169.721" width="8" height="8" fill="#0000ff" stroke="black" stroke-width="1" />
+<rect x="364.182" y="187.908" width="8" height="8" fill="#0000ff" stroke="black" stroke-width="1" />
+<rect x="409.636" y="214.39" width="8" height="8" fill="#0000ff" stroke="black" stroke-width="1" />
+<rect x="455.091" y="244.985" width="8" height="8" fill="#0000ff" stroke="black" stroke-width="1" />
+<rect x="500.545" y="274.863" width="8" height="8" fill="#0000ff" stroke="black" stroke-width="1" />
+<polygon points="95.454545,201.555556 91.454545,209.019556 99.454545,209.019556" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="140.909091,171.267462 136.909091,178.731462 144.909091,178.731462" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="186.363636,145.761192 182.363636,153.225192 190.363636,153.225192" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="231.818182,129.063626 227.818182,136.527626 235.818182,136.527626" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="277.272727,123.810942 273.272727,131.274942 281.272727,131.274942" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="322.727273,130.832423 318.727273,138.296423 326.727273,138.296423" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="368.181818,149.019532 364.181818,156.483532 372.181818,156.483532" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="413.636364,175.500925 409.636364,182.964925 417.636364,182.964925" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="459.090909,206.095770 455.090909,213.559770 463.090909,213.559770" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="504.545455,235.973816 500.545455,243.437816 508.545455,243.437816" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="95.454545,162.666667 99.454545,166.666667 95.454545,170.666667 91.454545,166.666667" fill="#ffff00" stroke="black" stroke-width="1" />
+<polygon points="140.909091,132.378573 144.909091,136.378573 140.909091,140.378573 136.909091,136.378573" fill="#ffff00" stroke="black" stroke-width="1" />
+<polygon points="186.363636,106.872303 190.363636,110.872303 186.363636,114.872303 182.363636,110.872303" fill="#ffff00" stroke="black" stroke-width="1" />
+<polygon points="231.818182,90.174737 235.818182,94.174737 231.818182,98.174737 227.818182,94.174737" fill="#ffff00" stroke="black" stroke-width="1" />
+<polygon points="277.272727,84.922053 281.272727,88.922053 277.272727,92.922053 273.272727,88.922053" fill="#ffff00" stroke="black" stroke-width="1" />
+<polygon points="322.727273,91.943534 326.727273,95.943534 322.727273,99.943534 318.727273,95.943534" fill="#ffff00" stroke="black" stroke-width="1" />
+<polygon points="368.181818,110.130644 372.181818,114.130644 368.181818,118.130644 364.181818,114.130644" fill="#ffff00" stroke="black" stroke-width="1" />
+<polygon points="413.636364,136.612036 417.636364,140.612036 413.636364,144.612036 409.636364,140.612036" fill="#ffff00" stroke="black" stroke-width="1" />
+<polygon points="459.090909,167.206882 463.090909,171.206882 459.090909,175.206882 455.090909,171.206882" fill="#ffff00" stroke="black" stroke-width="1" />
+<polygon points="504.545455,197.084927 508.545455,201.084927 504.545455,205.084927 500.545455,201.084927" fill="#ffff00" stroke="black" stroke-width="1" />
+<polygon points="95.454545,123.777778 96.630116,126.159744 99.258772,126.541710 97.356658,128.395812 97.805686,131.013846 95.454545,129.777778 93.103404,131.013846 93.552432,128.395812 91.650319,126.541710 94.278975,126.159744" fill="#ff00ff" stroke="black" stroke-width="1" />
+<polygon points="140.909091,93.489684 142.084661,95.871650 144.713317,96.253616 142.811204,98.107718 143.260232,100.725752 140.909091,99.489684 138.557950,100.725752 139.006978,98.107718 137.104865,96.253616 139.733520,95.871650" fill="#ff00ff" stroke="black" stroke-width="1" />
+<polygon points="186.363636,67.983415 187.539207,70.365381 190.167862,70.747347 188.265749,72.601448 188.714777,75.219482 186.363636,73.983415 184.012495,75.219482 184.461523,72.601448 182.559410,70.747347 185.188066,70.365381" fill="#ff00ff" stroke="black" stroke-width="1" />
+<polygon points="231.818182,51.285848 232.993752,53.667814 235.622408,54.049780 233.720295,55.903882 234.169323,58.521916 231.818182,57.285848 229.467041,58.521916 229.916069,55.903882 228.013956,54.049780 230.642611,53.667814" fill="#ff00ff" stroke="black" stroke-width="1" />
+<polygon points="277.272727,46.033164 278.448298,48.415130 281.076953,48.797096 279.174840,50.651198 279.623868,53.269232 277.272727,52.033164 274.921586,53.269232 275.370614,50.651198 273.468501,48.797096 276.097157,48.415130" fill="#ff00ff" stroke="black" stroke-width="1" />
+<polygon points="322.727273,53.054646 323.902843,55.436612 326.531499,55.818578 324.629386,57.672680 325.078414,60.290714 322.727273,59.054646 320.376132,60.290714 320.825160,57.672680 318.923047,55.818578 321.551702,55.436612" fill="#ff00ff" stroke="black" stroke-width="1" />
+<polygon points="368.181818,71.241755 369.357389,73.623721 371.986044,74.005687 370.083931,75.859789 370.532959,78.477823 368.181818,77.241755 365.830677,78.477823 366.279705,75.859789 364.377592,74.005687 367.006248,73.623721" fill="#ff00ff" stroke="black" stroke-width="1" />
+<polygon points="413.636364,97.723147 414.811934,100.105113 417.440590,100.487079 415.538477,102.341181 415.987505,104.959215 413.636364,103.723147 411.285223,104.959215 411.734251,102.341181 409.832138,100.487079 412.460793,100.105113" fill="#ff00ff" stroke="black" stroke-width="1" />
+<polygon points="459.090909,128.317993 460.266480,130.699959 462.895135,131.081925 460.993022,132.936027 461.442050,135.554061 459.090909,134.317993 456.739768,135.554061 457.188796,132.936027 455.286683,131.081925 457.915339,130.699959" fill="#ff00ff" stroke="black" stroke-width="1" />
+<polygon points="504.545455,158.196038 505.721025,160.578004 508.349681,160.959970 506.447568,162.814072 506.896596,165.432106 504.545455,164.196038 502.194314,165.432106 502.643342,162.814072 500.741228,160.959970 503.369884,160.578004" fill="#ff00ff" stroke="black" stroke-width="1" />
+<text x="300" y="25" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold">Types of symbols</text>
+<text x="300" y="440" text-anchor="middle" font-family="Arial" font-size="14">X</text>
+<text x="16.6667" y="225" text-anchor="middle" font-family="Arial" font-size="14" transform="rotate(-90 16.6667,225)">Y</text>
+<rect x="440" y="60" width="150" height="110" fill="white" fill-opacity="0.8" stroke="black" stroke-width="1"/>
+<circle cx="465" cy="75" r="4" fill="#ff0000" stroke="black" stroke-width="1"/>
+<text x="485" y="80" font-family="Arial" font-size="12">Circle</text>
+<rect x="461" y="91" width="8" height="8" fill="#0000ff" stroke="black" stroke-width="1"/>
+<text x="485" y="100" font-family="Arial" font-size="12">Square</text>
+<text x="485" y="120" font-family="Arial" font-size="12">Triangle</text>
+<text x="485" y="140" font-family="Arial" font-size="12">Diamond</text>
+<text x="485" y="160" font-family="Arial" font-size="12">Star</text>
+</g>
+<g transform="translate(600,0)">
+<rect x="0" y="0" width="600" height="450" fill="none" stroke="black" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="150" y1="50" x2="150" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="250" y1="50" x2="250" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="350" y1="50" x2="350" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="450" y1="50" x2="450" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="550" y1="50" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="400" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="330" x2="550" y2="330" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="260" x2="550" y2="260" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="190" x2="550" y2="190" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="120" x2="550" y2="120" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="50" x2="550" y2="50" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="341.667" x2="550" y2="341.667" stroke="black" stroke-width="1.5"/>
+<line x1="95.4545" y1="50" x2="95.4545" y2="400" stroke="black" stroke-width="1.5"/>
+<line x1="50" y1="341.667" x2="50" y2="346.667" stroke="black" stroke-width="1"/>
+<text x="50" y="361.667" text-anchor="middle" font-family="Arial" font-size="12">-1.0</text>
+<line x1="150" y1="341.667" x2="150" y2="346.667" stroke="black" stroke-width="1"/>
+<text x="150" y="361.667" text-anchor="middle" font-family="Arial" font-size="12">1.2</text>
+<line x1="250" y1="341.667" x2="250" y2="346.667" stroke="black" stroke-width="1"/>
+<text x="250" y="361.667" text-anchor="middle" font-family="Arial" font-size="12">3.4</text>
+<line x1="350" y1="341.667" x2="350" y2="346.667" stroke="black" stroke-width="1"/>
+<text x="350" y="361.667" text-anchor="middle" font-family="Arial" font-size="12">5.6</text>
+<line x1="450" y1="341.667" x2="450" y2="346.667" stroke="black" stroke-width="1"/>
+<text x="450" y="361.667" text-anchor="middle" font-family="Arial" font-size="12">7.8</text>
+<line x1="550" y1="341.667" x2="550" y2="346.667" stroke="black" stroke-width="1"/>
+<text x="550" y="361.667" text-anchor="middle" font-family="Arial" font-size="12">10</text>
+<line x1="95.4545" y1="400" x2="90.4545" y2="400" stroke="black" stroke-width="1"/>
+<text x="80.4545" y="405" text-anchor="end" font-family="Arial" font-size="12">-0.5</text>
+<line x1="95.4545" y1="330" x2="90.4545" y2="330" stroke="black" stroke-width="1"/>
+<text x="80.4545" y="335" text-anchor="end" font-family="Arial" font-size="12">0.1</text>
+<line x1="95.4545" y1="260" x2="90.4545" y2="260" stroke="black" stroke-width="1"/>
+<text x="80.4545" y="265" text-anchor="end" font-family="Arial" font-size="12">0.7</text>
+<line x1="95.4545" y1="190" x2="90.4545" y2="190" stroke="black" stroke-width="1"/>
+<text x="80.4545" y="195" text-anchor="end" font-family="Arial" font-size="12">1.3</text>
+<line x1="95.4545" y1="120" x2="90.4545" y2="120" stroke="black" stroke-width="1"/>
+<text x="80.4545" y="125" text-anchor="end" font-family="Arial" font-size="12">1.9</text>
+<line x1="95.4545" y1="50" x2="90.4545" y2="50" stroke="black" stroke-width="1"/>
+<text x="80.4545" y="55" text-anchor="end" font-family="Arial" font-size="12">2.5</text>
+<circle cx="95.4545" cy="341.667" r="2" fill="#3264c8" stroke="black" stroke-width="1" />
+<circle cx="140.909" cy="341.667" r="2" fill="#3264c8" stroke="black" stroke-width="1" />
+<circle cx="186.364" cy="341.667" r="2" fill="#3264c8" stroke="black" stroke-width="1" />
+<circle cx="231.818" cy="341.667" r="2" fill="#3264c8" stroke="black" stroke-width="1" />
+<circle cx="277.273" cy="341.667" r="2" fill="#3264c8" stroke="black" stroke-width="1" />
+<circle cx="322.727" cy="341.667" r="2" fill="#3264c8" stroke="black" stroke-width="1" />
+<circle cx="368.182" cy="341.667" r="2" fill="#3264c8" stroke="black" stroke-width="1" />
+<circle cx="413.636" cy="341.667" r="2" fill="#3264c8" stroke="black" stroke-width="1" />
+<circle cx="459.091" cy="341.667" r="2" fill="#3264c8" stroke="black" stroke-width="1" />
+<circle cx="504.545" cy="341.667" r="2" fill="#3264c8" stroke="black" stroke-width="1" />
+<circle cx="95.4545" cy="283.333" r="4" fill="#6464c8" stroke="black" stroke-width="1" />
+<circle cx="140.909" cy="283.333" r="4" fill="#6464c8" stroke="black" stroke-width="1" />
+<circle cx="186.364" cy="283.333" r="4" fill="#6464c8" stroke="black" stroke-width="1" />
+<circle cx="231.818" cy="283.333" r="4" fill="#6464c8" stroke="black" stroke-width="1" />
+<circle cx="277.273" cy="283.333" r="4" fill="#6464c8" stroke="black" stroke-width="1" />
+<circle cx="322.727" cy="283.333" r="4" fill="#6464c8" stroke="black" stroke-width="1" />
+<circle cx="368.182" cy="283.333" r="4" fill="#6464c8" stroke="black" stroke-width="1" />
+<circle cx="413.636" cy="283.333" r="4" fill="#6464c8" stroke="black" stroke-width="1" />
+<circle cx="459.091" cy="283.333" r="4" fill="#6464c8" stroke="black" stroke-width="1" />
+<circle cx="504.545" cy="283.333" r="4" fill="#6464c8" stroke="black" stroke-width="1" />
+<circle cx="95.4545" cy="225" r="6" fill="#9664c8" stroke="black" stroke-width="1" />
+<circle cx="140.909" cy="225" r="6" fill="#9664c8" stroke="black" stroke-width="1" />
+<circle cx="186.364" cy="225" r="6" fill="#9664c8" stroke="black" stroke-width="1" />
+<circle cx="231.818" cy="225" r="6" fill="#9664c8" stroke="black" stroke-width="1" />
+<circle cx="277.273" cy="225" r="6" fill="#9664c8" stroke="black" stroke-width="1" />
+<circle cx="322.727" cy="225" r="6" fill="#9664c8" stroke="black" stroke-width="1" />
+<circle cx="368.182" cy="225" r="6" fill="#9664c8" stroke="black" stroke-width="1" />
+<circle cx="413.636" cy="225" r="6" fill="#9664c8" stroke="black" stroke-width="1" />
+<circle cx="459.091" cy="225" r="6" fill="#9664c8" stroke="black" stroke-width="1" />
+<circle cx="504.545" cy="225" r="6" fill="#9664c8" stroke="black" stroke-width="1" />
+<circle cx="95.4545" cy="166.667" r="8" fill="#c864c8" stroke="black" stroke-width="1" />
+<circle cx="140.909" cy="166.667" r="8" fill="#c864c8" stroke="black" stroke-width="1" />
+<circle cx="186.364" cy="166.667" r="8" fill="#c864c8" stroke="black" stroke-width="1" />
+<circle cx="231.818" cy="166.667" r="8" fill="#c864c8" stroke="black" stroke-width="1" />
+<circle cx="277.273" cy="166.667" r="8" fill="#c864c8" stroke="black" stroke-width="1" />
+<circle cx="322.727" cy="166.667" r="8" fill="#c864c8" stroke="black" stroke-width="1" />
+<circle cx="368.182" cy="166.667" r="8" fill="#c864c8" stroke="black" stroke-width="1" />
+<circle cx="413.636" cy="166.667" r="8" fill="#c864c8" stroke="black" stroke-width="1" />
+<circle cx="459.091" cy="166.667" r="8" fill="#c864c8" stroke="black" stroke-width="1" />
+<circle cx="504.545" cy="166.667" r="8" fill="#c864c8" stroke="black" stroke-width="1" />
+<circle cx="95.4545" cy="108.333" r="10" fill="#fa64c8" stroke="black" stroke-width="1" />
+<circle cx="140.909" cy="108.333" r="10" fill="#fa64c8" stroke="black" stroke-width="1" />
+<circle cx="186.364" cy="108.333" r="10" fill="#fa64c8" stroke="black" stroke-width="1" />
+<circle cx="231.818" cy="108.333" r="10" fill="#fa64c8" stroke="black" stroke-width="1" />
+<circle cx="277.273" cy="108.333" r="10" fill="#fa64c8" stroke="black" stroke-width="1" />
+<circle cx="322.727" cy="108.333" r="10" fill="#fa64c8" stroke="black" stroke-width="1" />
+<circle cx="368.182" cy="108.333" r="10" fill="#fa64c8" stroke="black" stroke-width="1" />
+<circle cx="413.636" cy="108.333" r="10" fill="#fa64c8" stroke="black" stroke-width="1" />
+<circle cx="459.091" cy="108.333" r="10" fill="#fa64c8" stroke="black" stroke-width="1" />
+<circle cx="504.545" cy="108.333" r="10" fill="#fa64c8" stroke="black" stroke-width="1" />
+<text x="300" y="25" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold">Symbol sizes</text>
+<text x="300" y="440" text-anchor="middle" font-family="Arial" font-size="14">X</text>
+<text x="16.6667" y="225" text-anchor="middle" font-family="Arial" font-size="14" transform="rotate(-90 16.6667,225)">Y</text>
+<rect x="440" y="60" width="150" height="110" fill="white" fill-opacity="0.8" stroke="black" stroke-width="1"/>
+<circle cx="465" cy="75" r="2" fill="#3264c8" stroke="black" stroke-width="1"/>
+<text x="485" y="80" font-family="Arial" font-size="12">Size 4</text>
+<circle cx="465" cy="95" r="4" fill="#6464c8" stroke="black" stroke-width="1"/>
+<text x="485" y="100" font-family="Arial" font-size="12">Size 8</text>
+<circle cx="465" cy="115" r="6" fill="#9664c8" stroke="black" stroke-width="1"/>
+<text x="485" y="120" font-family="Arial" font-size="12">Size 12</text>
+<circle cx="465" cy="135" r="8" fill="#c864c8" stroke="black" stroke-width="1"/>
+<text x="485" y="140" font-family="Arial" font-size="12">Size 16</text>
+<circle cx="465" cy="155" r="10" fill="#fa64c8" stroke="black" stroke-width="1"/>
+<text x="485" y="160" font-family="Arial" font-size="12">Size 20</text>
+</g>
+<g transform="translate(0,450)">
+<rect x="0" y="0" width="600" height="450" fill="none" stroke="black" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="150" y1="50" x2="150" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="250" y1="50" x2="250" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="350" y1="50" x2="350" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="450" y1="50" x2="450" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="550" y1="50" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="400" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="330" x2="550" y2="330" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="260" x2="550" y2="260" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="190" x2="550" y2="190" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="120" x2="550" y2="120" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="50" x2="550" y2="50" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="225" x2="550" y2="225" stroke="black" stroke-width="1.5"/>
+<line x1="50" y1="50" x2="50" y2="400" stroke="black" stroke-width="1.5"/>
+<line x1="50" y1="225" x2="50" y2="230" stroke="black" stroke-width="1"/>
+<text x="50" y="245" text-anchor="middle" font-family="Arial" font-size="12">0</text>
+<line x1="150" y1="225" x2="150" y2="230" stroke="black" stroke-width="1"/>
+<text x="150" y="245" text-anchor="middle" font-family="Arial" font-size="12">2.0</text>
+<line x1="250" y1="225" x2="250" y2="230" stroke="black" stroke-width="1"/>
+<text x="250" y="245" text-anchor="middle" font-family="Arial" font-size="12">4.0</text>
+<line x1="350" y1="225" x2="350" y2="230" stroke="black" stroke-width="1"/>
+<text x="350" y="245" text-anchor="middle" font-family="Arial" font-size="12">6.0</text>
+<line x1="450" y1="225" x2="450" y2="230" stroke="black" stroke-width="1"/>
+<text x="450" y="245" text-anchor="middle" font-family="Arial" font-size="12">8.0</text>
+<line x1="550" y1="225" x2="550" y2="230" stroke="black" stroke-width="1"/>
+<text x="550" y="245" text-anchor="middle" font-family="Arial" font-size="12">10</text>
+<line x1="50" y1="400" x2="45" y2="400" stroke="black" stroke-width="1"/>
+<text x="35" y="405" text-anchor="end" font-family="Arial" font-size="12">-1.5</text>
+<line x1="50" y1="330" x2="45" y2="330" stroke="black" stroke-width="1"/>
+<text x="35" y="335" text-anchor="end" font-family="Arial" font-size="12">-0.9</text>
+<line x1="50" y1="260" x2="45" y2="260" stroke="black" stroke-width="1"/>
+<text x="35" y="265" text-anchor="end" font-family="Arial" font-size="12">-0.3</text>
+<line x1="50" y1="190" x2="45" y2="190" stroke="black" stroke-width="1"/>
+<text x="35" y="195" text-anchor="end" font-family="Arial" font-size="12">0.3</text>
+<line x1="50" y1="120" x2="45" y2="120" stroke="black" stroke-width="1"/>
+<text x="35" y="125" text-anchor="end" font-family="Arial" font-size="12">0.9</text>
+<line x1="50" y1="50" x2="45" y2="50" stroke="black" stroke-width="1"/>
+<text x="35" y="55" text-anchor="end" font-family="Arial" font-size="12">1.5</text>
+<path d="M50 225 L 55 213.353 L 60 201.822 L 65 190.523 L 70 179.568 L 75 169.067 L 80 159.125 L 85 149.841 L 90 141.308 L 95 133.612 L 100 126.828 L 105 121.026 L 110 116.262 L 115 112.585 L 120 110.031 L 125 108.626 L 130 108.383 L 135 109.306 L 140 111.384 L 145 114.598 L 150 118.915 L 155 124.292 L 160 130.675 L 165 138.001 L 170 146.196 L 175 155.178 L 180 164.858 L 185 175.139 L 190 185.918 L 195 197.088 L 200 208.536 L 205 220.149 L 210 231.81 L 215 243.404 L 220 254.813 L 225 265.925 L 230 276.627 L 235 286.814 L 240 296.383 L 245 305.239 L 250 313.294 L 255 320.466 L 260 326.684 L 265 331.886 L 270 336.02 L 275 339.045 L 280 340.931 L 285 341.658 L 290 341.219 L 295 339.619 L 300 336.874 L 305 333.012 L 310 328.07 L 315 322.098 L 320 315.156 L 325 307.313 L 330 298.648 L 335 289.247 L 340 279.204 L 345 268.619 L 350 257.598 L 355 246.252 L 360 234.694 L 365 223.038 L 370 211.403 L 375 199.903 L 380 188.654 L 385 177.767 L 390 167.353 L 395 157.515 L 400 148.352 L 405 139.954 L 410 132.405 L 415 125.782 L 420 120.151 L 425 115.567 L 430 112.076 L 435 109.714 L 440 108.503 L 445 108.457 L 450 109.575 L 455 111.846 L 460 115.248 L 465 119.747 L 470 125.297 L 475 131.843 L 480 139.32 L 485 147.654 L 490 156.76 L 495 166.548 L 500 176.92 L 505 187.772 L 510 198.996 L 515 210.48 L 520 222.11 L 525 233.768 L 530 245.338 L 535 256.705 L 540 267.756 L 545 278.379" fill="none" stroke="#0000ff" stroke-width="2"  />
+<circle cx="50" cy="225" r="3" fill="#0000ff" stroke="black" stroke-width="1" />
+<circle cx="100" cy="126.828" r="3" fill="#0000ff" stroke="black" stroke-width="1" />
+<circle cx="150" cy="118.915" r="3" fill="#0000ff" stroke="black" stroke-width="1" />
+<circle cx="200" cy="208.536" r="3" fill="#0000ff" stroke="black" stroke-width="1" />
+<circle cx="250" cy="313.294" r="3" fill="#0000ff" stroke="black" stroke-width="1" />
+<circle cx="300" cy="336.874" r="3" fill="#0000ff" stroke="black" stroke-width="1" />
+<circle cx="350" cy="257.598" r="3" fill="#0000ff" stroke="black" stroke-width="1" />
+<circle cx="400" cy="148.352" r="3" fill="#0000ff" stroke="black" stroke-width="1" />
+<circle cx="450" cy="109.575" r="3" fill="#0000ff" stroke="black" stroke-width="1" />
+<circle cx="500" cy="176.92" r="3" fill="#0000ff" stroke="black" stroke-width="1" />
+<path d="M50 108.333 L 55 108.916 L 60 110.659 L 65 113.544 L 70 117.543 L 75 122.615 L 80 128.711 L 85 135.768 L 90 143.718 L 95 152.479 L 100 161.965 L 105 172.08 L 110 182.725 L 115 193.792 L 120 205.17 L 125 216.747 L 130 228.407 L 135 240.032 L 140 251.507 L 145 262.717 L 150 273.55 L 155 283.899 L 160 293.658 L 165 302.732 L 170 311.029 L 175 318.467 L 180 324.97 L 185 330.475 L 190 334.926 L 195 338.278 L 200 340.499 L 205 341.566 L 210 341.468 L 215 340.206 L 220 337.793 L 225 334.253 L 230 329.622 L 235 323.945 L 240 317.28 L 245 309.692 L 250 301.258 L 255 292.063 L 260 282.197 L 265 271.76 L 270 260.855 L 275 249.593 L 280 238.084 L 285 226.445 L 290 214.792 L 295 203.24 L 300 191.906 L 305 180.903 L 310 170.34 L 315 160.323 L 320 150.952 L 325 142.322 L 330 134.517 L 335 127.617 L 340 121.689 L 345 116.794 L 350 112.98 L 355 110.285 L 360 108.737 L 365 108.35 L 370 109.128 L 375 111.065 L 380 114.14 L 385 118.322 L 390 123.57 L 395 129.832 L 400 137.045 L 405 145.136 L 410 154.026 L 415 163.624 L 420 173.836 L 425 184.559 L 430 195.686 L 435 207.106 L 440 218.705 L 445 230.367 L 450 241.975 L 455 253.414 L 460 264.568 L 465 275.327 L 470 285.584 L 475 295.235 L 480 304.184 L 485 312.342 L 490 319.628 L 495 325.967 L 500 331.299 L 505 335.568 L 510 338.732 L 515 340.76 L 520 341.631 L 525 341.337 L 530 339.88 L 535 337.276 L 540 333.55 L 545 328.739" fill="none" stroke="#ff0000" stroke-width="2"  />
+<rect x="47" y="105.333" width="6" height="6" fill="#ff0000" stroke="black" stroke-width="1" />
+<rect x="97" y="158.965" width="6" height="6" fill="#ff0000" stroke="black" stroke-width="1" />
+<rect x="147" y="270.55" width="6" height="6" fill="#ff0000" stroke="black" stroke-width="1" />
+<rect x="197" y="337.499" width="6" height="6" fill="#ff0000" stroke="black" stroke-width="1" />
+<rect x="247" y="298.258" width="6" height="6" fill="#ff0000" stroke="black" stroke-width="1" />
+<rect x="297" y="188.906" width="6" height="6" fill="#ff0000" stroke="black" stroke-width="1" />
+<rect x="347" y="109.98" width="6" height="6" fill="#ff0000" stroke="black" stroke-width="1" />
+<rect x="397" y="134.045" width="6" height="6" fill="#ff0000" stroke="black" stroke-width="1" />
+<rect x="447" y="238.975" width="6" height="6" fill="#ff0000" stroke="black" stroke-width="1" />
+<rect x="497" y="328.299" width="6" height="6" fill="#ff0000" stroke="black" stroke-width="1" />
+<text x="300" y="25" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold">Combination of lines and symbols</text>
+<text x="300" y="440" text-anchor="middle" font-family="Arial" font-size="14">X</text>
+<text x="16.6667" y="225" text-anchor="middle" font-family="Arial" font-size="14" transform="rotate(-90 16.6667,225)">Y</text>
+<rect x="440" y="60" width="150" height="90" fill="white" fill-opacity="0.8" stroke="black" stroke-width="1"/>
+<line x1="450" y1="75" x2="480" y2="75" stroke="#0000ff" stroke-width="2"/>
+<text x="485" y="80" font-family="Arial" font-size="12">sin(x) - line</text>
+<circle cx="465" cy="95" r="3" fill="#0000ff" stroke="black" stroke-width="1"/>
+<text x="485" y="100" font-family="Arial" font-size="12">sin(x) - points</text>
+<line x1="450" y1="115" x2="480" y2="115" stroke="#ff0000" stroke-width="2"/>
+<text x="485" y="120" font-family="Arial" font-size="12">cos(x) - line</text>
+<rect x="462" y="132" width="6" height="6" fill="#ff0000" stroke="black" stroke-width="1"/>
+<text x="485" y="140" font-family="Arial" font-size="12">cos(x) - points</text>
+</g>
+<g transform="translate(600,450)">
+<rect x="0" y="0" width="600" height="450" fill="none" stroke="black" stroke-width="1"/>
+<line x1="50" y1="50" x2="50" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="150" y1="50" x2="150" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="250" y1="50" x2="250" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="350" y1="50" x2="350" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="450" y1="50" x2="450" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="550" y1="50" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="400" x2="550" y2="400" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="330" x2="550" y2="330" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="260" x2="550" y2="260" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="190" x2="550" y2="190" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="120" x2="550" y2="120" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="50" x2="550" y2="50" stroke="#c8c8c8" stroke-width="1" />
+<line x1="50" y1="370.833" x2="550" y2="370.833" stroke="black" stroke-width="1.5"/>
+<line x1="50" y1="50" x2="50" y2="400" stroke="black" stroke-width="1.5"/>
+<line x1="50" y1="370.833" x2="50" y2="375.833" stroke="black" stroke-width="1"/>
+<text x="50" y="390.833" text-anchor="middle" font-family="Arial" font-size="12">0</text>
+<line x1="150" y1="370.833" x2="150" y2="375.833" stroke="black" stroke-width="1"/>
+<text x="150" y="390.833" text-anchor="middle" font-family="Arial" font-size="12">2.0</text>
+<line x1="250" y1="370.833" x2="250" y2="375.833" stroke="black" stroke-width="1"/>
+<text x="250" y="390.833" text-anchor="middle" font-family="Arial" font-size="12">4.0</text>
+<line x1="350" y1="370.833" x2="350" y2="375.833" stroke="black" stroke-width="1"/>
+<text x="350" y="390.833" text-anchor="middle" font-family="Arial" font-size="12">6.0</text>
+<line x1="450" y1="370.833" x2="450" y2="375.833" stroke="black" stroke-width="1"/>
+<text x="450" y="390.833" text-anchor="middle" font-family="Arial" font-size="12">8.0</text>
+<line x1="550" y1="370.833" x2="550" y2="375.833" stroke="black" stroke-width="1"/>
+<text x="550" y="390.833" text-anchor="middle" font-family="Arial" font-size="12">10</text>
+<line x1="50" y1="400" x2="45" y2="400" stroke="black" stroke-width="1"/>
+<text x="35" y="405" text-anchor="end" font-family="Arial" font-size="12">-0.5</text>
+<line x1="50" y1="330" x2="45" y2="330" stroke="black" stroke-width="1"/>
+<text x="35" y="335" text-anchor="end" font-family="Arial" font-size="12">0.7</text>
+<line x1="50" y1="260" x2="45" y2="260" stroke="black" stroke-width="1"/>
+<text x="35" y="265" text-anchor="end" font-family="Arial" font-size="12">1.9</text>
+<line x1="50" y1="190" x2="45" y2="190" stroke="black" stroke-width="1"/>
+<text x="35" y="195" text-anchor="end" font-family="Arial" font-size="12">3.1</text>
+<line x1="50" y1="120" x2="45" y2="120" stroke="black" stroke-width="1"/>
+<text x="35" y="125" text-anchor="end" font-family="Arial" font-size="12">4.3</text>
+<line x1="50" y1="50" x2="45" y2="50" stroke="black" stroke-width="1"/>
+<text x="35" y="55" text-anchor="end" font-family="Arial" font-size="12">5.5</text>
+<path d="M50 370.833 L 55 370.804 L 60 370.717 L 65 370.571 L 70 370.367 L 75 370.104 L 80 369.783 L 85 369.404 L 90 368.967 L 95 368.471 L 100 367.917 L 105 367.304 L 110 366.633 L 115 365.904 L 120 365.117 L 125 364.271 L 130 363.367 L 135 362.404 L 140 361.383 L 145 360.304 L 150 359.167 L 155 357.971 L 160 356.717 L 165 355.404 L 170 354.033 L 175 352.604 L 180 351.117 L 185 349.571 L 190 347.967 L 195 346.304 L 200 344.583 L 205 342.804 L 210 340.967 L 215 339.071 L 220 337.117 L 225 335.104 L 230 333.033 L 235 330.904 L 240 328.717 L 245 326.471 L 250 324.167 L 255 321.804 L 260 319.383 L 265 316.904 L 270 314.367 L 275 311.771 L 280 309.117 L 285 306.404 L 290 303.633 L 295 300.804 L 300 297.917 L 305 294.971 L 310 291.967 L 315 288.904 L 320 285.783 L 325 282.604 L 330 279.367 L 335 276.071 L 340 272.717 L 345 269.304 L 350 265.833 L 355 262.304 L 360 258.717 L 365 255.071 L 370 251.367 L 375 247.604 L 380 243.783 L 385 239.904 L 390 235.967 L 395 231.971 L 400 227.917 L 405 223.804 L 410 219.633 L 415 215.404 L 420 211.117 L 425 206.771 L 430 202.367 L 435 197.904 L 440 193.383 L 445 188.804 L 450 184.167 L 455 179.471 L 460 174.717 L 465 169.904 L 470 165.033 L 475 160.104 L 480 155.117 L 485 150.071 L 490 144.967 L 495 139.804 L 500 134.583 L 505 129.304 L 510 123.967 L 515 118.571 L 520 113.117 L 525 107.604 L 530 102.033 L 535 96.4042 L 540 90.7167 L 545 84.9708" fill="none" stroke="#00ff00" stroke-width="2"  />
+<polygon points="50.000000,366.833333 54.000000,370.833333 50.000000,374.833333 46.000000,370.833333" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="55.000000,366.804167 59.000000,370.804167 55.000000,374.804167 51.000000,370.804167" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="60.000000,366.716667 64.000000,370.716667 60.000000,374.716667 56.000000,370.716667" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="65.000001,366.570833 69.000001,370.570833 65.000001,374.570833 61.000001,370.570833" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="70.000000,366.366667 74.000000,370.366667 70.000000,374.366667 66.000000,370.366667" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="75.000000,366.104167 79.000000,370.104167 75.000000,374.104167 71.000000,370.104167" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="80.000001,365.783333 84.000001,369.783333 80.000001,373.783333 76.000001,369.783333" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="84.999999,365.404167 88.999999,369.404167 84.999999,373.404167 80.999999,369.404167" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="90.000001,364.966667 94.000001,368.966667 90.000001,372.966667 86.000001,368.966667" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="95.000002,364.470833 99.000002,368.470833 95.000002,372.470833 91.000002,368.470833" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="100.000000,363.916667 104.000000,367.916667 100.000000,371.916667 96.000000,367.916667" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="105.000001,363.304166 109.000001,367.304166 105.000001,371.304166 101.000001,367.304166" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="110.000002,362.633333 114.000002,366.633333 110.000002,370.633333 106.000002,366.633333" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="115.000004,361.904166 119.000004,365.904166 115.000004,369.904166 111.000004,365.904166" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="119.999999,361.116667 123.999999,365.116667 119.999999,369.116667 115.999999,365.116667" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="125.000000,360.270833 129.000000,364.270833 125.000000,368.270833 121.000000,364.270833" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="130.000001,359.366666 134.000001,363.366666 130.000001,367.366666 126.000001,363.366666" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="135.000002,358.404166 139.000002,362.404166 135.000002,366.404166 131.000002,362.404166" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="140.000004,357.383332 144.000004,361.383332 140.000004,365.383332 136.000004,361.383332" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="144.999999,356.304167 148.999999,360.304167 144.999999,364.304167 140.999999,360.304167" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="150.000000,355.166666 154.000000,359.166666 150.000000,363.166666 146.000000,359.166666" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="155.000007,353.970831 159.000007,357.970831 155.000007,361.970831 151.000007,357.970831" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="160.000002,352.716666 164.000002,356.716666 160.000002,360.716666 156.000002,356.716666" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="164.999998,351.404167 168.999998,355.404167 164.999998,359.404167 160.999998,355.404167" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="170.000005,350.033332 174.000005,354.033332 170.000005,358.033332 166.000005,354.033332" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="175.000000,348.604166 179.000000,352.604166 175.000000,356.604166 171.000000,352.604166" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="180.000007,347.116664 184.000007,351.116664 180.000007,355.116664 176.000007,351.116664" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="185.000002,345.570832 189.000002,349.570832 185.000002,353.570832 181.000002,349.570832" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="189.999998,343.966667 193.999998,347.966667 189.999998,351.966667 185.999998,347.966667" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="195.000005,342.304165 199.000005,346.304165 195.000005,350.304165 191.000005,346.304165" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="200.000000,340.583333 204.000000,344.583333 200.000000,348.583333 196.000000,344.583333" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="205.000007,338.804164 209.000007,342.804164 205.000007,346.804164 201.000007,342.804164" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="210.000002,336.966665 214.000002,340.966665 210.000002,344.966665 206.000002,340.966665" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="214.999998,335.070834 218.999998,339.070834 214.999998,343.070834 210.999998,339.070834" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="220.000005,333.116664 224.000005,337.116664 220.000005,341.116664 216.000005,337.116664" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="225.000000,331.104166 229.000000,335.104166 225.000000,339.104166 221.000000,335.104166" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="230.000007,329.033330 234.000007,333.033330 230.000007,337.033330 226.000007,333.033330" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="235.000002,326.904165 239.000002,330.904165 235.000002,334.904165 231.000002,330.904165" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="239.999998,324.716667 243.999998,328.716667 239.999998,332.716667 235.999998,328.716667" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="245.000005,322.470831 249.000005,326.470831 245.000005,330.470831 241.000005,326.470831" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="250.000000,320.166666 254.000000,324.166666 250.000000,328.166666 246.000000,324.166666" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="254.999995,317.804168 258.999995,321.804168 254.999995,325.804168 250.999995,321.804168" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="260.000014,315.383326 264.000014,319.383326 260.000014,323.383326 256.000014,319.383326" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="265.000010,312.904161 269.000010,316.904161 265.000010,320.904161 261.000010,316.904161" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="270.000005,310.366663 274.000005,314.366663 270.000005,318.366663 266.000005,314.366663" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="275.000000,307.770832 279.000000,311.770832 275.000000,315.770832 271.000000,311.770832" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="279.999995,305.116668 283.999995,309.116668 279.999995,313.116668 275.999995,309.116668" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="285.000014,302.404158 289.000014,306.404158 285.000014,310.404158 281.000014,306.404158" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="290.000010,299.633327 294.000010,303.633327 290.000010,307.633327 286.000010,303.633327" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="295.000005,296.804163 299.000005,300.804163 295.000005,304.804163 291.000005,300.804163" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="300.000000,293.916666 304.000000,297.916666 300.000000,301.916666 296.000000,297.916666" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="304.999995,290.970835 308.999995,294.970835 304.999995,298.970835 300.999995,294.970835" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="310.000014,287.966657 314.000014,291.966657 310.000014,295.966657 306.000014,291.966657" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="315.000010,284.904160 319.000010,288.904160 315.000010,292.904160 311.000010,288.904160" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="320.000005,281.783329 324.000005,285.783329 320.000005,289.783329 316.000005,285.783329" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="325.000000,278.604165 329.000000,282.604165 325.000000,286.604165 321.000000,282.604165" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="329.999995,275.366668 333.999995,279.366668 329.999995,283.366668 325.999995,279.366668" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="335.000014,272.070822 339.000014,276.070822 335.000014,280.070822 331.000014,276.070822" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="340.000010,268.716659 344.000010,272.716659 340.000010,276.716659 336.000010,272.716659" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="345.000005,265.304162 349.000005,269.304162 345.000005,273.304162 341.000005,269.304162" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="350.000000,261.833332 354.000000,265.833332 350.000000,269.833332 346.000000,265.833332" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="354.999995,258.304168 358.999995,262.304168 354.999995,266.304168 350.999995,262.304168" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="360.000014,254.716655 364.000014,258.716655 360.000014,262.716655 356.000014,258.716655" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="365.000010,251.070825 369.000010,255.070825 365.000010,259.070825 361.000010,255.070825" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="370.000005,247.366661 374.000005,251.366661 370.000005,255.366661 366.000005,251.366661" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="375.000000,243.604165 379.000000,247.604165 375.000000,251.604165 371.000000,247.604165" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="379.999995,239.783335 383.999995,243.783335 379.999995,247.783335 375.999995,243.783335" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="385.000014,235.904154 389.000014,239.904154 385.000014,243.904154 381.000014,239.904154" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="390.000010,231.966657 394.000010,235.966657 390.000010,239.966657 386.000010,235.966657" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="395.000005,227.970827 399.000005,231.970827 395.000005,235.970827 391.000005,231.970827" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="400.000000,223.916665 404.000000,227.916665 400.000000,231.916665 396.000000,227.916665" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="404.999995,219.804168 408.999995,223.804168 404.999995,227.804168 400.999995,223.804168" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="410.000014,215.633319 414.000014,219.633319 410.000014,223.633319 406.000014,219.633319" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="415.000010,211.404156 419.000010,215.404156 415.000010,219.404156 411.000010,215.404156" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="420.000005,207.116660 424.000005,211.116660 420.000005,215.116660 416.000005,211.116660" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="425.000000,202.770831 429.000000,206.770831 425.000000,210.770831 421.000000,206.770831" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="429.999995,198.366668 433.999995,202.366668 429.999995,206.366668 425.999995,202.366668" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="435.000014,193.904151 439.000014,197.904151 435.000014,201.904151 431.000014,197.904151" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="440.000010,189.383322 444.000010,193.383322 440.000010,197.383322 436.000010,193.383322" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="445.000005,184.804160 449.000005,188.804160 445.000005,192.804160 441.000005,188.804160" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="450.000000,180.166664 454.000000,184.166664 450.000000,188.166664 446.000000,184.166664" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="455.000019,175.470812 459.000019,179.470812 455.000019,183.470812 451.000019,179.470812" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="459.999990,170.716673 463.999990,174.716673 459.999990,178.716673 455.999990,174.716673" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="465.000010,165.904154 469.000010,169.904154 465.000010,173.904154 461.000010,169.904154" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="470.000029,161.033302 474.000029,165.033302 470.000029,169.033302 466.000029,165.033302" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="475.000000,156.104164 479.000000,160.104164 475.000000,164.104164 471.000000,160.104164" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="480.000019,151.116644 484.000019,155.116644 480.000019,159.116644 476.000019,155.116644" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="484.999990,146.070840 488.999990,150.070840 484.999990,154.070840 480.999990,150.070840" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="490.000010,140.966654 494.000010,144.966654 490.000010,148.966654 486.000010,144.966654" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="495.000029,135.804134 499.000029,139.804134 495.000029,143.804134 491.000029,139.804134" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="500.000000,130.583330 504.000000,134.583330 500.000000,138.583330 496.000000,134.583330" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="505.000019,125.304143 509.000019,129.304143 505.000019,133.304143 501.000019,129.304143" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="509.999990,119.966673 513.999990,123.966673 509.999990,127.966673 505.999990,123.966673" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="515.000010,114.570819 519.000010,118.570819 515.000010,122.570819 511.000010,118.570819" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="520.000029,109.116631 524.000029,113.116631 520.000029,117.116631 516.000029,113.116631" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="525.000000,103.604163 529.000000,107.604163 525.000000,111.604163 521.000000,107.604163" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="530.000019,98.033308 534.000019,102.033308 530.000019,106.033308 526.000019,102.033308" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="534.999990,92.404173 538.999990,96.404173 534.999990,100.404173 530.999990,96.404173" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="540.000010,86.716652 544.000010,90.716652 540.000010,94.716652 536.000010,90.716652" fill="#00ff00" stroke="black" stroke-width="1" />
+<polygon points="545.000029,80.970796 549.000029,84.970796 545.000029,88.970796 541.000029,84.970796" fill="#00ff00" stroke="black" stroke-width="1" />
+<text x="300" y="25" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold">Line with integrated symbols</text>
+<text x="300" y="440" text-anchor="middle" font-family="Arial" font-size="14">X</text>
+<text x="16.6667" y="225" text-anchor="middle" font-family="Arial" font-size="14" transform="rotate(-90 16.6667,225)">Y</text>
+<rect x="440" y="60" width="150" height="30" fill="white" fill-opacity="0.8" stroke="black" stroke-width="1"/>
+<line x1="450" y1="75" x2="480" y2="75" stroke="#00ff00" stroke-width="2"/>
+<text x="485" y="80" font-family="Arial" font-size="12">f(x) = 0.05x² with symbols</text>
+</g>
+</svg>

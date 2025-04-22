@@ -204,6 +204,38 @@ plt.save("my_chart.png");  // Save as PNG
 plt.save("my_chart.jpg");  // Save as JPG
 ```
 
+### SVG Vector Export
+
+```cpp
+void save_svg(const std::string& filename)
+```
+
+This method allows you to export the chart in SVG (Scalable Vector Graphics) format. The SVG format offers several advantages over bitmap formats like PNG or JPG:
+
+- **Perfect scaling**: SVG graphics can be scaled to any size without quality loss
+- **Reduced file size** for charts that primarily consist of lines and geometric shapes
+- **Further editing**: SVG files can be modified with vector editors like Inkscape or Adobe Illustrator
+- **Document integration**: Ideal for integration into scientific papers and presentations
+- **Web compatibility**: SVG files can be directly embedded into web pages
+
+Graphics exported in SVG include all the visual features of the raster version:
+- Polar and Cartesian grids with enhanced annotations (decimal values)
+- Curves, symbols, and legends
+- Text and annotations
+- Geometric shapes and arrows
+
+Usage example:
+```cpp
+// After creating your chart
+plt.save_svg("my_chart.svg");
+```
+
+#### Example SVG Output
+
+![SVG Example](example9_svg_demo.svg)
+
+The example above shows a chart exported in SVG with the `save_svg()` function. Note the sharpness of the lines and text, as well as the quality preserved at any display scale.
+
 ### Interactive Display
 ```cpp
 void show()
@@ -259,7 +291,7 @@ This example presents plots in polar coordinates:
 
 Key points:
 - Automatic conversion between polar and Cartesian coordinates
-- Polar grids with annotations
+- Polar grids with enhanced annotations (values displayed with decimal precision)
 - Equal scale axes to preserve shape
 
 ### Example 4: Multiple Plots and Customization

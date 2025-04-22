@@ -13,15 +13,31 @@ set(CMAKE_BUILD_TYPE Release)
 # Find SFML
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
+# Fetch Simple SVG library but configure it manually to avoid GTest requirement
+# include(FetchContent)
+# FetchContent_Declare(
+#     simple_svg
+#     GIT_REPOSITORY https://github.com/adishavit/simple-svg.git
+#     GIT_TAG master
+# )
+# # Just download the content but don't configure it yet
+# FetchContent_GetProperties(simple_svg)
+# if(NOT simple_svg_POPULATED)
+#     FetchContent_Populate(simple_svg)
+#     # Don't use FetchContent_MakeAvailable as we want to skip the original CMakeLists.txt
+# endif()
+
+# Simple SVG is a header-only library, so we can just include it
+# Make sure to include the include directory, not the root directory
+include_directories(${simple_svg_SOURCE_DIR}/include)
+
 # Add source files for the main program
 set(SOURCES
     src/plotgen.cpp
 )
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
-
-# # Create the main executable
-# add_executable(${PROJECT_NAME} ${SOURCES})
+include_directories(${PROJECT_SOURCE_DIR}/stb)
 
 # Create library
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
@@ -67,9 +83,6 @@ elseif(MSVC)
         /W4
     )
 endif()
-
-# Copy arial.ttf font to the build directory
-# configure_file(arial.ttf arial.ttf COPYONLY)
 
 # Installation (optional)
 install(TARGETS ${PROJECT_NAME} PlotterExamples DESTINATION bin)

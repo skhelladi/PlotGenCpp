@@ -114,6 +114,7 @@ void example_basic_plots() {
     plt.set_legend_position(fig4, "outside-right");
     
     plt.save("example1_basic_plots.png");
+    plt.save_svg("example1_basic_plots.svg");
     plt.show();
 }
 
@@ -185,6 +186,7 @@ void example_histograms() {
     plt.hist(fig4, exp_data, 25, style4);
     
     plt.save("example2_histograms.png");
+    plt.save_svg("example2_histograms.svg");
     plt.show();
 }
 
@@ -263,6 +265,7 @@ void example_polar_plots() {
     plt.polar_plot(fig4, theta4, r4, style4);
     
     plt.save("example3_polar_plots.png");
+    plt.save_svg("example3_polar_plots.svg");
     plt.show();
 }
 
@@ -366,6 +369,7 @@ void example_multiple_plots() {
     plt.plot(fig4, lissajous_x, lissajous_y, style_lissajous);
     
     plt.save("example4_multiple_plots.png");
+    plt.save_svg("example4_multiple_plots.svg");
     plt.show();
 }
 
@@ -494,6 +498,7 @@ void example_advanced_histograms() {
     plt.hist(fig4, chi2_part3, 10, styles[2], width_ratios[2]);
     
     plt.save("example5_advanced_histograms.png");
+    plt.save_svg("example5_advanced_histograms.svg");
     plt.show();
 }
 
@@ -684,6 +689,7 @@ void example_symbol_plots() {
     // plt.circle(fig4, 5.0f, 2.5f, 0.5f, sf::Color::Red); // Draw a circle at (5, 2.5)
     
     plt.save("example6_symbol_plots.png");
+    plt.save_svg("example6_symbol_plots.svg");
     plt.show();
 }
 
@@ -941,6 +947,7 @@ void example_circles_text_arrows() {
     plt.text(fig4, 0, 4, "Circular vector field", PlotGen::Style(sf::Color::White, 2.5));
     
     plt.save("example7_circles_text_arrows.png");
+    plt.save_svg("example7_circles_text_arrows.svg");
     plt.show();
 }
 
@@ -1122,6 +1129,115 @@ void example_bezier_spline() {
     plt.plot(fig4, cardinal_x, cardinal_y, points_style);
     
     plt.save("example8_bezier_spline.png");
+    plt.save_svg("example8_bezier_spline.svg");
+    plt.show();
+}
+
+// Example 9: SVG export demonstration
+void example_svg_export() {
+    PlotGen plt(1200, 900, 2, 2);
+    
+    // First subplot: Sine and Cosine waves
+    auto& fig1 = plt.subplot(0, 0);
+    std::vector<double> x(100), y_sin(100), y_cos(100);
+    for (int i = 0; i < 100; ++i) {
+        x[i] = i * 0.1f - 5.0f;
+        y_sin[i] = std::sin(x[i]);
+        y_cos[i] = std::cos(x[i]);
+    }
+    
+    PlotGen::Style style_sin, style_cos;
+    style_sin.color = sf::Color::Blue;
+    style_sin.legend = "sin(x)";
+    style_sin.thickness = 3.0;
+    
+    style_cos.color = sf::Color::Red;
+    style_cos.legend = "cos(x)";
+    style_cos.thickness = 3.0;
+    style_cos.line_style = "dashed";
+    
+    plt.set_title(fig1, "Trigonometric Functions");
+    plt.set_xlabel(fig1, "x");
+    plt.set_ylabel(fig1, "f(x)");
+    plt.set_axis_limits(fig1, -5, 5, -1.2, 1.2);
+    plt.grid(fig1, true, true);
+    plt.plot(fig1, x, y_sin, style_sin);
+    plt.plot(fig1, x, y_cos, style_cos);
+    
+    // Second subplot: Parabola with symbols
+    auto& fig2 = plt.subplot(0, 1);
+    std::vector<double> x2(100), y_parabola(100);
+    for (int i = 0; i < 100; ++i) {
+        x2[i] = i * 0.1f - 5.0f;
+        y_parabola[i] = 0.5 * x2[i] * x2[i];
+    }
+    
+    PlotGen::Style style_parabola;
+    style_parabola.color = sf::Color::Green;
+    style_parabola.legend = "f(x) = 0.5x" + SQUARED;
+    style_parabola.thickness = 2.5;
+    style_parabola.symbol_type = "circle";
+    style_parabola.symbol_size = 8.0;
+    
+    plt.set_title(fig2, "Parabolic Function with Symbols");
+    plt.set_xlabel(fig2, "x");
+    plt.set_ylabel(fig2, "f(x)");
+    plt.set_axis_limits(fig2, -5, 5, 0, 12.5);
+    plt.grid(fig2, true, false);
+    plt.plot(fig2, x2, y_parabola, style_parabola);
+    
+    // Third subplot: Histogram
+    auto& fig3 = plt.subplot(1, 0);
+    // Generate random data
+    std::default_random_engine generator;
+    std::normal_distribution<double> normal_dist(0.0, 1.0);
+    std::vector<double> normal_data(1000);
+    for (int i = 0; i < 1000; ++i) {
+        normal_data[i] = normal_dist(generator);
+    }
+    
+    PlotGen::Style style_hist;
+    style_hist.color = sf::Color::Magenta;
+    style_hist.legend = "Normal Distribution";
+    
+    plt.set_title(fig3, "Histogram Example");
+    plt.set_xlabel(fig3, "Value");
+    plt.set_ylabel(fig3, "Frequency");
+    plt.hist(fig3, normal_data, 30, style_hist);
+    
+    // Fourth subplot: Circle, text and arrows
+    auto& fig4 = plt.subplot(1, 1);
+    plt.set_title(fig4, "Geometric Elements");
+    plt.set_xlabel(fig4, "X");
+    plt.set_ylabel(fig4, "Y");
+    plt.set_axis_limits(fig4, -5, 5, -5, 5);
+    plt.grid(fig4, true, false);
+    plt.set_equal_axes(fig4, true);
+    
+    // Add circle
+    PlotGen::Style style_circle;
+    style_circle.color = sf::Color::Cyan;
+    style_circle.thickness = 3.0;
+    plt.circle(fig4, 0, 0, 3.0, style_circle);
+    
+    // Add text
+    PlotGen::Style style_text;
+    style_text.color = sf::Color::Red;
+    style_text.thickness = 4.0;
+    plt.text(fig4, 0, 0, "Center", style_text);
+    
+    // Add arrows
+    PlotGen::Style style_arrow;
+    style_arrow.color = sf::Color::Green;
+    style_arrow.thickness = 2.0;
+    plt.arrow(fig4, 0, 0, 3, 0, style_arrow, 20.0);
+    plt.arrow(fig4, 0, 0, 0, 3, style_arrow, 20.0);
+    plt.arrow(fig4, 0, 0, -3, 0, style_arrow, 20.0);
+    plt.arrow(fig4, 0, 0, 0, -3, style_arrow, 20.0);
+    
+    // Save both PNG and SVG formats for comparison
+    plt.save("example9_svg_demo.png");
+    plt.save("example9_svg_demo.svg"); // This will use the corrected SVG export
     plt.show();
 }
 
@@ -1136,7 +1252,9 @@ int main() {
     std::cout << "6. Curves with symbols" << std::endl;
     std::cout << "7. Circles, Text and Arrows" << std::endl;
     std::cout << "8. Bezier and Spline Curves" << std::endl;
-    std::cout << "Enter your choice (1-8): ";
+    std::cout << "9. SVG export demonstration" << std::endl;
+    std::cout << "10. : Execute all examples" << std::endl;
+    std::cout << "Enter your choice (1-10): ";
     
     int choice;
     std::cin >> choice;
@@ -1150,6 +1268,18 @@ int main() {
         case 6: example_symbol_plots(); break;
         case 7: example_circles_text_arrows(); break;
         case 8: example_bezier_spline(); break;
+        case 9: example_svg_export(); break;
+        case 10: 
+            example_basic_plots();
+            example_histograms();
+            example_polar_plots();
+            example_multiple_plots();
+            example_advanced_histograms();
+            example_symbol_plots();
+            example_circles_text_arrows();
+            example_bezier_spline();
+            example_svg_export();
+            break;
         default: 
             std::cout << "Invalid choice." << std::endl;
             return 1;

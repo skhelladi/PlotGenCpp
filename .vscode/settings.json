@@ -8,6 +8,9 @@
         "string": "cpp",
         "algorithm": "cpp",
         "stdexcept": "cpp",
-        "source_location": "cpp"
+        "source_location": "cpp",
+        "sstream": "cpp",
+        "fstream": "cpp",
+        "memory": "cpp"
     }
 }

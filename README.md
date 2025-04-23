@@ -1,6 +1,6 @@
 # PlotGenC++
 
-A lightweight C++ library for generating 2D plots and charts using SFML.
+A lightweight C++ library for generating 2D plots and charts using SFML, with optional WebKit-based HTML/SVG rendering.
 
 ## Overview
 PlotGenC++ is a C++ library designed for generating 2D plots and charts. It is built on top of the SFML (Simple and Fast Multimedia Library) and provides a simple interface for creating various types of plots, including line plots, histograms, and polar plots. The library is inspired by popular plotting libraries in Python and MATLAB, making it easy to use for those familiar with those environments.
@@ -21,6 +21,7 @@ PlotGenC++ is a C++ library designed for generating 2D plots and charts. It is b
 - **SVG export** for high-quality vector graphics suitable for publications
 - **Configurable legend positioning** including outside the plot area
 - **Visual representation of styles** in legends (lines, symbols, etc.)
+- **Enhanced SVG viewer** (optional, requires WebKit and GTK3)
 
 
 ## Installation
@@ -30,14 +31,23 @@ PlotGenC++ is a C++ library designed for generating 2D plots and charts. It is b
 - CMake 3.10 or higher
 - C++ compiler with C++17 support
 - SFML 2.5 or higher
+- (Optional) GTK3 and WebKit for enhanced SVG viewing capabilities
 
 ## Dependencies
 
+### Required Dependencies
 - [SFML](https://www.sfml-dev.org/) for graphic rendering
   - Installation: `sudo apt install libsfml-dev`
 - [stb_image_write](https://github.com/nothings/stb) for image export (it is included in the repository)
-  - Installation: `git clone https://github.com/nothings/stb.git`
-- [Simple SVG](https://github.com/adishavit/simple-svg) for SVG export (automatically fetched by CMake)
+  - Installation: No additional steps needed
+
+### Optional Dependencies
+- GTK3 and WebKit for enhanced SVG viewing
+  - Installation: `sudo apt install libgtk-3-dev libwebkit2gtk-4.1-dev`
+
+### Display Modes
+- If GTK3 and WebKit are installed, PlotGenC++ will use an embedded HTML/SVG viewer for enhanced visualization
+- If these libraries are not available, visualization will fall back to SFML-based rendering automatically
 
 ### Build and Install
 
@@ -56,6 +66,8 @@ make
 # Install (optional)
 sudo make install
 ```
+
+During the cmake configuration, you will see a status message indicating whether HTMLViewer will be enabled or disabled based on the availability of GTK3 and WebKit on your system.
 
 ## Usage
 

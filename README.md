@@ -21,7 +21,6 @@ PlotGenC++ is a C++ library designed for generating 2D plots and charts. It is b
 - **SVG export** for high-quality vector graphics suitable for publications
 - **Configurable legend positioning** including outside the plot area
 - **Visual representation of styles** in legends (lines, symbols, etc.)
-- **Optimized window management** (no unnecessary window display)
 
 
 ## Installation

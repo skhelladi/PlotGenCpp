@@ -26,6 +26,11 @@ namespace stb {
     int stbi_write_png(char const *filename, int w, int h, int comp, const void *data, int stride_in_bytes);
 }
 
+// Forward declaration for HTMLViewer
+#ifdef HAVE_GTK_WEBKIT
+class HTMLViewer;
+#endif
+
 class PlotGen {
 public:
     struct Style {
@@ -130,6 +135,11 @@ public:
 
     // Display and render
     void show();
+    
+    #ifdef HAVE_GTK_WEBKIT
+    // Display using internal HTML viewer
+    void show_with_viewer();
+    #endif
 
     // Save to file
     void save(const std::string& filename);
@@ -144,6 +154,9 @@ private:
     sf::Font font;
     unsigned int width, height, rows, cols;
     std::vector<Figure> figures;
+    #ifdef HAVE_GTK_WEBKIT
+    std::shared_ptr<HTMLViewer> html_viewer;
+    #endif
 
     // Special character symbols
     std::string degree_symbol = "\u00B0"; // Degree symbol (°)
@@ -173,5 +186,43 @@ private:
     void export_svg_polar_grid(const Figure& fig, std::ofstream& svg_file, double x_offset, double y_offset, double width, double height);
     std::string color_to_svg(const sf::Color& color);
     std::string line_style_to_svg(const std::string& line_style, float thickness);
+    void showSFML();
+    
+    std::string get_svg_in_html(const std::string& svg_filename);
 };
+
+// New HTMLViewer class for displaying SVG files
+#ifdef HAVE_GTK_WEBKIT
+class HTMLViewer {
+public:
+    HTMLViewer();
+    ~HTMLViewer();
+    
+    // Initialize the viewer (should be called once)
+    bool initialize();
+    
+    // Load and display an HTML file
+    bool loadAndDisplayHTML(const std::string& html_file);
+    
+    // Load and display SVG content directly
+    bool loadAndDisplaySVG(const std::string& svg_content, const std::string& temp_svg_file = "");
+    
+    // Close the viewer
+    void close();
+    
+private:
+    // Implementation details will vary based on the underlying library
+    void* window_handle;
+    bool initialized;
+
+    int svg_width; 
+    int svg_height;
+
+    std::string current_svg_content; // Store the current SVG content
+    std::string temp_svg_file; // Temporary SVG file for displaying
+     
+    // Helper method to create a temporary HTML file with SVG content
+    std::string createTempHTMLWithSVG(const std::string& svg_content);
+};
+#endif
 

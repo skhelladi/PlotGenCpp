@@ -4,6 +4,13 @@
 #include <algorithm>
 #include <stdexcept>
 #include <fstream>
+#include <cstdlib> // Pour system()
+#ifdef HAVE_GTK_WEBKIT
+#include <webkit2/webkit2.h>
+#include <gtk/gtk.h>
+#endif
+#include <sstream>
+#include <ctime>
 
 // Style struct constructor implementation
 PlotGen::Style::Style(
@@ -591,6 +598,17 @@ void PlotGen::polar_plot(Figure &fig, const std::vector<double> &theta, const st
 // Display and render
 void PlotGen::show()
 {
+
+#ifdef HAVE_GTK_WEBKIT
+    show_with_viewer();
+#else
+    showSFML();
+#endif
+}
+
+// Méthode privée pour l'affichage SFML original
+void PlotGen::showSFML()
+{
     // Effectuer le rendu
     render();
 
@@ -622,6 +640,62 @@ void PlotGen::show()
         window.draw(sprite);
         window.display();
     }
+}
+
+std::string PlotGen::get_svg_in_html(const std::string &svg_filename)
+{
+    // Lire le contenu du fichier SVG
+    std::ifstream svg_file(svg_filename);
+    if (!svg_file.is_open())
+    {
+        std::cerr << "Erreur: Impossible d'ouvrir le fichier SVG" << std::endl;
+        return "";
+    }
+
+    std::stringstream buffer;
+    buffer << svg_file.rdbuf();
+    svg_file.close();
+
+    // Créer le contenu HTML
+    std::string html_content = "<!DOCTYPE html>\n"
+                               "<html>\n"
+                               "<head>\n"
+                               "    <meta charset=\"UTF-8\">\n"
+                               "    <title>PlotGenC++ - Visualisation SVG</title>\n"
+                               "    <style>\n"
+                               "        body { margin: 0; padding: 0; overflow: hidden; background-color: #f0f0f0; }\n"
+                               "        #svg-container { width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; }\n"
+                               "        #controls { position: fixed; bottom: 10px; left: 10px; background: rgba(255,255,255,0.8); padding: 10px; border-radius: 5px; }\n"
+                               "        svg { max-width: 95%; max-height: 95%; background-color: white; box-shadow: 0 0 10px rgba(0,0,0,0.2); }\n"
+                               "    </style>\n"
+                               "</head>\n"
+                               "<body>\n"
+                               "    <div id=\"svg-container\">\n" +
+                               buffer.str() + "\n"
+                                              "    </div>\n"
+                                              "    <div id=\"controls\">\n"
+                                              "        <button onclick=\"window.close()\">Fermer</button>\n"
+                                              "        <button onclick=\"saveSvg()\">Télécharger SVG</button>\n"
+                                              "    </div>\n"
+                                              "    <script>\n"
+                                              "        function saveSvg() {\n"
+                                              "            const link = document.createElement('a');\n"
+                                              "            link.href = '" +
+                               svg_filename + "';\n"
+                                              "            link.download = '" +
+                               svg_filename + "';\n"
+                                              "            document.body.appendChild(link);\n"
+                                              "            link.click();\n"
+                                              "            document.body.removeChild(link);\n"
+                                              "        }\n"
+                                              "        document.addEventListener('keydown', function(e) {\n"
+                                              "            if (e.key === 'Escape') window.close();\n"
+                                              "        });\n"
+                                              "    </script>\n"
+                                              "</body>\n"
+                                              "</html>";
+
+    return html_content;
 }
 
 // Save
@@ -1389,12 +1463,12 @@ void PlotGen::draw_polar_grid(const Figure &fig, double w, double h)
             rLabel.setFont(font);
             rLabel.setCharacterSize(10);
             rLabel.setFillColor(sf::Color::Black);
-            
+
             // Format radius value with one decimal place
             char r_buffer[10];
             std::snprintf(r_buffer, sizeof(r_buffer), "%.1f", r_value);
             rLabel.setString(r_buffer);
-            
+
             sf::FloatRect textRect = rLabel.getLocalBounds();
             rLabel.setPosition(center.x + radius * std::cos(3.14f / 4) - textRect.width / 2,
                                center.y - radius * std::sin(3.14f / 4) - textRect.height / 2);
@@ -1417,15 +1491,16 @@ void PlotGen::draw_polar_grid(const Figure &fig, double w, double h)
             angleLabel.setFont(font);
             angleLabel.setCharacterSize(12);
             angleLabel.setFillColor(sf::Color::Black);
-            
+
             // Calculate degrees and format with one decimal place
             double degrees = angle * 180 / M_PI;
-            if (degrees >= 360) degrees -= 360;
-            
+            if (degrees >= 360)
+                degrees -= 360;
+
             char angle_buffer[15];
             std::snprintf(angle_buffer, sizeof(angle_buffer), "%.1f°", degrees);
             angleLabel.setString(sf::String::fromUtf8(angle_buffer, angle_buffer + strlen(angle_buffer)));
-            
+
             sf::FloatRect textRect = angleLabel.getLocalBounds();
 
             // Position the label slightly beyond the end of the ray
@@ -1714,7 +1789,7 @@ sf::Color PlotGen::getColorFromHeight(double height)
     else
     {
         // Yellow to red
-        return sf::Color(255, static_cast<sf::Uint8>(255 * (1 - (height - 0.75f) * 4)), 0);
+        return sf::Color(255, static_cast<sf::Uint8>(std::max(0, static_cast<int>(255 * (1 - (height - 0.75f) * 4)))), 0);
     }
 }
 
@@ -2897,7 +2972,7 @@ void PlotGen::export_svg_polar_grid(const Figure &fig, std::ofstream &svg_file,
             // Formatage précis pour les valeurs de rayon (avec 1 décimale)
             char r_buffer[10];
             std::snprintf(r_buffer, sizeof(r_buffer), "%.1f", r_value);
-            
+
             svg_file << "<text x=\"" << label_x << "\" y=\"" << label_y
                      << "\" text-anchor=\"middle\" dominant-baseline=\"middle\" "
                      << "font-family=\"Arial\" font-size=\"10\" fill=\"black\">"
@@ -2920,7 +2995,7 @@ void PlotGen::export_svg_polar_grid(const Figure &fig, std::ofstream &svg_file,
             double degrees = angle * 180 / M_PI;
             if (degrees >= 360)
                 degrees -= 360;
-                
+
             // Formatage précis pour les angles (avec 1 décimale)
             char angle_buffer[15];
             std::snprintf(angle_buffer, sizeof(angle_buffer), "%.1f°", degrees);
@@ -3023,3 +3098,370 @@ void PlotGen::export_svg_histogram(const Figure &fig, const Figure::Curve &curve
                  << "\" stroke=\"black\" stroke-width=\"1\" />\n";
     }
 }
+
+#ifdef HAVE_GTK_WEBKIT
+// Implementation of the HTMLViewer class
+HTMLViewer::HTMLViewer() : window_handle(nullptr), initialized(false), svg_width(800), svg_height(600), current_svg_content(""), temp_svg_file("")
+{
+}
+
+HTMLViewer::~HTMLViewer()
+{
+    close();
+}
+
+bool HTMLViewer::initialize()
+{
+    if (initialized)
+        return true;
+
+    // Initialize GTK if necessary
+    if (!gtk_init_check(nullptr, nullptr))
+    {
+        std::cerr << "Error: Unable to initialize GTK" << std::endl;
+        return false;
+    }
+
+    initialized = true;
+    return true;
+}
+
+bool HTMLViewer::loadAndDisplayHTML(const std::string &html_file)
+{
+    if (!initialized && !initialize())
+        return false;
+
+    // Create a new GTK window
+    GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(window), "PlotGenC++ - SVG Viewer");
+
+    // Connect destroy signal to quit GTK main loop
+    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), nullptr);
+
+    // Connect key-press-event signal to handle Escape key
+    g_signal_connect(window, "key-press-event", G_CALLBACK(+[](GtkWidget *widget, GdkEventKey *event, gpointer data) -> gboolean
+                                                           {
+                                                               if (event->keyval == GDK_KEY_Escape)
+                                                               {
+                                                                   gtk_main_quit();
+                                                                   return TRUE;
+                                                               }
+                                                               return FALSE;
+                                                           }),
+                     nullptr);
+
+    // Create a structure to store data needed for callbacks
+    struct ViewerData
+    {
+        std::string svg_content;
+        std::string current_file_path;
+        std::string temp_svg_file; // Path to the temporary SVG file to be deleted
+    };
+
+    ViewerData *data = new ViewerData();
+    data->svg_content = this->current_svg_content;
+    data->current_file_path = html_file;
+    data->temp_svg_file = this->temp_svg_file;
+
+    // Create a vertical box to contain the menu and webview
+    GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+    gtk_container_add(GTK_CONTAINER(window), vbox);
+
+    // Create the menu bar
+    GtkWidget *menu_bar = gtk_menu_bar_new();
+
+    // File Menu
+    GtkWidget *file_menu = gtk_menu_new();
+    GtkWidget *file_item = gtk_menu_item_new_with_label("File");
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(file_item), file_menu);
+
+    // Save SVG Option
+    GtkWidget *save_item = gtk_menu_item_new_with_label("Save SVG");
+    g_signal_connect(save_item, "activate", G_CALLBACK(+[](GtkWidget *widget, gpointer user_data) -> void
+                                                       {
+                                                           ViewerData *data = static_cast<ViewerData *>(user_data);
+
+                                                           GtkWidget *dialog = gtk_file_chooser_dialog_new("Save SVG",
+                                                                                                           nullptr,
+                                                                                                           GTK_FILE_CHOOSER_ACTION_SAVE,
+                                                                                                           "_Cancel", GTK_RESPONSE_CANCEL,
+                                                                                                           "_Save", GTK_RESPONSE_ACCEPT,
+                                                                                                           nullptr);
+
+                                                           // Suggest a default filename with .svg extension
+                                                           gtk_file_chooser_set_current_name(GTK_FILE_CHOOSER(dialog), "chart.svg");
+
+                                                           if (gtk_dialog_run(GTK_DIALOG(dialog)) == GTK_RESPONSE_ACCEPT)
+                                                           {
+                                                               char *filename = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dialog));
+
+                                                               // Extract SVG content from HTML
+                                                               size_t start = data->svg_content.find("<svg");
+                                                               size_t end = data->svg_content.find("</svg>") + 6; // +6 to include "</svg>"
+
+                                                               if (start != std::string::npos && end != std::string::npos)
+                                                               {
+                                                                   std::string svg_content = data->svg_content.substr(start, end - start);
+
+                                                                   // Save SVG content to the selected file
+                                                                   std::ofstream file(filename);
+                                                                   if (file.is_open())
+                                                                   {
+                                                                       file << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n"
+                                                                            << "<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n"
+                                                                            << svg_content;
+                                                                       file.close();
+
+                                                                       // Display success message
+                                                                       GtkWidget *message = gtk_message_dialog_new(nullptr,
+                                                                                                                   GTK_DIALOG_MODAL,
+                                                                                                                   GTK_MESSAGE_INFO,
+                                                                                                                   GTK_BUTTONS_OK,
+                                                                                                                   "The SVG file has been saved successfully.");
+                                                                       gtk_dialog_run(GTK_DIALOG(message));
+                                                                       gtk_widget_destroy(message);
+                                                                   }
+                                                               }
+                                                               g_free(filename);
+                                                           }
+
+                                                           gtk_widget_destroy(dialog);
+                                                       }),
+                     data);
+
+    // Exit Option
+    GtkWidget *quit_item = gtk_menu_item_new_with_label("Exit");
+    g_signal_connect(quit_item, "activate", G_CALLBACK(+[](GtkWidget *widget, gpointer user_data) -> void
+                                                       {
+                                                           gtk_main_quit();
+                                                       }),
+                     nullptr);
+
+    // Add options to the File menu
+    gtk_menu_shell_append(GTK_MENU_SHELL(file_menu), save_item);
+    gtk_menu_shell_append(GTK_MENU_SHELL(file_menu), gtk_separator_menu_item_new());
+    gtk_menu_shell_append(GTK_MENU_SHELL(file_menu), quit_item);
+
+    // Help Menu
+    GtkWidget *help_menu = gtk_menu_new();
+    GtkWidget *help_item = gtk_menu_item_new_with_label("Help");
+    gtk_menu_item_set_submenu(GTK_MENU_ITEM(help_item), help_menu);
+
+    // About Option
+    GtkWidget *about_item = gtk_menu_item_new_with_label("About");
+    g_signal_connect(about_item, "activate", G_CALLBACK(+[](GtkWidget *widget, gpointer user_data) -> void
+                                                        {
+                                                            GtkWidget *dialog = gtk_about_dialog_new();
+                                                            gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(dialog), "PlotGenC++");
+                                                            gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dialog), "1.0");
+                                                            gtk_about_dialog_set_copyright(GTK_ABOUT_DIALOG(dialog), "© 2025");
+                                                            gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(dialog),
+                                                                                          "PlotGenC++ is a plotting library for C++.\n"
+                                                                                          "It allows creating high-quality scientific plots with a simple and intuitive API.");
+                                                            gtk_about_dialog_set_website(GTK_ABOUT_DIALOG(dialog), "https://github.com/skhelladi/plotgencpp");
+
+                                                            gtk_dialog_run(GTK_DIALOG(dialog));
+                                                            gtk_widget_destroy(dialog);
+                                                        }),
+                     nullptr);
+
+    // Add option to the Help menu
+    gtk_menu_shell_append(GTK_MENU_SHELL(help_menu), about_item);
+
+    // Add menus to the menu bar
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu_bar), file_item);
+    gtk_menu_shell_append(GTK_MENU_SHELL(menu_bar), help_item);
+
+    // Add the menu bar to the vertical box
+    gtk_box_pack_start(GTK_BOX(vbox), menu_bar, FALSE, FALSE, 0);
+
+    // Create a WebKit widget to display HTML/SVG content
+    GtkWidget *webview = webkit_web_view_new();
+    gtk_box_pack_start(GTK_BOX(vbox), webview, TRUE, TRUE, 0);
+
+    // Connect destroy signal to free data and delete temporary files
+    g_signal_connect(window, "destroy", G_CALLBACK(+[](GtkWidget *widget, gpointer user_data) -> void
+                                                   {
+                                                       ViewerData *data = static_cast<ViewerData *>(user_data);
+
+                                                       // Delete the temporary SVG file if it exists
+                                                       if (!data->temp_svg_file.empty())
+                                                       {
+                                                           std::remove(data->temp_svg_file.c_str());
+                                                           std::cout << "Temporary file deleted: " << data->temp_svg_file << std::endl;
+                                                       }
+
+                                                       // Also delete the temporary HTML file
+                                                       if (!data->current_file_path.empty() && data->current_file_path.find("/tmp/plotgencpp_") == 0)
+                                                       {
+                                                           std::remove(data->current_file_path.c_str());
+                                                           std::cout << "Temporary HTML file deleted: " << data->current_file_path << std::endl;
+                                                       }
+
+                                                       delete data;
+                                                   }),
+                     data);
+
+    // Connect realize signal to maximize window after it's fully created
+    g_signal_connect(window, "realize", G_CALLBACK(+[](GtkWidget *widget, gpointer data) -> void
+                                                   {
+                                                       // Maximize the window once it's fully realized
+                                                       gtk_window_maximize(GTK_WINDOW(widget));
+
+                                                       // Process pending events to ensure maximize takes effect
+                                                       while (gtk_events_pending())
+                                                           gtk_main_iteration_do(FALSE);
+
+                                                       // Add a short delay and a second call to maximize to ensure maximization is applied
+                                                       g_timeout_add(100, [](gpointer user_data) -> gboolean
+                                                                     {
+                                                                         GtkWidget *window = GTK_WIDGET(user_data);
+                                                                         gtk_window_maximize(GTK_WINDOW(window));
+                                                                         return FALSE; // Function executed only once
+                                                                     },
+                                                                     widget);
+                                                   }),
+                     nullptr);
+
+    // Load the HTML file
+    std::string uri = "file://" + html_file;
+    webkit_web_view_load_uri(WEBKIT_WEB_VIEW(webview), uri.c_str());
+
+    // Store the window pointer
+    window_handle = window;
+
+    // Display the window and start the GTK main loop
+    gtk_widget_show_all(window);
+
+    // We no longer call gtk_window_maximize here, it will be done in the "realize" signal
+
+    gtk_main();
+
+    return true;
+}
+
+bool HTMLViewer::loadAndDisplaySVG(const std::string &svg_content, const std::string &temp_svg_file)
+{
+    // Store the SVG content and temporary file path
+    current_svg_content = svg_content;
+    this->temp_svg_file = temp_svg_file;
+
+    // Create a temporary HTML file containing the SVG
+    std::string html_file = createTempHTMLWithSVG(svg_content);
+    if (html_file.empty())
+        return false;
+
+    return loadAndDisplayHTML(html_file);
+}
+
+void HTMLViewer::close()
+{
+    if (window_handle)
+    {
+        gtk_widget_destroy(GTK_WIDGET(window_handle));
+        window_handle = nullptr;
+    }
+}
+
+std::string HTMLViewer::createTempHTMLWithSVG(const std::string &svg_content)
+{
+    // Generate a unique temporary filename
+    std::string temp_filename = "/tmp/plotgencpp_" + std::to_string(time(nullptr)) + ".html";
+
+    // Create the HTML file
+    std::ofstream html_file(temp_filename);
+    if (!html_file.is_open())
+    {
+        std::cerr << "Error: Unable to create temporary HTML file" << std::endl;
+        return "";
+    }
+
+    // Parse SVG width and height from content
+    size_t width_pos = svg_content.find("width=\"");
+    size_t height_pos = svg_content.find("height=\"");
+
+    if (width_pos != std::string::npos && height_pos != std::string::npos)
+    {
+        width_pos += 7;  // Length of 'width="'
+        height_pos += 8; // Length of 'height="'
+
+        size_t width_end = svg_content.find("\"", width_pos);
+        size_t height_end = svg_content.find("\"", height_pos);
+
+        if (width_end != std::string::npos && height_end != std::string::npos)
+        {
+            std::string width_str = svg_content.substr(width_pos, width_end - width_pos);
+            std::string height_str = svg_content.substr(height_pos, height_end - height_pos);
+
+            try
+            {
+                svg_width = std::stoi(width_str);
+                svg_height = std::stoi(height_str);
+                std::cout << "Extracted SVG dimensions: " << svg_width << "x" << svg_height << std::endl;
+            }
+            catch (...)
+            {
+                std::cerr << "Warning: Failed to parse SVG dimensions, using defaults" << std::endl;
+                // Use default values if parsing fails
+            }
+        }
+    }
+
+    // Write HTML content with the SVG embedded
+    html_file << "<!DOCTYPE html>\n"
+              << "<html>\n"
+              << "<head>\n"
+              << "    <meta charset=\"UTF-8\">\n"
+              << "    <title>PlotGenC++ - SVG Visualization</title>\n"
+              << "    <style>\n"
+              << "        body { margin: 0; padding: 0; overflow: hidden; background-color: #f0f0f0; }\n"
+              << "        #svg-container { width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; }\n"
+              << "        #controls { position: fixed; bottom: 10px; left: 10px; background: rgba(255,255,255,0.8); padding: 10px; border-radius: 5px; }\n"
+              << "        svg { max-width: 95%; max-height: 95%; background-color: white; box-shadow: 0 0 10px rgba(0,0,0,0.2); }\n"
+              << "        button { padding: 5px 10px; cursor: pointer; }\n"
+              << "    </style>\n"
+              << "</head>\n"
+              << "<body>\n"
+              << "    <div id=\"svg-container\">\n"
+              << svg_content << "\n"
+              << "    </div>\n"
+              << "</body>\n"
+              << "</html>";
+
+    html_file.close();
+    return temp_filename;
+}
+
+// Implementation of the PlotGen::show_with_viewer method
+void PlotGen::show_with_viewer()
+{
+    // Generate a unique temporary SVG filename
+    std::string svg_filename = "plot_" + std::to_string(time(nullptr)) + ".svg";
+
+    // Save as SVG
+    save_svg(svg_filename);
+
+    std::cout << "Graph generated in SVG format: " << svg_filename << std::endl;
+
+    // Read the SVG file contents
+    std::ifstream svg_file(svg_filename);
+    if (!svg_file.is_open())
+    {
+        std::cerr << "Error: Unable to open SVG file" << std::endl;
+        return;
+    }
+
+    std::stringstream buffer;
+    buffer << svg_file.rdbuf();
+    svg_file.close();
+
+    // Initialize the HTML viewer if it doesn't exist yet
+    if (!html_viewer)
+    {
+        html_viewer = std::make_shared<HTMLViewer>();
+    }
+
+    // Display the SVG in the viewer and pass the temporary file path to be deleted on close
+    html_viewer->loadAndDisplaySVG(buffer.str(), svg_filename);
+}
+#endif // HAVE_GTK_WEBKIT

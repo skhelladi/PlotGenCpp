@@ -54,12 +54,48 @@ target_include_directories(PlotterExamples PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-# Link SFML libraries for both executables
-target_link_libraries(${PROJECT_NAME} PRIVATE
-    sfml-graphics
-    sfml-window
-    sfml-system
-)
+# Check for GTK3 and WEBKIT packages
+find_package(PkgConfig QUIET)
+if(PkgConfig_FOUND)
+    pkg_check_modules(GTK3 QUIET gtk+-3.0)
+    pkg_check_modules(WEBKIT QUIET webkit2gtk-4.1)
+    
+    # Check if both GTK3 and WEBKIT are found and properly configured
+    if(GTK3_FOUND AND WEBKIT_FOUND AND GTK3_INCLUDE_DIRS AND WEBKIT_INCLUDE_DIRS)
+        # Define preprocessor macro to enable GTK/WEBKIT features
+        add_definitions(-DHAVE_GTK_WEBKIT)
+        
+        # Include the headers
+        include_directories(${GTK3_INCLUDE_DIRS} ${WEBKIT_INCLUDE_DIRS})
+        
+        # Link the libraries to the main library
+        target_link_libraries(${PROJECT_NAME} PRIVATE
+            sfml-graphics
+            sfml-window
+            sfml-system
+            ${GTK3_LIBRARIES}
+            ${WEBKIT_LIBRARIES}
+        )
+        
+        message(STATUS "GTK3 and WebKit found - HTMLViewer will be enabled")
+    else()
+        # WebKit or GTK3 not found, don't define HAVE_GTK_WEBKIT
+        target_link_libraries(${PROJECT_NAME} PRIVATE
+            sfml-graphics
+            sfml-window
+            sfml-system
+        )
+        message(STATUS "GTK3 and/or WebKit not found - HTMLViewer will be disabled")
+    endif()
+else()
+    # pkg-config not found, don't define HAVE_GTK_WEBKIT
+    target_link_libraries(${PROJECT_NAME} PRIVATE
+        sfml-graphics
+        sfml-window
+        sfml-system
+    )
+    message(STATUS "pkg-config not found - HTMLViewer will be disabled")
+endif()
 
 target_link_libraries(PlotterExamples PRIVATE
     sfml-graphics

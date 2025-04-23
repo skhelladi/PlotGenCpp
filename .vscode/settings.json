@@ -11,6 +11,7 @@
         "source_location": "cpp",
         "sstream": "cpp",
         "fstream": "cpp",
-        "memory": "cpp"
+        "memory": "cpp",
+        "*.tcc": "cpp"
     }
 }
